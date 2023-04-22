@@ -1,0 +1,69 @@
+#goUpButton {
+    bottom: 75px;
+    right: 40px;
+    display: none;
+    padding: 15px;
+    border: 1px solid #f8edeb;
+    background-color: #e8a598;
+    cursor: pointer;
+    z-index: 9999;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+#goUpButton:hover {
+    background-color: white;
+}
+
+.abtnLogin{
+    background-color: #fec5bb;
+    border-color: #fec5bb;
+    color: black;
+    font-size: 15pt;
+}
+
+
+@font-face {
+  font-family: RobotoCondensed;
+  src: url(../FONTS/RobotoCondensed-Regular.ttf);
+}
+
+body{
+    font-family: RobotoCondensed;
+}
+
+
+.nav-link{
+    font-size: 16pt;
+}
+
+p{
+    font-size: 14pt;
+}
+
+
+.btnRegistro{
+    background-color: #fec5bb;
+    border-color: #fec5bb;
+    color: black;
+    font-size: 15pt;
+}
+
+
+.btnRegistro:hover,btnRegistro:active {
+    background-color: #fae1dd;
+    border-color: #fae1dd;
+    color: black;
+    transform: scale(1.1);
+}
+
+.diapositiva{
+    
+    background-color: rgba(248, 237, 235, 0.4);
+    color: black;
+    margin-top: 3px;
+}
+
