@@ -14,5 +14,8 @@
         <action name="haztePremium">
             <result>/premium/premium.jsp</result>
         </action>
+        <action name="acercaDeNosotros">
+            <result>/acerca.jsp</result>
+        </action>
     </package>
 </struts>
