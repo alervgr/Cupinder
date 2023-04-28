@@ -11,5 +11,8 @@
         <action name="volverInicio">
             <result>/index.jsp</result>
         </action>
+        <action name="haztePremium">
+            <result>/premium/premium.jsp</result>
+        </action>
     </package>
 </struts>

@@ -7,16 +7,16 @@ body{
     font-family: RobotoCondensed;
 }
 
-
-.abtnLogin{
+.btnRegistroP{
     background-color: #fec5bb !important;
     border-color: #fec5bb !important;
     color: black !important;
     font-size: 15pt !important;
 }
 
-.abtnLogin:hover{
-    background-color: #fcd5ce !important;
-    border-color: #fcd5ce !important;
+.btnRegistroP:hover{
+    background-color: #fae1dd !important;
+    border-color: #fae1dd !important;
     color: black !important;
 }
+

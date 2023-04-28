@@ -23,8 +23,9 @@
                     <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
                     <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Acerca</a></li>
                 </ul>
-                <p class="text-center text-muted">© 2023 <a href="#" class="px-2 text-muted" >Viala, Inc</a></p>
+                <p class="text-center text-muted">© 2023 <a href="https://github.com/alervgr/ProyectoIT" class="px-2 text-muted" >Viala, Inc</a></p>
             </footer>
         </div>
     </body>
 </html>
+

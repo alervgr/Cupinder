@@ -1,0 +1,28 @@
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+.rar
+
+mysql-connector-java-8.0.31.jar
+mysql-connector-java-5.1.23-bim.jar
+
+hs_err_pid
+/Cupinder/nbproject/private/
+/Cupinder/nbproject/build/
+/Cupinder/nbproject/dist/
