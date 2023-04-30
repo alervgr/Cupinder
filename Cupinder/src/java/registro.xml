@@ -1,0 +1,14 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- Author: 34647 -->
+ 
+<struts>
+    <!-- Add your configuration elements here -->
+    <package name="registro" extends="struts-default" namespace="/">
+        <action name="irPersonalidad" class="acciones.registroAcciones">
+            <result name="success">/REGISTER/personalidad.jsp</result>
+        </action>
+    </package>
+</struts>
