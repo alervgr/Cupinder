@@ -22,7 +22,6 @@
                     <h2 class="pt-5">¿Cómo funciona?</h2>
                     <p class="pt-5">Para registrarte en nuestra plataforma, simplemente completa un breve formulario con tus gustos, personalidad y facultad en la que estudias. A partir de esa información, nuestro algoritmo de compatibilidad te mostrará perfiles de otras personas que podrían ser compatibles contigo. Si encuentras a alguien que te interesa, puedes dar "like" a su perfil. Si esa persona también da "like" a tu perfil, habrá un "match" y podrán comenzar a conversar.</p>
                 </div>
-
                 <div class="col-6 align-self-center pt-5">
                     <img class="w-100" src="./IMG/acerca.jpg">
                 </div>
