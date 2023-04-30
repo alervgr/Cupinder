@@ -7,6 +7,6 @@
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/citas_db_it</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.current_session_context_class">thread</property>
-
+    <mapping resource="modelos/Intereses.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

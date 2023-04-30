@@ -6,7 +6,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Formulario Personalidad</title>
-        <link href="../premium/premium.css" rel="stylesheet"  type="text/css">
+        <link href="./premium/premium.css" rel="stylesheet"  type="text/css">
     </head>
     <body>
         <jsp:include page="../HEADER/header.jsp" />
@@ -35,13 +35,13 @@
                         <label for="cita">¿Cuál sería tu primera cita ideal?</label>
                         <s:select name="cita" cssClass="form-control text-center" placeholder="Cita" list="{'¡Salir de fiesta!','Restaurante romántico', 'Cine con palomitas', 'Escape Room / Salón de recreativos'}"/>                                                  
                     </div>
-
+                    <div class=" mb-2 pt-3 pb-3">
+                        <label for="interesesSeleccionados" class="pb-3">Selecciona tus intereses:</label><br>
+                        <s:checkboxlist list="intereses" name="interesesSeleccionados" cssClass="form-check-input m-2"/>
+                    </div>
 
                     <button type="submit" class="btn btnRegistroP">Enviar respuesta</button>
                 </s:form>
-
-
-
 
             </div>
 
