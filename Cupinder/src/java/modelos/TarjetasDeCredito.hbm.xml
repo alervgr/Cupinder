@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01-may-2023 0:06:26 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelos.TarjetasDeCredito" table="tarjetas_de_credito" catalog="citas_db_it" optimistic-lock="version">
+        <id name="idTarjeta" type="java.lang.Integer">
+            <column name="id_tarjeta" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="usuarios" class="modelos.Usuarios" fetch="select">
+            <column name="usuario_id" not-null="true" />
+        </many-to-one>
+        <property name="numeroTarjeta" type="string">
+            <column name="numero_tarjeta" length="65535" not-null="true" />
+        </property>
+        <property name="fechaExpiracion" type="date">
+            <column name="fecha_expiracion" length="10" not-null="true" />
+        </property>
+        <property name="cvv" type="string">
+            <column name="cvv" length="65535" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

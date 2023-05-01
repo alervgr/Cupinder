@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01-may-2023 0:06:26 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelos.Usuarios" table="usuarios" catalog="citas_db_it" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="facultades" class="modelos.Facultades" fetch="select">
+            <column name="facultad_id" not-null="true" />
+        </many-to-one>
+        <property name="usuario" type="string">
+            <column name="usuario" length="50" not-null="true" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="nombre" length="50" not-null="true" />
+        </property>
+        <property name="apellidos" type="string">
+            <column name="apellidos" length="50" not-null="true" />
+        </property>
+        <property name="dni" type="string">
+            <column name="DNI" length="50" not-null="true" />
+        </property>
+        <property name="edad" type="int">
+            <column name="edad" not-null="true" />
+        </property>
+        <property name="correo" type="string">
+            <column name="correo" length="100" not-null="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="100" not-null="true" />
+        </property>
+        <property name="genero" type="string">
+            <column name="genero" length="10" not-null="true" />
+        </property>
+        <property name="biografia" type="string">
+            <column name="biografia" length="65535" not-null="true" />
+        </property>
+        <property name="orientacion" type="string">
+            <column name="orientacion" length="50" not-null="true" />
+        </property>
+        <property name="fotoPerfil" type="binary">
+            <column name="foto_perfil" />
+        </property>
+        <property name="fechaRegistro" type="timestamp">
+            <column name="fecha_registro" length="19" not-null="true" />
+        </property>
+        <property name="idioma" type="string">
+            <column name="idioma" length="50" not-null="true" />
+        </property>
+        <property name="rol" type="string">
+            <column name="rol" length="10" not-null="true" />
+        </property>
+        <property name="ocupacion" type="string">
+            <column name="ocupacion" />
+        </property>
+        <set name="coincidenciasesForUsuario1Id" table="coincidencias" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usuario1_id" not-null="true" />
+            </key>
+            <one-to-many class="modelos.Coincidencias" />
+        </set>
+        <set name="usuarioIntereseses" table="usuario_intereses" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usuario_id" not-null="true" />
+            </key>
+            <one-to-many class="modelos.UsuarioIntereses" />
+        </set>
+        <set name="coincidenciasesForUsuario2Id" table="coincidencias" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usuario2_id" not-null="true" />
+            </key>
+            <one-to-many class="modelos.Coincidencias" />
+        </set>
+        <set name="tarjetasDeCreditos" table="tarjetas_de_credito" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usuario_id" not-null="true" />
+            </key>
+            <one-to-many class="modelos.TarjetasDeCredito" />
+        </set>
+        <set name="mensajesesForRemitenteId" table="mensajes" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="remitente_id" not-null="true" />
+            </key>
+            <one-to-many class="modelos.Mensajes" />
+        </set>
+        <set name="mensajesesForDestinatarioId" table="mensajes" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="destinatario_id" not-null="true" />
+            </key>
+            <one-to-many class="modelos.Mensajes" />
+        </set>
+        <set name="usuarioPersonalidadeses" table="usuario_personalidades" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usuario_id" not-null="true" />
+            </key>
+            <one-to-many class="modelos.UsuarioPersonalidades" />
+        </set>
+        <set name="chatsesForUsuario1Id" table="chats" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usuario1_id" not-null="true" />
+            </key>
+            <one-to-many class="modelos.Chats" />
+        </set>
+        <set name="chatsesForUsuario2Id" table="chats" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usuario2_id" not-null="true" />
+            </key>
+            <one-to-many class="modelos.Chats" />
+        </set>
+    </class>
+</hibernate-mapping>

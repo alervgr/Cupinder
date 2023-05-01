@@ -7,6 +7,7 @@
         <title>CUPINDER</title>
         <link href="./CSS/stylesheet.css" rel="stylesheet">
         <script src="./JS/goUpButton.js"></script>
+        <link rel="shortcut icon" href="./IMG/icono.png" type="image/gif">
     </head>
     <body>
        <jsp:include page="./HEADER/header.jsp" />

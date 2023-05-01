@@ -7,6 +7,15 @@
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/citas_db_it</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.current_session_context_class">thread</property>
+    <mapping resource="modelos/UsuarioIntereses.hbm.xml"/>
+    <mapping resource="modelos/UsuarioPersonalidades.hbm.xml"/>
+    <mapping resource="modelos/Chats.hbm.xml"/>
+    <mapping resource="modelos/Facultades.hbm.xml"/>
+    <mapping resource="modelos/Personalidades.hbm.xml"/>
+    <mapping resource="modelos/TarjetasDeCredito.hbm.xml"/>
+    <mapping resource="modelos/Usuarios.hbm.xml"/>
+    <mapping resource="modelos/Coincidencias.hbm.xml"/>
     <mapping resource="modelos/Intereses.hbm.xml"/>
+    <mapping resource="modelos/Mensajes.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

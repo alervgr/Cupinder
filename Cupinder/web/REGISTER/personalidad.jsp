@@ -7,6 +7,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Formulario Personalidad</title>
         <link href="./premium/premium.css" rel="stylesheet"  type="text/css">
+        <link rel="shortcut icon" href="./IMG/icono.png" type="image/gif">
     </head>
     <body>
         <jsp:include page="../HEADER/header.jsp" />

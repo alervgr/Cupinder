@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01-may-2023 0:06:26 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelos.Mensajes" table="mensajes" catalog="citas_db_it" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="chats" class="modelos.Chats" fetch="select">
+            <column name="chat_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuariosByRemitenteId" class="modelos.Usuarios" fetch="select">
+            <column name="remitente_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuariosByDestinatarioId" class="modelos.Usuarios" fetch="select">
+            <column name="destinatario_id" not-null="true" />
+        </many-to-one>
+        <property name="texto" type="string">
+            <column name="texto" length="1000" not-null="true" />
+        </property>
+        <property name="fechaEnvio" type="timestamp">
+            <column name="fecha_envio" length="19" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

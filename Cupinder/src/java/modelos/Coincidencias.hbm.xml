@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01-may-2023 0:06:26 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelos.Coincidencias" table="coincidencias" catalog="citas_db_it" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="usuariosByUsuario1Id" class="modelos.Usuarios" fetch="select">
+            <column name="usuario1_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuariosByUsuario2Id" class="modelos.Usuarios" fetch="select">
+            <column name="usuario2_id" not-null="true" />
+        </many-to-one>
+        <property name="compatibilidad" type="double">
+            <column name="compatibilidad" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="fechaCoincidencia" type="timestamp">
+            <column name="fecha_coincidencia" length="19" not-null="true" />
+        </property>
+        <property name="likeUsuario1" type="boolean">
+            <column name="like_usuario_1" not-null="true" />
+        </property>
+        <property name="likeUsuario2" type="boolean">
+            <column name="like_usuario_2" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

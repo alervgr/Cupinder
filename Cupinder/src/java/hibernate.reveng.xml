@@ -41,5 +41,14 @@ Contributor(s):
 -->
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="citas_db_it"/>
+  <table-filter match-name="usuario_intereses"/>
+  <table-filter match-name="personalidades"/>
+  <table-filter match-name="usuarios"/>
+  <table-filter match-name="usuario_personalidades"/>
+  <table-filter match-name="chats"/>
   <table-filter match-name="intereses"/>
+  <table-filter match-name="coincidencias"/>
+  <table-filter match-name="mensajes"/>
+  <table-filter match-name="tarjetas_de_credito"/>
+  <table-filter match-name="facultades"/>
 </hibernate-reverse-engineering>

@@ -4,6 +4,7 @@
 
 <struts>
     <include file="registro.xml"/>
+    <include file="login.xml"/>
     <!-- Configuration for the default package. -->
     <package name="default" extends="struts-default">
         <action name="redirectLogin">

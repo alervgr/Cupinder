@@ -1,0 +1,15 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- Author: alervgr -->
+ 
+<struts>
+    <!-- Add your configuration elements here -->
+    <package name="login" extends="struts-default" namespace="/">
+        <action name="loginUsuario" class="acciones.loginAcciones">
+            <result name="success">/index.jsp</result>
+            <result name="error">/auth/login.jsp</result>
+        </action>
+    </package>
+</struts>

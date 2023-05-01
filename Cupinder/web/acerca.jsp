@@ -10,6 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Acerca de nosotros</title>
+        <link rel="shortcut icon" href="./IMG/icono.png" type="image/gif">
     </head>
     <body>
         <jsp:include page="./HEADER/header.jsp" />
