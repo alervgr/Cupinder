@@ -24,17 +24,15 @@ public class loginAcciones extends ActionSupport {
     
     public String execute() throws Exception {
         
-        String u;
+        usuario = this.dao.comprobarLogin(this.getCorreo(), this.getPassword());
         
-        u = this.dao.comprobarLogin(this.getCorreo(), this.getPassword());
+        System.out.println(usuario);
         
-        System.out.println(u);
-        
-        if (u == null) {
+        if (usuario == null) {
             return ERROR;
         } else {
             Map session = (Map) ActionContext.getContext().get("session");
-            session.put("user", u);
+            session.put("user", usuario);
         }
         
         return SUCCESS;

@@ -33,7 +33,7 @@
                             </li>
                         </ul>
                     <s:if test="%{#session.user != null}">
-                        <div class="dropstart ms-auto">
+                        <div class="dropstart ms-auto mt-2">
                             <a href="#" class="d-flex align-items-center justify-content-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="https://github.com/mdo.png" alt="mdo" width="33" height="33" class="rounded-circle">
                             </a>
@@ -44,6 +44,7 @@
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="<s:url action="logOut"/>"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a></li>
                             </ul>
+                            <p class="pt-1">Bienvenido, <s:property value="%{#session.user.usuario}"></s:property></p>
                         </div>
                     </s:if>
                     <s:else>
