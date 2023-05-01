@@ -16,7 +16,7 @@
     </head>
     <body>
         <jsp:include page="../HEADER/header.jsp" />
-        <div class="container-fluid row align-items-center justify-content-center" style="background-color: #f8edeb;height: 79vh;">
+        <div class="container-fluid row align-items-center justify-content-center m-0" style="background-color: #f8edeb;height: 79vh;">
             <div class="row text-center">
                 <h1>Tarifas</h1>
                 <p class="fs-5 text-muted pt-5">Actualiza a nuestra versión premium para disfrutar de funciones exclusivas como ver quién te ha dado 'like', o retirar likes a tus posibles parejas.</p>

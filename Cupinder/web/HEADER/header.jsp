@@ -42,7 +42,7 @@
                                 <li><a class="dropdown-item" href="#"><i class="fa-solid fa-fire"></i> Matches</a></li>
                                 <li><a class="dropdown-item" href="#"><i class="fa-solid fa-user"></i> Perfil</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="<s:url action="logOut"/>"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a></li>
+                                <li><a class="dropdown-item" href="<s:url action="logOutUsuario"/>"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a></li>
                             </ul>
                             <p class="pt-1">Bienvenido, <s:property value="%{#session.user.usuario}"></s:property></p>
                         </div>

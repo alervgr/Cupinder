@@ -7,9 +7,13 @@
 <struts>
     <!-- Add your configuration elements here -->
     <package name="login" extends="struts-default" namespace="/">
+        <action name="logOutUsuario" method="logout" class="acciones.loginAcciones">
+            <result name="success">/index.jsp</result>
+        </action>
         <action name="loginUsuario" class="acciones.loginAcciones">
             <result name="success">/index.jsp</result>
             <result name="error">/auth/login.jsp</result>
+            <result name="input">/auth/login.jsp</result>
         </action>
     </package>
 </struts>

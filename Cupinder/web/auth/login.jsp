@@ -32,8 +32,9 @@
                                 <label for="floatingInput">Contraseña</label>
                             </div>
                         <s:submit value="Ingresar" name="btnLogin" cssClass="abtnLogin w-100 btn mt-3"></s:submit>
+                        <s:fielderror cssClass="pt-3"></s:fielderror>
                     </s:form>
-                        <p class="pt-3"><a class="pt-5 link-dark" href="<s:url action="redirectRegistro"/>">Registrarse</a></p>
+                        <p class="pt-2"><a class="link-dark" href="<s:url action="redirectRegistro"/>">Registrarse</a></p>
                 </main>
 
             </div>

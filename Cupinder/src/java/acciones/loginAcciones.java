@@ -1,4 +1,3 @@
-
 package acciones;
 
 import static com.opensymphony.xwork2.Action.ERROR;
@@ -7,37 +6,53 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.Map;
 import modelos.Usuarios;
+import org.apache.struts2.interceptor.validation.SkipValidation;
 import persistencia.DAO_login;
 
-
 public class loginAcciones extends ActionSupport {
-    
-    public String correo;
-    public String password;
-    public DAO_login dao;
-    public Usuarios usuario;
-    
+
+    private String correo;
+    private String password;
+    private final DAO_login dao;
+    private Usuarios usuario;
+
     public loginAcciones() {
-        dao = new DAO_login();
-        usuario = new Usuarios();
+        this.dao = new DAO_login();
     }
-    
+
+    @Override
+    public void validate() {
+
+        if (0 == this.getCorreo().length() || null == this.getCorreo()) {
+            addFieldError("correo", getText("correo.relleno"));
+        }
+        if (0 == this.getPassword().length() || null == this.getPassword()) {
+            addFieldError("password", getText("contrasenia.rellena"));
+        }
+
+    }
+
     public String execute() throws Exception {
-        
-        usuario = this.dao.comprobarLogin(this.getCorreo(), this.getPassword());
-        
-        System.out.println(usuario);
-        
-        if (usuario == null) {
+        this.usuario = new Usuarios();
+        this.usuario = this.dao.comprobarLogin(this.getCorreo(), this.getPassword());
+
+        if (this.usuario == null) {
             return ERROR;
         } else {
             Map session = (Map) ActionContext.getContext().get("session");
-            session.put("user", usuario);
+            session.put("user", this.usuario);
         }
-        
+
         return SUCCESS;
-        
-        
+
+    }
+
+    @SkipValidation
+    public String logout() {
+        Map session = (Map) ActionContext.getContext().get("session");
+        session.remove("user");
+
+        return SUCCESS;
     }
 
     public String getCorreo() {
@@ -60,10 +75,6 @@ public class loginAcciones extends ActionSupport {
         return dao;
     }
 
-    public void setDao(DAO_login dao) {
-        this.dao = dao;
-    }
-
     public Usuarios getUsuario() {
         return usuario;
     }
@@ -71,5 +82,5 @@ public class loginAcciones extends ActionSupport {
     public void setUsuario(Usuarios usuario) {
         this.usuario = usuario;
     }
-    
+
 }

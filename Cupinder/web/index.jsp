@@ -10,7 +10,7 @@
         <link rel="shortcut icon" href="./IMG/icono.png" type="image/gif">
     </head>
     <body>
-       <jsp:include page="./HEADER/header.jsp" />
+        <jsp:include page="./HEADER/header.jsp" />
 
         <div class="container-fluid" style="background-color: #f8edeb;">
 
@@ -25,7 +25,12 @@
                         <div class="carousel-item active">
                             <img src="./IMG/playa.jpeg" class="d-block w-100" alt="..." style="object-fit: contain; height: 800px;">
                             <div class="carousel-caption d-none d-md-block">
-                                <button type="button" class="btnRegistro btn btn-primary">Regístrate</button>
+                                <s:if test="%{#session.user == null}">
+                                    <button type="button" class="btnRegistro btn">Regístrate</button>
+                                </s:if>
+                                <s:else>
+                                    <button type="button" class="btnRegistro btn" disabled>Regístrate</button>
+                                </s:else>
                                 <div class="diapositiva">
                                     <h3>¿Estás cansado de buscar amor sin éxito?</h3>
                                     <p>¡Deja que nuestra aplicación te ayude a encontrar a tu pareja ideal en solo unos pocos pasos!</p>
@@ -35,7 +40,12 @@
                         <div class="carousel-item">
                             <img src="./IMG/mesa.jpeg" class="d-block w-100" alt="..." style="object-fit: contain; height: 800px;">
                             <div class="carousel-caption d-none d-md-block">
-                                <button type="button" class="btnRegistro btn btn-primary">Regístrate</button>
+                                <s:if test="%{#session.user == null}">
+                                    <button type="button" class="btnRegistro btn">Regístrate</button>
+                                </s:if>
+                                <s:else>
+                                    <button type="button" class="btnRegistro btn" disabled>Regístrate</button>
+                                </s:else>
                                 <div class="diapositiva">
                                     <h3>¿Te gustaría conocer a alguien nuevo?</h3>
                                     <p>¡Únete a nuestra comunidad y comienza a chatear con personas interesantes hoy mismo!</p>
@@ -45,7 +55,12 @@
                         <div class="carousel-item">
                             <img src="./IMG/oins.jpeg" class="d-block w-100" alt="..." style="object-fit: contain; height: 800px;">
                             <div class="carousel-caption d-none d-md-block">
-                                <button type="button" class="btnRegistro btn btn-primary">Regístrate</button>
+                                <s:if test="%{#session.user == null}">
+                                    <button type="button" class="btnRegistro btn">Regístrate</button>
+                                </s:if>
+                                <s:else>
+                                    <button type="button" class="btnRegistro btn" disabled>Regístrate</button>
+                                </s:else>
                                 <div class="diapositiva">
                                     <h3>¿Buscas amor?</h3>
                                     <p>¡Deja que nuestra aplicación te ayude a encontrar a tu pareja perfecta!</p>

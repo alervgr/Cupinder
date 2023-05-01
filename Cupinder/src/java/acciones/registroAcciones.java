@@ -17,8 +17,8 @@ import persistencia.DAO_intereses;
  */
 public class registroAcciones extends ActionSupport {
     
-    public DAO_intereses dao;
-    public List<String> intereses;
+    private final DAO_intereses dao;
+    private List<String> intereses;
     
     public registroAcciones() {
         dao = new DAO_intereses();
@@ -36,10 +36,7 @@ public class registroAcciones extends ActionSupport {
         return dao;
     }
 
-    public void setDao(DAO_intereses dao) {
-        this.dao = dao;
-    }
-
+    
     public List<String> getIntereses() {
         return intereses;
     }
