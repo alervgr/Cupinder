@@ -7,6 +7,12 @@
 
 function mostrarGif() {
     document.getElementById("overlay").style.display = "block"; // muestra la capa
+    var audio = document.createElement("audio");
+    audio.id="pibe";
+    audio.src = "./IMG/pibepiano_corto.mp3";
+    audio.autoplay = "autoplay";
+    document.body.appendChild(audio);
+    
     var img = document.createElement("img"); // crea un elemento de imagen
     img.id = "gifoins";
     img.src = "./IMG/pepematch.gif"; // establece la ruta al GIF
@@ -23,7 +29,9 @@ function mostrarGif() {
 }
 
 function ocultarGif() {
-    var img = document.getElementById("gifoins"); // obtiene la primera imagen (el GIF)
+    var img = document.getElementById("gifoins"); 
     img.remove();
+    var audio = document.getElementById("pibe");
+    audio.remove();
     document.getElementById("overlay").style.display = "none"; // muestra la capa
 }
