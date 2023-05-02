@@ -31,7 +31,18 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="<s:url action="acercaDeNosotros"></s:url>">Acerca de nosotros</a>
                             </li>
-                        </ul>
+                        <s:if test="%{#session.user.rol == 'Admin'}">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Administración
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Gestión de usuarios</a></li>
+                                    <li><a class="dropdown-item" href="#">Gestión de intereses</a></li>
+                                </ul>
+                            </li>
+                        </s:if>
+                    </ul>
                     <s:if test="%{#session.user != null}">
                         <div class="dropstart ms-auto mt-2">
                             <a href="#" class="d-flex align-items-center justify-content-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
@@ -45,7 +56,7 @@
                                 <li><a class="dropdown-item" href="<s:url action="logOutUsuario"/>"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a></li>
                             </ul>
                             <p class="pt-1">Bienvenido, <s:property value="%{#session.user.usuario}"></s:property></p>
-                        </div>
+                            </div>
                     </s:if>
                     <s:else>
                         <a class="btn btn-outline-light ms-auto"  href="<s:url action="redirectLogin"/>" style="font-size: 15pt;">Iniciar sesión</a>
