@@ -14,11 +14,5 @@
         <many-to-one name="usuariosByUsuario2Id" class="modelos.Usuarios" fetch="select">
             <column name="usuario2_id" not-null="true" />
         </many-to-one>
-        <set name="mensajeses" table="mensajes" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="chat_id" not-null="true" />
-            </key>
-            <one-to-many class="modelos.Mensajes" />
-        </set>
     </class>
 </hibernate-mapping>

@@ -41,8 +41,8 @@
         <property name="orientacion" type="string">
             <column name="orientacion" length="50" not-null="true" />
         </property>
-        <property name="fotoPerfil" type="binary">
-            <column name="foto_perfil" />
+        <property name="fotoPerfil" type="string">
+            <column name="foto_perfil" length="500" not-null="true" />
         </property>
         <property name="fechaRegistro" type="timestamp">
             <column name="fecha_registro" length="19" not-null="true" />

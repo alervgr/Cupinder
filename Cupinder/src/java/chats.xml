@@ -1,0 +1,19 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- Author: alervgr -->
+ 
+<struts>
+    <package name="chats" extends="struts-default" namespace="/">
+        <action name="irChat" class="acciones.chatAcciones">
+            <result name="success">/chat/chat.jsp</result>
+        </action>
+        <action name="mostrarMensajesChat" class="acciones.chatAcciones" method="mostrarMensajesChat">
+            <result name="success">/chat/chat.jsp</result>
+        </action>
+        <action name="enviarMensaje" class="acciones.chatAcciones" method="enviarMensaje">
+            <result name="success">/chat/chat.jsp</result>
+        </action>
+    </package>
+</struts>

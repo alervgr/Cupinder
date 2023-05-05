@@ -11,7 +11,6 @@ public class Mensajes  implements java.io.Serializable {
 
 
      private Integer id;
-     private Chats chats;
      private Usuarios usuariosByRemitenteId;
      private Usuarios usuariosByDestinatarioId;
      private String texto;
@@ -20,12 +19,17 @@ public class Mensajes  implements java.io.Serializable {
     public Mensajes() {
     }
 
-    public Mensajes(Chats chats, Usuarios usuariosByRemitenteId, Usuarios usuariosByDestinatarioId, String texto, Date fechaEnvio) {
-       this.chats = chats;
+    public Mensajes(Usuarios usuariosByRemitenteId, Usuarios usuariosByDestinatarioId, String texto, Date fechaEnvio) {
        this.usuariosByRemitenteId = usuariosByRemitenteId;
        this.usuariosByDestinatarioId = usuariosByDestinatarioId;
        this.texto = texto;
        this.fechaEnvio = fechaEnvio;
+    }
+    
+    public Mensajes(Usuarios usuariosByRemitenteId, Usuarios usuariosByDestinatarioId, String texto) {
+       this.usuariosByRemitenteId = usuariosByRemitenteId;
+       this.usuariosByDestinatarioId = usuariosByDestinatarioId;
+       this.texto = texto;
     }
    
     public Integer getId() {
@@ -35,13 +39,7 @@ public class Mensajes  implements java.io.Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
-    public Chats getChats() {
-        return this.chats;
-    }
-    
-    public void setChats(Chats chats) {
-        this.chats = chats;
-    }
+   
     public Usuarios getUsuariosByRemitenteId() {
         return this.usuariosByRemitenteId;
     }

@@ -8,9 +8,6 @@
             <column name="id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="chats" class="modelos.Chats" fetch="select">
-            <column name="chat_id" not-null="true" />
-        </many-to-one>
         <many-to-one name="usuariosByRemitenteId" class="modelos.Usuarios" fetch="select">
             <column name="remitente_id" not-null="true" />
         </many-to-one>

@@ -24,7 +24,7 @@ public class Usuarios  implements java.io.Serializable {
      private String genero;
      private String biografia;
      private String orientacion;
-     private byte[] fotoPerfil;
+     private String fotoPerfil;
      private Date fechaRegistro;
      private String idioma;
      private String rol;
@@ -59,7 +59,7 @@ public class Usuarios  implements java.io.Serializable {
         this.idioma = idioma;
         this.rol = rol;
     }
-    public Usuarios(Facultades facultades, String usuario, String nombre, String apellidos, String dni, int edad, String correo, String password, String genero, String biografia, String orientacion, byte[] fotoPerfil, Date fechaRegistro, String idioma, String rol, String ocupacion, Set coincidenciasesForUsuario1Id, Set usuarioIntereseses, Set coincidenciasesForUsuario2Id, Set tarjetasDeCreditos, Set mensajesesForRemitenteId, Set mensajesesForDestinatarioId, Set usuarioPersonalidadeses, Set chatsesForUsuario1Id, Set chatsesForUsuario2Id) {
+    public Usuarios(Facultades facultades, String usuario, String nombre, String apellidos, String dni, int edad, String correo, String password, String genero, String biografia, String orientacion, String fotoPerfil, Date fechaRegistro, String idioma, String rol, String ocupacion, Set coincidenciasesForUsuario1Id, Set usuarioIntereseses, Set coincidenciasesForUsuario2Id, Set tarjetasDeCreditos, Set mensajesesForRemitenteId, Set mensajesesForDestinatarioId, Set usuarioPersonalidadeses, Set chatsesForUsuario1Id, Set chatsesForUsuario2Id) {
        this.facultades = facultades;
        this.usuario = usuario;
        this.nombre = nombre;
@@ -171,11 +171,11 @@ public class Usuarios  implements java.io.Serializable {
     public void setOrientacion(String orientacion) {
         this.orientacion = orientacion;
     }
-    public byte[] getFotoPerfil() {
+    public String getFotoPerfil() {
         return this.fotoPerfil;
     }
     
-    public void setFotoPerfil(byte[] fotoPerfil) {
+    public void setFotoPerfil(String fotoPerfil) {
         this.fotoPerfil = fotoPerfil;
     }
     public Date getFechaRegistro() {
