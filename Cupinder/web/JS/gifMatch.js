@@ -15,7 +15,7 @@ function mostrarGif() {
     
     var img = document.createElement("img"); // crea un elemento de imagen
     img.id = "gifoins";
-    img.src = "./IMG/pepematch.gif"; // establece la ruta al GIF
+    img.src = "./IMG/Sequence.gif"; // establece la ruta al GIF
     img.style.position = "fixed"; // establece la posición de la imagen como fija
     img.style.top = "50%"; // coloca la imagen en el centro vertical
     img.style.left = "50%"; // coloca la imagen en el centro horizontal
@@ -25,7 +25,7 @@ function mostrarGif() {
 
     setTimeout(function () {
         ocultarGif();
-    }, 1850); // llama la función ocultarGif() después de 2 segundos (2000 milisegundos)
+    }, 2000); // llama la función ocultarGif() después de 2 segundos (2000 milisegundos)
 }
 
 function ocultarGif() {

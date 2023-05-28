@@ -27,7 +27,7 @@
                             <img src="./IMG/playa.jpeg" class="d-block w-100" alt="..." style="object-fit: contain; height: 800px;">
                             <div class="carousel-caption d-none d-md-block">
                                 <s:if test="%{#session.user == null}">
-                                    <button type="button" class="btnRegistro btn">Regístrate</button>
+                                    <a  href="<s:url action="redirectRegister"/>" class="btnRegistro btn">Regístrate</a>
                                 </s:if>
                                 <s:else>
                                     <button type="button" class="btnRegistro btn" disabled>Regístrate</button>
@@ -42,7 +42,7 @@
                             <img src="./IMG/mesa.jpeg" class="d-block w-100" alt="..." style="object-fit: contain; height: 800px;">
                             <div class="carousel-caption d-none d-md-block">
                                 <s:if test="%{#session.user == null}">
-                                    <button type="button" class="btnRegistro btn">Regístrate</button>
+                                    <a  href="<s:url action="redirectRegister"/>" class="btnRegistro btn">Regístrate</a>
                                 </s:if>
                                 <s:else>
                                     <button type="button" class="btnRegistro btn" disabled>Regístrate</button>
@@ -57,7 +57,7 @@
                             <img src="./IMG/oins.jpeg" class="d-block w-100" alt="..." style="object-fit: contain; height: 800px;">
                             <div class="carousel-caption d-none d-md-block">
                                 <s:if test="%{#session.user == null}">
-                                    <button type="button" class="btnRegistro btn">Regístrate</button>
+                                    <a  href="<s:url action="redirectRegister"/>" class="btnRegistro btn">Regístrate</a>
                                 </s:if>
                                 <s:else>
                                     <button type="button" class="btnRegistro btn" disabled>Regístrate</button>

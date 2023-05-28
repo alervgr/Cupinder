@@ -20,6 +20,9 @@
         <action name="acercaDeNosotros">
             <result>/acerca.jsp</result>
         </action>
+        <action name="redirectRegister" class="acciones.registroAcciones" method="cargarFacultades">
+            <result>/REGISTER/register.jsp</result>
+        </action>
 
         
     </package>

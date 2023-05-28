@@ -9,6 +9,7 @@
     <package name="registro" extends="struts-default" namespace="/">
         <action name="irPersonalidad" class="acciones.registroAcciones">
             <result name="success">/REGISTER/personalidad.jsp</result>
+            <result name="input">/REGISTER/register.jsp</result>
         </action>
     </package>
 </struts>
