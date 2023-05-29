@@ -24,7 +24,7 @@
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="./IMG/playa.jpeg" class="d-block w-100" alt="..." style="object-fit: contain; height: 800px;">
+                            <img src="./IMG/conocer.jpg" class="d-block w-100" alt="..." style="object-fit: contain; height: 800px;">
                             <div class="carousel-caption d-none d-md-block">
                                 <s:if test="%{#session.user == null}">
                                     <a  href="<s:url action="redirectRegister"/>" class="btnRegistro btn">Regístrate</a>
@@ -33,8 +33,8 @@
                                     <button type="button" class="btnRegistro btn" disabled>Regístrate</button>
                                 </s:else>
                                 <div class="diapositiva">
-                                    <h3>¿Estás cansado de buscar amor sin éxito?</h3>
-                                    <p>¡Deja que nuestra aplicación te ayude a encontrar a tu pareja ideal en solo unos pocos pasos!</p>
+                                    <h3>¿Buscando personas interesantes dentro de tu universidad?</h3>
+                                    <p>¡Deja que Cupinder te ayude ya seas estudiante, profesor o personal universitario!</p>
                                 </div>
                             </div>
                         </div>
@@ -48,8 +48,8 @@
                                     <button type="button" class="btnRegistro btn" disabled>Regístrate</button>
                                 </s:else>
                                 <div class="diapositiva">
-                                    <h3>¿Te gustaría conocer a alguien nuevo?</h3>
-                                    <p>¡Únete a nuestra comunidad y comienza a chatear con personas interesantes hoy mismo!</p>
+                                    <h3>¿Te gustaría conectar con alguien nuevo?</h3>
+                                    <p>¡Amplía tu círculo social y encuentra relaciones auténticas dentro de la UPO!</p>
                                 </div>
                             </div>
                         </div>
@@ -64,7 +64,7 @@
                                 </s:else>
                                 <div class="diapositiva">
                                     <h3>¿Buscas amor?</h3>
-                                    <p>¡Deja que nuestra aplicación te ayude a encontrar a tu pareja perfecta!</p>
+                                    <p>¡Descubre el romance académico y crea recuerdos inolvidables en Cupinder!</p>
                                 </div>
                             </div>
                         </div>
@@ -95,7 +95,7 @@
                     <p class="lead">podrás conectar con personas cercanas que compartan tus intereses y preferencias. Nuestro algoritmo de emparejamiento te presentará perfiles cuidadosamente seleccionados, para que puedas encontrar a alguien con quien tengas afinidad.</p>
                 </div>
                 <div class="col-md-5 order-md-1 text-center">
-                    <img src="./IMG/algoritmo.png" class="d-block w-100" alt="..." style="object-fit: contain; height: 500px;">
+                    <img src="./IMG/campus.jpeg" class="d-block w-100" alt="..." style="object-fit: contain; height: 500px;">
                 </div>
             </div>
         </div>
