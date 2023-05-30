@@ -15,7 +15,7 @@
 
             <div class="p-3 col-7 ">
                 <h1>Formulario</h1>
-                <s:form action="hola" method="post" theme="simple">
+                <s:form action="completarTest" method="post" theme="simple">
                     <div class=" mb-2 pt-3">
                         <label for="color">¿Qué color prefieres?</label>
                         <s:select name="color" cssClass="form-control text-center" placeholder="Color" list="{'Rojo','Amarillo', 'Azul', 'Verde'}"/>                                                  

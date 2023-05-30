@@ -11,5 +11,9 @@
             <result name="success">/REGISTER/personalidad.jsp</result>
             <result name="input">/REGISTER/register.jsp</result>
         </action>
+        <action name="completarTest" class="acciones.testAcciones">
+            <result name="success">/index.jsp</result>            
+        </action>
+        
     </package>
 </struts>

@@ -21,7 +21,7 @@
             <column name="apellidos" length="50" not-null="true" />
         </property>
         <property name="dni" type="string">
-            <column name="DNI" length="50" not-null="true" />
+            <column name="DNI" length="50" not-null="false" />
         </property>
         <property name="edad" type="int">
             <column name="edad" not-null="true" />

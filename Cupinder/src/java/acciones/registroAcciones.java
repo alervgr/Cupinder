@@ -5,19 +5,29 @@
  */
 package acciones;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+import modelos.Facultades;
 import modelos.Intereses;
+import modelos.Usuarios;
+import org.apache.commons.io.FileUtils;
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.validation.SkipValidation;
 import persistencia.DAO_facultades;
 import persistencia.DAO_intereses;
+import persistencia.DAO_usuario;
 
 public class registroAcciones extends ActionSupport {
 
     private final DAO_intereses dao;
     private final DAO_facultades dao_f;
+    private final DAO_usuario dao_u;
     private String nombre;
     private String apellidos;
     private String usuario;
@@ -40,6 +50,7 @@ public class registroAcciones extends ActionSupport {
     public registroAcciones() {
         dao = new DAO_intereses();
         dao_f = new DAO_facultades();
+        dao_u = new DAO_usuario();
         intereses = new ArrayList<>();
         facultades = new ArrayList<>();
     }
@@ -94,9 +105,9 @@ public class registroAcciones extends ActionSupport {
         if (this.getImageFileName() == null || this.getImageFileName().equals("")) {
             addFieldError("image", "Debe seleccionar una imagen");
         } else {
-            if (!this.getImageFileName().substring(this.getImageFileName().lastIndexOf(".")).equals(".jpeg")
-                    && !this.getImageFileName().substring(this.getImageFileName().lastIndexOf(".")).equals(".png")
-                    && !this.getImageFileName().substring(this.getImageFileName().lastIndexOf(".")).equals(".jpg")) {
+            if (!this.getImageFileName().substring(this.getImageFileName().lastIndexOf(".")).equalsIgnoreCase(".jpeg")
+                    && !this.getImageFileName().substring(this.getImageFileName().lastIndexOf(".")).equalsIgnoreCase(".png")
+                    && !this.getImageFileName().substring(this.getImageFileName().lastIndexOf(".")).equalsIgnoreCase(".jpg")) {
                 addFieldError("image", "Formato no válido, debe ser jpeg, jpg o png");
             }
         }
@@ -107,15 +118,34 @@ public class registroAcciones extends ActionSupport {
 
         this.intereses = this.dao.listadoIntereses();
 
+        int edadUser = Integer.parseInt(this.getEdad());
+        Facultades facultad = this.dao_f.getFacultadNombre(this.getFacultad());
+        Usuarios user = new Usuarios(facultad, this.getUsuario(), this.getNombre(), this.getApellidos(), edadUser, this.getEmail(), this.getPassword(), this.getSexo(), this.getBio(), this.getOrientacion(), new Date(), this.getIdioma(), "Free", this.getOcupacion());
+
+        if (this.getImage() != null) {
+            String filePath = ServletActionContext.getServletContext().getRealPath("/Fotos_usuarios");
+            filePath = filePath.replace("\build", "");
+            String fileName = UUID.randomUUID().toString().replace("-", "") + imageFileName.substring(imageFileName.lastIndexOf("."));
+
+            FileUtils.copyFile(this.getImage(), new File(filePath, fileName));
+
+            user.setFotoPerfil("/Fotos_usuarios/" + fileName);
+        }
+
+        this.dao_u.registrarUsuario(user);
+
+        Map session = (Map) ActionContext.getContext().get("session");
+        session.put("UsuarioRegistrado", user.getCorreo());
+
         return SUCCESS;
     }
-    
+
     @SkipValidation
-    public String cargarFacultades(){
+    public String cargarFacultades() {
         this.setFacultades(this.dao_f.listadoFacultades());
         return SUCCESS;
     }
-    
+
     public DAO_intereses getDao() {
         return dao;
     }
