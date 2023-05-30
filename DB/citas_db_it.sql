@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-05-2023 a las 04:33:59
+-- Tiempo de generación: 30-05-2023 a las 03:22:08
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -78,7 +78,7 @@ INSERT INTO `coincidencias` (`id`, `usuario1_id`, `usuario2_id`, `compatibilidad
 
 CREATE TABLE `facultades` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(50) NOT NULL
+  `nombre` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -139,7 +139,7 @@ INSERT INTO `facultades` (`id`, `nombre`) VALUES
 
 CREATE TABLE `intereses` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(50) NOT NULL
+  `nombre` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -192,7 +192,17 @@ INSERT INTO `mensajes` (`id`, `remitente_id`, `destinatario_id`, `texto`, `fecha
 (16, 3, 1, 'Gane', '2023-05-05 01:00:15'),
 (32, 3, 1, 'Gane', '2023-05-05 01:12:24'),
 (33, 5, 3, 'Buenas Lagares', '2023-05-05 02:20:34'),
-(34, 3, 5, 'Illo!', '2023-05-05 02:27:43');
+(34, 3, 5, 'Illo!', '2023-05-05 02:27:43'),
+(35, 3, 1, 'a', '2023-05-07 01:04:37'),
+(36, 3, 5, 'Hola', '2023-05-07 01:04:48'),
+(37, 3, 5, 'Como llevas el TFG?', '2023-05-07 01:05:10'),
+(38, 5, 3, 'Ahi vamos', '2023-05-07 01:06:08'),
+(39, 5, 3, 'Te voy a bloquear', '2023-05-07 01:06:47'),
+(40, 3, 5, '.l.', '2023-05-07 01:06:55'),
+(41, 3, 1, 'a', '2023-05-07 22:42:04'),
+(42, 3, 1, 'Buenas?', '2023-05-18 13:31:53'),
+(43, 3, 5, 'a', '2023-05-29 01:13:45'),
+(44, 3, 5, 'Como llevas el TFG?', '2023-05-30 01:21:38');
 
 -- --------------------------------------------------------
 
@@ -202,7 +212,7 @@ INSERT INTO `mensajes` (`id`, `remitente_id`, `destinatario_id`, `texto`, `fecha
 
 CREATE TABLE `personalidades` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(50) NOT NULL
+  `nombre` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -252,10 +262,10 @@ INSERT INTO `tarjetas_de_credito` (`id_tarjeta`, `numero_tarjeta`, `fecha_expira
 
 CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
-  `usuario` varchar(50) NOT NULL,
-  `nombre` varchar(50) NOT NULL,
-  `apellidos` varchar(50) NOT NULL,
-  `DNI` varchar(50) NOT NULL,
+  `usuario` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `nombre` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `apellidos` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `DNI` varchar(50) DEFAULT NULL,
   `edad` int(11) NOT NULL,
   `correo` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
@@ -266,8 +276,8 @@ CREATE TABLE `usuarios` (
   `fecha_registro` timestamp NOT NULL DEFAULT current_timestamp(),
   `facultad_id` int(11) NOT NULL,
   `idioma` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `rol` varchar(10) NOT NULL DEFAULT 'Free',
-  `ocupacion` varchar(255) DEFAULT NULL
+  `rol` varchar(10) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL DEFAULT 'Free',
+  `ocupacion` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -279,7 +289,9 @@ INSERT INTO `usuarios` (`id`, `usuario`, `nombre`, `apellidos`, `DNI`, `edad`, `
 (2, 'user2', 'María', 'López', '87654321B', 32, 'maria.lopez@example.com', 'password2', 'Mujer', '', '', NULL, '2023-04-28 12:43:03', 2, '', 'Premium', 'Estudiante'),
 (3, 'Lagarin', 'Jose Antonio', 'Lagares', '24681012C', 28, 'lagarin@gmail.com', 'lagarin', 'Hombre', 'Me gusta PA, solo PA', '', '/Fotos_usuarios/lagares.png', '2023-04-28 12:43:03', 3, '', 'Free', 'Profesor'),
 (4, 'user4', 'Ana', 'Fernández', '10121416D', 49, 'ana.fernandez@example.com', 'password4', 'Mujer', '', '', NULL, '2023-04-28 12:43:03', 4, '', 'Free', 'Profesor'),
-(5, 'Aeme', 'Antonio Manuel', 'Mérida Borrero', '12836728A', 22, 'anmamebo2001@gmail.com', 'aemetito', 'Hombre', 'No he sabido hacer una biografía nunca no va a ser este el caso ;), busco amistad y lo que surja jeje. Salir a tomar una cervecita lo mejor y si es contigo ya ni te cuento.', 'Heterosexual', '/Fotos_usuarios/aeme.png', '2023-05-05 01:48:44', 41, 'Español', 'Premium', 'Estudiante');
+(5, 'Aeme', 'Antonio Manuel', 'Mérida Borrero', '12836728A', 22, 'anmamebo2001@gmail.com', 'aemetito', 'Hombre', 'No he sabido hacer una biografía nunca no va a ser este el caso ;), busco amistad y lo que surja jeje. Salir a tomar una cervecita lo mejor y si es contigo ya ni te cuento.', 'Heterosexual', '/Fotos_usuarios/aeme.png', '2023-05-05 01:48:44', 41, 'Español', 'Premium', 'Estudiante'),
+(6, 'mjflores', 'Manuel Jesús', 'Flores', NULL, 23, 'mjflomon@alu.upo.es', 'mjmoto', 'Hombre', 'Vendo Opel Corsa', 'Heterosexual', '/Fotos_usuarios/5e06143ef829434187cb73ec401ee601.png', '2023-05-30 01:09:58', 41, 'Espa?ol', 'Free', 'Estudiante'),
+(7, 'alervgr', 'Alejandro', 'Rivas Garcia', NULL, 22, 'alejandrorivasgarcia@gmail.com', 'alervgr', 'Hombre', 'Busco parienta, con tierras y un mercedes.', 'Heterosexual', '/Fotos_usuarios/beb196a006ee4329a51d5050b6e6fb08.jpg', '2023-05-30 01:18:14', 41, 'Espa?ol', 'Free', 'Estudiante');
 
 -- --------------------------------------------------------
 
@@ -309,7 +321,18 @@ INSERT INTO `usuario_intereses` (`id`, `usuario_id`, `interes_id`) VALUES
 (9, 3, 6),
 (10, 4, 1),
 (11, 4, 3),
-(12, 4, 5);
+(12, 4, 5),
+(13, 6, 1),
+(14, 6, 2),
+(15, 6, 3),
+(16, 6, 4),
+(17, 6, 5),
+(18, 6, 6),
+(19, 6, 7),
+(20, 7, 1),
+(21, 7, 2),
+(22, 7, 5),
+(23, 7, 7);
 
 -- --------------------------------------------------------
 
@@ -331,7 +354,17 @@ INSERT INTO `usuario_personalidades` (`id`, `usuario_id`, `personalidad_id`) VAL
 (1, 1, 1),
 (2, 2, 4),
 (3, 3, 2),
-(4, 4, 1);
+(4, 4, 1),
+(5, 6, 4),
+(6, 6, 10),
+(7, 6, 5),
+(8, 6, 2),
+(9, 6, 7),
+(10, 7, 4),
+(11, 7, 9),
+(12, 7, 5),
+(13, 7, 1),
+(14, 7, 8);
 
 --
 -- Índices para tablas volcadas
@@ -441,7 +474,7 @@ ALTER TABLE `intereses`
 -- AUTO_INCREMENT de la tabla `mensajes`
 --
 ALTER TABLE `mensajes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT de la tabla `personalidades`
@@ -459,19 +492,19 @@ ALTER TABLE `tarjetas_de_credito`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario_intereses`
 --
 ALTER TABLE `usuario_intereses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario_personalidades`
 --
 ALTER TABLE `usuario_personalidades`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Restricciones para tablas volcadas

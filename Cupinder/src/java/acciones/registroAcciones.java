@@ -124,7 +124,9 @@ public class registroAcciones extends ActionSupport {
 
         if (this.getImage() != null) {
             String filePath = ServletActionContext.getServletContext().getRealPath("/Fotos_usuarios");
-            filePath = filePath.replace("\build", "");
+            System.out.println(filePath);
+            filePath = filePath.replace("\\build", "");
+            System.out.println(filePath);
             String fileName = UUID.randomUUID().toString().replace("-", "") + imageFileName.substring(imageFileName.lastIndexOf("."));
 
             FileUtils.copyFile(this.getImage(), new File(filePath, fileName));
