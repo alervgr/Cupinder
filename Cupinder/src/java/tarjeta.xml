@@ -9,5 +9,14 @@
             <result name="success">/perfil/perfil.jsp</result>
             <result name="input">/credito/aniadirTarjeta.jsp</result>
         </action>
+        
+        <action name="irAniadirTarjeta">
+            <result name="success">/credito/aniadirTarjeta.jsp</result>
+        </action>
+        
+        <action name="borrarTarjeta" class="acciones.tarjetaAcciones" method="borrarTarjeta">
+            <result name="success">/perfil/perfil.jsp</result>
+        </action>
+        
     </package>
 </struts>

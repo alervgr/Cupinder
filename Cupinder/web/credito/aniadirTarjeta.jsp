@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Acerca de nosotros</title>
+        <title>Añadir tarjeta</title>
         <link rel="shortcut icon" href="./IMG/icono.png" type="image/gif">
     </head>
     <body>

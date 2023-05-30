@@ -1,11 +1,13 @@
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Acerca de nosotros</title>
+        <title>Perfil</title>
+        <script src="./JS/goUpButton.js"></script>
         <link rel="shortcut icon" href="./IMG/icono.png" type="image/gif">
     </head>
     <body>
@@ -51,10 +53,50 @@
                             <div class="mb-5 text-center"><button class="btn btnRegistro" type="submit">Guardar Perfil</button></div>
                         </div>
                 </s:form>
+                <div>
+                    <hr class="m-2">
+                    <h1 class="p-3 text-center">Tarjetas de crédito</h1>
+                    <s:if test="%{tarjetasUsuario.isEmpty()}">
+                        <div class="pb-4 text-center" >
+                            <p >No tienes tarjetas de credito asociadas.</p>
+                            <a class="btn btnRegistro"  href="<s:url action="irAniadirTarjeta"/>">Añadir tarjeta de crédito</a>
+                        </div>
+                    </s:if>
+                    <s:else>
+                        <div class="row justify-content-center">
+                            <div class="col-6">
+                                <ul class="list-group text-center">
+                                    <s:iterator value="tarjetasUsuario" var="tarjeta">
+                                        <li class="list-group-item"><i class="fa-brands fa-cc-visa fa-xl m-1"></i><s:property value="#tarjeta.numeroTarjeta"></s:property> -- <s:property value="#tarjeta.fechaExpiracion"></s:property>
+                                            <s:url id="url" action="borrarTarjeta">
+                                                <s:param name="tarjetaId" value="#tarjeta.idTarjeta"></s:param>
+                                            </s:url>
+                                            <s:a href="%{url}" cssStyle="text-decoration: none;">
+                                                <p>Borrar</p>
+                                            </s:a>
+                                        </li>
+                                    </s:iterator>
+                                </ul>
+                                <div class="p-4 text-center">
+                                    <a class="btn btnRegistro"  href="<s:url action="irAniadirTarjeta"/>">Añadir tarjeta de crédito</a>
+                                </div>
+                            </div>
+                        </div>
+                    </s:else>
+                </div>
             </div>
         </div>
     </div>
 </div>
 <jsp:include page="../FOOTER/footer.jsp" />
+
+<!-- BOTÓN SCROLL TO TOP -->
+<button onclick="scrollToTop()" id="goUpButton" class="btn position-fixed" title="Ir arriba">
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-up"
+         viewBox="0 0 16 16" alt="Flecha hacia arriba">
+    <path fill-rule="evenodd"
+          d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
+    </svg>
+</button>
 </body>
 </html>

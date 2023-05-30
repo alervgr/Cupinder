@@ -30,6 +30,7 @@ public class tarjetaAcciones extends ActionSupport {
     private String CVV;
     private String fechaExpiracion;
     private List<TarjetasDeCredito> tarjetasUsuario;
+    private int tarjetaId;
 
     public tarjetaAcciones() {
         dao_t = new DAO_tarjeta();
@@ -41,12 +42,12 @@ public class tarjetaAcciones extends ActionSupport {
 
         if (0 == this.getNumeroTarjeta().length() || null == this.getNumeroTarjeta()) {
             addFieldError("numeroTarjeta", getText("numeroT.relleno"));
-        }else{
-            if(16 != this.getNumeroTarjeta().length()){
+        } else {
+            if (16 != this.getNumeroTarjeta().length()) {
                 addFieldError("numeroTarjeta", getText("numeroT.formato"));
             }
         }
-        
+
         if (0 == this.getCVV().length() || null == this.getCVV()) {
             addFieldError("CVV", getText("cvvT.relleno"));
         } else {
@@ -84,16 +85,28 @@ public class tarjetaAcciones extends ActionSupport {
     }
 
     @SkipValidation
-    public void obtenerTarjetasDeCredito(){
-        
+    public String obtenerTarjetasDeCredito() {
+
         Map session = (Map) ActionContext.getContext().get("session");
         Usuarios user = (Usuarios) session.get("user");
-        
+
         this.setTarjetasUsuario(this.dao_t.obtenerTarjetasDeCredito(user.getId()));
-        
+
+        return SUCCESS;
     }
-    
-    
+
+    @SkipValidation
+    public String borrarTarjeta() {
+
+        TarjetasDeCredito tarjeta = this.dao_t.obtenerTarjeta(this.getTarjetaId());
+
+        this.dao_t.borrarTarjeta(tarjeta);
+
+        obtenerTarjetasDeCredito();
+
+        return SUCCESS;
+    }
+
     public String getNumeroTarjeta() {
         return numeroTarjeta;
     }
@@ -124,6 +137,14 @@ public class tarjetaAcciones extends ActionSupport {
 
     public void setTarjetasUsuario(List<TarjetasDeCredito> tarjetasUsuario) {
         this.tarjetasUsuario = tarjetasUsuario;
+    }
+
+    public int getTarjetaId() {
+        return tarjetaId;
+    }
+
+    public void setTarjetaId(int tarjetaId) {
+        this.tarjetaId = tarjetaId;
     }
 
 }

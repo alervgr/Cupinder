@@ -40,6 +40,24 @@ public class DAO_tarjeta {
         tx.commit();
         return tarjetas;
     }
+
+    public void borrarTarjeta(TarjetasDeCredito tarjeta) {
+        s1 = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = s1.beginTransaction();
+        s1.delete(tarjeta);
+        tx.commit();
+    }
+    
+    public TarjetasDeCredito obtenerTarjeta(Integer id) {
+        s1 = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = s1.beginTransaction();
+        String sql = "From TarjetasDeCredito WHERE id_tarjeta='"+ id +"'";
+        Query query = s1.createQuery(sql);
+        TarjetasDeCredito tarjeta = (TarjetasDeCredito) query.uniqueResult();
+        tx.commit();
+        return tarjeta;
+    }
+    
     
     
     
