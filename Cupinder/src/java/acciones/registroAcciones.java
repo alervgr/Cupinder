@@ -111,6 +111,8 @@ public class registroAcciones extends ActionSupport {
                 addFieldError("image", "Formato no válido, debe ser jpeg, jpg o png");
             }
         }
+        
+        cargarFacultades();
 
     }
 
