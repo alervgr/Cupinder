@@ -50,9 +50,6 @@ public class Facultades  implements java.io.Serializable {
         this.usuarioses = usuarioses;
     }
 
-
-
-
 }
 
 

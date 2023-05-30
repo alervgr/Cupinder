@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-05-2023 a las 03:22:08
--- Versión del servidor: 10.4.25-MariaDB
--- Versión de PHP: 8.1.10
+-- Tiempo de generación: 30-05-2023 a las 18:01:07
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -291,7 +291,8 @@ INSERT INTO `usuarios` (`id`, `usuario`, `nombre`, `apellidos`, `DNI`, `edad`, `
 (4, 'user4', 'Ana', 'Fernández', '10121416D', 49, 'ana.fernandez@example.com', 'password4', 'Mujer', '', '', NULL, '2023-04-28 12:43:03', 4, '', 'Free', 'Profesor'),
 (5, 'Aeme', 'Antonio Manuel', 'Mérida Borrero', '12836728A', 22, 'anmamebo2001@gmail.com', 'aemetito', 'Hombre', 'No he sabido hacer una biografía nunca no va a ser este el caso ;), busco amistad y lo que surja jeje. Salir a tomar una cervecita lo mejor y si es contigo ya ni te cuento.', 'Heterosexual', '/Fotos_usuarios/aeme.png', '2023-05-05 01:48:44', 41, 'Español', 'Premium', 'Estudiante'),
 (6, 'mjflores', 'Manuel Jesús', 'Flores', NULL, 23, 'mjflomon@alu.upo.es', 'mjmoto', 'Hombre', 'Vendo Opel Corsa', 'Heterosexual', '/Fotos_usuarios/5e06143ef829434187cb73ec401ee601.png', '2023-05-30 01:09:58', 41, 'Espa?ol', 'Free', 'Estudiante'),
-(7, 'alervgr', 'Alejandro', 'Rivas Garcia', NULL, 22, 'alejandrorivasgarcia@gmail.com', 'alervgr', 'Hombre', 'Busco parienta, con tierras y un mercedes.', 'Heterosexual', '/Fotos_usuarios/beb196a006ee4329a51d5050b6e6fb08.jpg', '2023-05-30 01:18:14', 41, 'Espa?ol', 'Free', 'Estudiante');
+(7, 'alervgr', 'Alejandro', 'Rivas Garcia', NULL, 22, 'alejandrorivasgarcia@gmail.com', 'alervgr', 'Hombre', 'Busco parienta, con tierras y un mercedes.', 'Heterosexual', '/Fotos_usuarios/beb196a006ee4329a51d5050b6e6fb08.jpg', '2023-05-30 01:18:14', 41, 'Espa?ol', 'Free', 'Estudiante'),
+(8, 'laura', 'Laura', 'Gómez Viñas', NULL, 25, 'laugv4@gmail.com', 'laura', 'Mujer', 'Hola :)', 'Heterosexual', '/Fotos_usuarios/3a000280556f43d28c61817cc34ced38.jpg', '2023-05-30 14:34:14', 41, 'Español', 'Free', 'Estudiante');
 
 -- --------------------------------------------------------
 
@@ -332,7 +333,10 @@ INSERT INTO `usuario_intereses` (`id`, `usuario_id`, `interes_id`) VALUES
 (20, 7, 1),
 (21, 7, 2),
 (22, 7, 5),
-(23, 7, 7);
+(23, 7, 7),
+(24, 8, 3),
+(25, 8, 4),
+(26, 8, 6);
 
 -- --------------------------------------------------------
 
@@ -364,7 +368,12 @@ INSERT INTO `usuario_personalidades` (`id`, `usuario_id`, `personalidad_id`) VAL
 (11, 7, 9),
 (12, 7, 5),
 (13, 7, 1),
-(14, 7, 8);
+(14, 7, 8),
+(15, 8, 4),
+(16, 8, 9),
+(17, 8, 5),
+(18, 8, 2),
+(19, 8, 7);
 
 --
 -- Índices para tablas volcadas
@@ -492,19 +501,19 @@ ALTER TABLE `tarjetas_de_credito`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario_intereses`
 --
 ALTER TABLE `usuario_intereses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario_personalidades`
 --
 ALTER TABLE `usuario_personalidades`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Restricciones para tablas volcadas
