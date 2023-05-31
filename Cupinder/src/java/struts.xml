@@ -24,9 +24,8 @@
         <action name="redirectRegister" class="acciones.registroAcciones" method="cargarFacultades">
             <result>/REGISTER/register.jsp</result>
         </action>
-        <action name="irPerfil" class="acciones.tarjetaAcciones" method="obtenerTarjetasDeCredito">
+        <action name="irPerfil" class="acciones.perfilAcciones">
             <result name="success">/perfil/perfil.jsp</result>
         </action>
-        
     </package>
 </struts>

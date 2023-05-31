@@ -6,7 +6,7 @@
     <!-- Add your configuration elements here -->
     <package name="tarjeta" extends="struts-default" namespace="/">
         <action name="aniadirTarjeta" class="acciones.tarjetaAcciones">
-            <result name="success">/perfil/perfil.jsp</result>
+            <result name="success" type="redirectAction">irPerfil</result>
             <result name="input">/credito/aniadirTarjeta.jsp</result>
         </action>
         
@@ -15,7 +15,7 @@
         </action>
         
         <action name="borrarTarjeta" class="acciones.tarjetaAcciones" method="borrarTarjeta">
-            <result name="success">/perfil/perfil.jsp</result>
+            <result name="success" type="redirectAction">irPerfil</result>
         </action>
         
     </package>

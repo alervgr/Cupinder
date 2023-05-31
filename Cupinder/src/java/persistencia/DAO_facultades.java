@@ -33,4 +33,16 @@ public class DAO_facultades {
         return facultad;
     }
 
+
+    public String getFacultadId(int id) {
+        s1 = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = s1.beginTransaction();
+        
+        String hql = "SELECT f.nombre FROM Usuarios u JOIN u.facultades f WHERE u.id = "+id;
+
+        Query q = s1.createQuery(hql);
+        String facultad = (String) q.uniqueResult();
+        tx.commit();
+        return facultad;
+    }
 }

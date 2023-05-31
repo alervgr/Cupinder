@@ -40,7 +40,6 @@ public class DAO_usuario {
         return usuario;
     }
     
-    
     public void actualizarUsuario(Usuarios user) {
         s1 = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = s1.beginTransaction();

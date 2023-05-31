@@ -1,5 +1,8 @@
 
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="persistencia.DAO_facultades"%>
 <!DOCTYPE html>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
@@ -11,6 +14,7 @@
         <link rel="shortcut icon" href="./IMG/icono.png" type="image/gif">
     </head>
     <body>
+
         <jsp:include page="../HEADER/header.jsp" />
         <div class="container-fluid pt-3 pb-3" style="background-color: #f8edeb; min-height: 79vh">
             <div class="container rounded bg-white mt-5 mb-5">
@@ -38,7 +42,7 @@
                                     </div>
                                     <div class="row mt-3">
                                         <div class="col-md-12"><label class="labels">Idioma</label><s:textfield cssClass="form-control" value="%{#session.user.idioma}"></s:textfield></div>
-                                    <div class="col-md-12"><label class="labels">Facultad</label><s:textfield cssClass="form-control" value="%{#session.user.facultades}"></s:textfield></div>
+                                    <div class="col-md-12"><label class="labels">Facultad</label><s:select name="facultad" label="Facultad" cssClass="form-control" placeholder="Facultad" list="facultades" value="fac"/></div>
                                     <div class="col-md-12"><label class="labels">Ocupación</label><s:textfield cssClass="form-control" value="%{#session.user.ocupacion}"></s:textfield></div>
                                     <div class="col-md-12"><label class="labels">DNI</label><s:textfield cssClass="form-control" value="%{#session.user.DNI}"></s:textfield></div>
                                     <div class="col-md-12"><label class="labels">Biografía</label><s:textarea cssClass="form-control" value="%{#session.user.biografia}"></s:textarea></div>
@@ -46,12 +50,12 @@
                                     </div>
                                     <div class="row mt-3">
                                         <div class="col-md-6"><label class="labels">Género</label><s:textfield cssClass="form-control" value="%{#session.user.genero}" disabled="true"></s:textfield></div>
-                                    <div class="col-md-6"><label class="labels">Orientación</label><s:textfield cssClass="form-control" value="%{#session.user.orientacion}"></s:textfield></div>
-                                    </div>
+                                    <div class="col-md-6"><label class="labels">Orientación</label><s:select name="orientacion" label="Orientacion" cssClass="form-control" placeholder="Orientacion" value="%{#session.user.orientacion}" list="{'Heterosexual','Homosexual','Bisexual'}"/></div>
                                 </div>
                             </div>
-                            <div class="mb-5 text-center"><button class="btn btnRegistro" type="submit">Guardar Perfil</button></div>
                         </div>
+                        <div class="mb-5 text-center"><button class="btn btnRegistro" type="submit">Guardar Perfil</button></div>
+                    </div>
                 </s:form>
                 <div>
                     <hr class="m-2">
