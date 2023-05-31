@@ -21,7 +21,7 @@
                 <s:form action="modificarPerfil" method="POST" theme="simple">
                     <div class="row">
                         <div class="col-md-3 border-right">
-                            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="250px" src="${pageContext.request.contextPath}${session.user.fotoPerfil}"><span class="font-weight-bold"></span>Cuenta ${session.user.rol}<span class="text-black-50">Registrado el ${session.user.fechaRegistro}</span><span> </span></div>
+                            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="250px" src="${pageContext.request.contextPath}${session.user.fotoPerfil}"><span class="font-weight-bold"></span>Cuenta ${session.user.rol}<span class="text-black-50">Registrado el ${session.user.fechaRegistro}</span><s:if test="%{#session.user.dni != null}"><span>Verificada <i class="fa-solid fa-circle-check"></i></span></s:if><span> </span></div>
                             <div class="p-4 text-center">
                                 <a class="btn btnRegistro"  href="<s:url action="rehacerTest"/>">Rehacer Test</a>
                             </div>
@@ -70,10 +70,10 @@
                 </s:form>
                 <div>
                     <hr class="m-2">
-                    <h1 class="p-3 text-center">Tarjetas de crédito</h1>
+                    <h4 class="p-3 text-center">Tarjetas de crédito</h4>
                     <s:if test="%{tarjetasUsuario.isEmpty()}">
                         <div class="pb-4 text-center" >
-                            <p >No tienes tarjetas de credito asociadas.</p>
+                            <span class="row justify-content-center pb-3">No tienes tarjetas de credito asociadas.</span>
                             <a class="btn btnRegistro"  href="<s:url action="irAniadirTarjeta"/>">Añadir tarjeta de crédito</a>
                         </div>
                     </s:if>
