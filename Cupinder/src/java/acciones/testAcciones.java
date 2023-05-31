@@ -32,6 +32,7 @@ public class testAcciones extends ActionSupport {
     private String reflejo;
     private String cita;
     private List<String> interesesSeleccionados;
+    private List<String> intereses;
 
     public testAcciones() {
         dao_u = new DAO_usuario();
@@ -61,6 +62,43 @@ public class testAcciones extends ActionSupport {
         return SUCCESS;
     }
 
+    public String cargarTest(){
+        
+        this.intereses = this.dao_i.listadoIntereses();
+        
+        return SUCCESS;
+    }
+    
+    public String updateTest(){
+        
+        UsuarioIntereses userInt;
+
+        Map session = (Map) ActionContext.getContext().get("session");
+        Usuarios user = (Usuarios) session.get("user");
+
+        List<UsuarioIntereses> listaUI = this.dao_i.obtenerUsuarioIntereses(user.getId());
+        List<UsuarioPersonalidades> listaUP = this.dao_p.obtenerUsuarioPersonalidades(user.getId());
+        
+        for (int i = listaUI.size() - 1; i >= 0; i--) {
+            this.dao_i.borrarUsuarioInteres(listaUI.get(i));
+        }
+        
+        for (int i = listaUP.size() - 1; i >= 0; i--) {
+            this.dao_p.borrarUsuarioPersonalidades(listaUP.get(i));
+        }
+        
+        for (int i = 0; i < this.getInteresesSeleccionados().size(); i++) {
+            userInt = new UsuarioIntereses(this.dao_i.obtenerInteres(this.getInteresesSeleccionados().get(i)), user);
+            this.dao_i.crearInteres(userInt);
+        }
+
+        cargarPersonalidad(user);
+
+        this.dao_u.actualizarUsuario(user);
+        
+        return SUCCESS;
+    }
+    
     public void cargarPersonalidad(Usuarios user) {
 
         UsuarioPersonalidades userPer;
@@ -161,6 +199,14 @@ public class testAcciones extends ActionSupport {
 
     public void setInteresesSeleccionados(List<String> interesesSeleccionados) {
         this.interesesSeleccionados = interesesSeleccionados;
+    }
+
+    public List<String> getIntereses() {
+        return intereses;
+    }
+
+    public void setIntereses(List<String> intereses) {
+        this.intereses = intereses;
     }
 
 }

@@ -43,6 +43,24 @@ public class DAO_intereses {
         tx.commit();
     }
 
+    public List<UsuarioIntereses> obtenerUsuarioIntereses(int idUsuario) {
+
+        s1 = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = s1.beginTransaction();
+        Query q = s1.createQuery("FROM UsuarioIntereses WHERE usuario_id = '" + idUsuario + "'");
+        List<UsuarioIntereses> list = (List<UsuarioIntereses>) q.list();
+        tx.commit();
+        return list;
+    }
+    
+    public void borrarUsuarioInteres(UsuarioIntereses ui) {
+
+        s1 = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = s1.beginTransaction();
+        s1.delete(ui);
+        tx.commit();
+    }
+    
     public void borrarInteres(Intereses interes) {
 
         s1 = HibernateUtil.getSessionFactory().getCurrentSession();

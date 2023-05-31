@@ -31,5 +31,8 @@
         <action name="irPerfil" class="acciones.perfilAcciones">
             <result name="success">/perfil/perfil.jsp</result>
         </action>
+        <action name="rehacerTest" class="acciones.testAcciones" method="cargarTest">
+            <result name="success">/perfil/test.jsp</result>
+        </action>
     </package>
 </struts>

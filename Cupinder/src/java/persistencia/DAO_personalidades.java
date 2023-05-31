@@ -5,6 +5,7 @@
  */
 package persistencia;
 
+import java.util.List;
 import modelos.Facultades;
 import modelos.HibernateUtil;
 import modelos.Personalidades;
@@ -40,6 +41,24 @@ public class DAO_personalidades {
         s1.save(userPer);
         tx.commit();
         
+    }
+    
+    public List<UsuarioPersonalidades> obtenerUsuarioPersonalidades(int idUsuario) {
+
+        s1 = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = s1.beginTransaction();
+        Query q = s1.createQuery("FROM UsuarioPersonalidades WHERE usuario_id = '" + idUsuario + "'");
+        List<UsuarioPersonalidades> list = (List<UsuarioPersonalidades>) q.list();
+        tx.commit();
+        return list;
+    }
+    
+    public void borrarUsuarioPersonalidades(UsuarioPersonalidades up) {
+
+        s1 = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = s1.beginTransaction();
+        s1.delete(up);
+        tx.commit();
     }
 
 }

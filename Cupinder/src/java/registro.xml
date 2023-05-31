@@ -14,6 +14,8 @@
         <action name="completarTest" class="acciones.testAcciones">
             <result name="success">/index.jsp</result>            
         </action>
-        
+        <action name="updateTest" class="acciones.testAcciones" method="updateTest">
+            <result name="success" type="redirectAction">irPerfil</result>            
+        </action>
     </package>
 </struts>
