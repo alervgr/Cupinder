@@ -1,0 +1,20 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+ 
+<struts>
+    <!-- Add your configuration elements here -->
+    <package name="perfil" extends="struts-default" namespace="/">
+        <action name="irPerfil" class="acciones.perfilAcciones">
+            <result name="success">/perfil/perfil.jsp</result>
+        </action>
+        <action name="rehacerTest" class="acciones.testAcciones" method="cargarTest">
+            <result name="success">/perfil/test.jsp</result>
+        </action>
+        <action name="modificarPerfil" class="acciones.perfilAcciones" method="actualizar">
+            <result name="success" type="redirectAction">irPerfil</result>
+            <result name="input">/perfil/perfil.jsp</result>
+        </action>
+    </package>
+    
+</struts>

@@ -4,6 +4,7 @@
 
 <struts>
     <include file="registro.xml"/>
+    <include file="perfil.xml"/>
     <include file="chats.xml"/>
     <include file="login.xml"/>
     <include file="tarjeta.xml"/>
@@ -28,11 +29,6 @@
         <action name="redirectRegister" class="acciones.registroAcciones" method="cargarFacultades">
             <result>/REGISTER/register.jsp</result>
         </action>
-        <action name="irPerfil" class="acciones.perfilAcciones">
-            <result name="success">/perfil/perfil.jsp</result>
-        </action>
-        <action name="rehacerTest" class="acciones.testAcciones" method="cargarTest">
-            <result name="success">/perfil/test.jsp</result>
-        </action>
+        
     </package>
 </struts>
