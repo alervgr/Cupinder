@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-05-2023 a las 18:01:07
+-- Tiempo de generación: 31-05-2023 a las 23:38:33
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -38,10 +38,8 @@ CREATE TABLE `chats` (
 --
 
 INSERT INTO `chats` (`id`, `usuario1_id`, `usuario2_id`) VALUES
-(1, 1, 2),
 (2, 1, 3),
 (3, 3, 1),
-(4, 2, 1),
 (5, 5, 3),
 (6, 3, 5);
 
@@ -66,9 +64,47 @@ CREATE TABLE `coincidencias` (
 --
 
 INSERT INTO `coincidencias` (`id`, `usuario1_id`, `usuario2_id`, `compatibilidad`, `fecha_coincidencia`, `like_usuario_1`, `like_usuario_2`) VALUES
-(1, 1, 2, 0.85, '2023-04-28 12:47:05', 0, 0),
 (2, 1, 3, 0.6, '2023-04-28 12:47:05', 0, 0),
-(3, 2, 3, 0.8, '2023-04-28 12:47:05', 0, 0);
+(4, 9, 1, 0.40444444444444444, '2023-05-31 19:51:58', 0, 0),
+(5, 9, 3, 0.3822222222222222, '2023-05-31 19:51:58', 0, 0),
+(6, 9, 5, 0.42666666666666664, '2023-05-31 19:51:58', 0, 0),
+(11, 10, 1, 0.22666666666666668, '2023-05-31 20:16:48', 0, 0),
+(12, 10, 3, 0.6, '2023-05-31 20:16:48', 0, 0),
+(13, 10, 5, 0.6285714285714286, '2023-05-31 20:16:48', 0, 0),
+(17, 10, 9, 0.44, '2023-05-31 20:16:48', 0, 0),
+(19, 11, 1, 0.62, '2023-05-31 20:47:34', 0, 0),
+(20, 11, 3, 0.53, '2023-05-31 20:47:34', 0, 0),
+(21, 11, 5, 0.5942857142857143, '2023-05-31 20:47:34', 0, 0),
+(25, 11, 9, 0.38666666666666666, '2023-05-31 20:47:34', 0, 0),
+(26, 11, 10, 0.56, '2023-05-31 20:47:34', 0, 0),
+(27, 1, 5, 0.8, '2023-05-31 21:23:29', 0, 0),
+(28, 5, 3, 0.99, '2023-05-31 21:23:29', 0, 0),
+(29, 11, 1, 0.62, '2023-05-31 21:24:43', 0, 0),
+(30, 11, 3, 0.53, '2023-05-31 21:24:43', 0, 0),
+(31, 11, 5, 0.5942857142857143, '2023-05-31 21:24:43', 0, 0),
+(32, 11, 9, 0.38666666666666666, '2023-05-31 21:24:43', 0, 0),
+(33, 11, 10, 0.56, '2023-05-31 21:24:43', 0, 0),
+(34, 12, 1, 0.43000000000000005, '2023-05-31 21:28:29', 0, 0),
+(35, 12, 3, 0.53, '2023-05-31 21:28:29', 0, 0),
+(36, 12, 5, 0.5942857142857143, '2023-05-31 21:28:29', 0, 0),
+(37, 12, 9, 0.36444444444444446, '2023-05-31 21:28:29', 0, 0),
+(38, 12, 10, 0.37, '2023-05-31 21:28:29', 0, 0),
+(39, 12, 11, 0.8300000000000001, '2023-05-31 21:28:29', 0, 0),
+(40, 13, 1, 0.30000000000000004, '2023-05-31 21:35:16', 0, 0),
+(41, 13, 3, 0.45, '2023-05-31 21:35:16', 0, 0),
+(42, 13, 5, 0.5142857142857143, '2023-05-31 21:35:16', 0, 0),
+(43, 13, 9, 0.30666666666666664, '2023-05-31 21:35:16', 0, 0),
+(44, 13, 10, 0.24, '2023-05-31 21:35:16', 0, 0),
+(45, 13, 11, 0.8, '2023-05-31 21:35:16', 0, 0),
+(46, 13, 12, 0.51, '2023-05-31 21:35:16', 0, 0),
+(47, 14, 1, 0.58, '2023-05-31 21:36:49', 0, 0),
+(48, 14, 3, 0.48, '2023-05-31 21:36:49', 0, 0),
+(49, 14, 5, 0.5942857142857143, '2023-05-31 21:36:49', 0, 0),
+(50, 14, 9, 0.5422222222222223, '2023-05-31 21:36:49', 0, 0),
+(51, 14, 10, 0.37, '2023-05-31 21:36:49', 0, 0),
+(52, 14, 11, 0.7300000000000001, '2023-05-31 21:36:49', 0, 0),
+(53, 14, 12, 0.54, '2023-05-31 21:36:49', 0, 0),
+(54, 14, 13, 0.41, '2023-05-31 21:36:49', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -174,9 +210,6 @@ CREATE TABLE `mensajes` (
 --
 
 INSERT INTO `mensajes` (`id`, `remitente_id`, `destinatario_id`, `texto`, `fecha_envio`) VALUES
-(1, 1, 2, 'Hola, ¿cómo estás?', '2023-04-28 12:48:27'),
-(2, 2, 1, 'Bien, gracias, ¿y tú?', '2023-04-28 12:48:27'),
-(3, 1, 2, 'Muy bien, gracias', '2023-04-28 12:48:27'),
 (4, 1, 3, 'Hola, ¿qué tal?', '2023-04-28 12:48:27'),
 (5, 3, 1, 'Todo bien, gracias, ¿y tú?', '2023-04-28 12:48:27'),
 (6, 1, 3, 'Bien también, gracias', '2023-04-28 12:48:27'),
@@ -202,7 +235,8 @@ INSERT INTO `mensajes` (`id`, `remitente_id`, `destinatario_id`, `texto`, `fecha
 (41, 3, 1, 'a', '2023-05-07 22:42:04'),
 (42, 3, 1, 'Buenas?', '2023-05-18 13:31:53'),
 (43, 3, 5, 'a', '2023-05-29 01:13:45'),
-(44, 3, 5, 'Como llevas el TFG?', '2023-05-30 01:21:38');
+(44, 3, 5, 'Como llevas el TFG?', '2023-05-30 01:21:38'),
+(45, 3, 5, 'wenas', '2023-05-31 19:36:46');
 
 -- --------------------------------------------------------
 
@@ -251,7 +285,6 @@ CREATE TABLE `tarjetas_de_credito` (
 
 INSERT INTO `tarjetas_de_credito` (`id_tarjeta`, `numero_tarjeta`, `fecha_expiracion`, `cvv`, `usuario_id`) VALUES
 (1, '1234567812345678', '2025-06-30', '123', 1),
-(2, '8765432187654321', '2024-10-31', '456', 2),
 (3, '1111222233334444', '2023-12-31', '789', 1);
 
 -- --------------------------------------------------------
@@ -286,13 +319,14 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `usuario`, `nombre`, `apellidos`, `DNI`, `edad`, `correo`, `password`, `genero`, `biografia`, `orientacion`, `foto_perfil`, `fecha_registro`, `facultad_id`, `idioma`, `rol`, `ocupacion`) VALUES
 (1, 'Matero', 'Fran', 'Nuñez', '12345678A', 25, 'sexmatero@gmail.com', 'matero', 'Hombre', 'Soy paraete', 'Heterosexual', '/Fotos_usuarios/materin.png', '2023-04-28 12:43:03', 1, 'Español', 'Admin', 'Estudiante'),
-(2, 'user2', 'María', 'López', '87654321B', 32, 'maria.lopez@example.com', 'password2', 'Mujer', '', '', NULL, '2023-04-28 12:43:03', 2, '', 'Premium', 'Estudiante'),
-(3, 'Lagarin', 'Jose Antonio', 'Lagares', '24681012C', 28, 'lagarin@gmail.com', 'lagarin', 'Hombre', 'Me gusta PA, solo PA', '', '/Fotos_usuarios/lagares.png', '2023-04-28 12:43:03', 3, '', 'Free', 'Profesor'),
-(4, 'user4', 'Ana', 'Fernández', '10121416D', 49, 'ana.fernandez@example.com', 'password4', 'Mujer', '', '', NULL, '2023-04-28 12:43:03', 4, '', 'Free', 'Profesor'),
+(3, 'Lagarin', 'Jose Antonio', 'Lagares', NULL, 28, 'lagarin@gmail.com', 'lagarin', 'Hombre', 'Me gusta PA, solo PA', 'Heterosexual', '/Fotos_usuarios/lagares.png', '2023-04-28 12:43:03', 3, 'Español', 'Free', 'Profesor'),
 (5, 'Aeme', 'Antonio Manuel', 'Mérida Borrero', '12836728A', 22, 'anmamebo2001@gmail.com', 'aemetito', 'Hombre', 'No he sabido hacer una biografía nunca no va a ser este el caso ;), busco amistad y lo que surja jeje. Salir a tomar una cervecita lo mejor y si es contigo ya ni te cuento.', 'Heterosexual', '/Fotos_usuarios/aeme.png', '2023-05-05 01:48:44', 41, 'Español', 'Premium', 'Estudiante'),
-(6, 'mjflores', 'Manuel Jesús', 'Flores', NULL, 23, 'mjflomon@alu.upo.es', 'mjmoto', 'Hombre', 'Vendo Opel Corsa', 'Heterosexual', '/Fotos_usuarios/5e06143ef829434187cb73ec401ee601.png', '2023-05-30 01:09:58', 41, 'Espa?ol', 'Free', 'Estudiante'),
-(7, 'alervgr', 'Alejandro', 'Rivas Garcia', NULL, 22, 'alejandrorivasgarcia@gmail.com', 'alervgr', 'Hombre', 'Busco parienta, con tierras y un mercedes.', 'Heterosexual', '/Fotos_usuarios/beb196a006ee4329a51d5050b6e6fb08.jpg', '2023-05-30 01:18:14', 41, 'Espa?ol', 'Free', 'Estudiante'),
-(8, 'laura', 'Laura', 'Gómez Viñas', NULL, 25, 'laugv4@gmail.com', 'laura', 'Mujer', 'Hola :)', 'Heterosexual', '/Fotos_usuarios/3a000280556f43d28c61817cc34ced38.jpg', '2023-05-30 14:34:14', 41, 'Español', 'Free', 'Estudiante');
+(9, 'Pepe69', 'Pepe', 'Torres', NULL, 30, 'pepetorres@gmail.com', 'pepe', 'Hombre', 'Me gustan los drones', 'Bisexual', '/Fotos_usuarios/7cdafd0d4d9f47a081713ec4460add0f.png', '2023-05-31 19:44:31', 41, 'Español', 'Free', 'Profesor'),
+(10, 'juano', 'Juan', 'Moreno', NULL, 18, 'juan@upo.com', 'juan', 'Hombre', 'Soy el guapo de mis amigos, asique si eres fea, tu match debe ser Carlos.', 'Heterosexual', '/Fotos_usuarios/79d61c789b214bf4ad83ff39a49825ff.PNG', '2023-05-31 20:16:27', 41, 'Español', 'Free', 'Estudiante'),
+(11, 'lauramelgar', 'Laura', 'Melgar', NULL, 28, 'lauramelgar@gmail.com', 'laura', 'Mujer', 'Buscando compañía para crear recuerdos inolvidables :)', 'Heterosexual', '/Fotos_usuarios/862742aa2f344232ae2814abeb636e9e.jpg', '2023-05-31 20:46:09', 41, 'Español', 'Free', 'Profesor'),
+(12, 'victoryisus', 'Victor', 'Reina Lopez', NULL, 22, 'victor@gmail.com', 'victor', 'Hombre', 'Soy un entusiasta de los coches desde que aprendí a decir \"V8\". Me encanta el olor a gasolina, el sonido de un motor rugiendo y la emoción de una buena carrera. A veces mi coche y yo tenemos discusiones, pero al final siempre llegamos a un acuerdo: yo lo limpio y él me lleva a donde quiero ir.', 'Heterosexual', '/Fotos_usuarios/d4687dc13adc47fdb09599ead9f8c86a.JPG', '2023-05-31 21:28:01', 41, 'Español', 'Free', 'Estudiante'),
+(13, 'alervgr', 'Alejandro', 'Rivas García', NULL, 22, 'alervgr@gmail.com', 'alesito', 'Hombre', 'Busco moza con tierras y un mercedes', 'Heterosexual', '/Fotos_usuarios/fff11bfa9a1e4c5098479e05e14548b0.jpg', '2023-05-31 21:34:31', 41, 'Español', 'Free', 'Estudiante'),
+(14, 'laura', 'Laura', 'Gómez Viñas', NULL, 25, 'laugv4@gmail.com', 'laura', 'Mujer', 'Hola :)', 'Heterosexual', '/Fotos_usuarios/f12c98462b4648a49b5e95e5784cab85.jpg', '2023-05-31 21:36:31', 41, 'Español', 'Free', 'Estudiante');
 
 -- --------------------------------------------------------
 
@@ -311,32 +345,43 @@ CREATE TABLE `usuario_intereses` (
 --
 
 INSERT INTO `usuario_intereses` (`id`, `usuario_id`, `interes_id`) VALUES
-(1, 1, 1),
-(2, 1, 2),
-(3, 1, 3),
-(4, 2, 2),
-(5, 2, 4),
-(6, 2, 5),
-(7, 3, 3),
-(8, 3, 5),
-(9, 3, 6),
-(10, 4, 1),
-(11, 4, 3),
-(12, 4, 5),
-(13, 6, 1),
-(14, 6, 2),
-(15, 6, 3),
-(16, 6, 4),
-(17, 6, 5),
-(18, 6, 6),
-(19, 6, 7),
-(20, 7, 1),
-(21, 7, 2),
-(22, 7, 5),
-(23, 7, 7),
-(24, 8, 3),
-(25, 8, 4),
-(26, 8, 6);
+(38, 1, 3),
+(39, 1, 5),
+(40, 1, 7),
+(44, 3, 7),
+(45, 9, 1),
+(46, 9, 5),
+(47, 9, 7),
+(48, 9, 1),
+(49, 9, 5),
+(50, 9, 7),
+(51, 9, 1),
+(52, 9, 5),
+(53, 9, 7),
+(54, 10, 3),
+(55, 11, 1),
+(56, 11, 2),
+(57, 11, 5),
+(58, 11, 7),
+(63, 5, 1),
+(64, 5, 2),
+(65, 5, 3),
+(66, 5, 4),
+(67, 5, 5),
+(68, 5, 6),
+(69, 5, 7),
+(70, 12, 2),
+(71, 12, 3),
+(72, 12, 5),
+(73, 12, 7),
+(74, 13, 1),
+(75, 13, 2),
+(76, 13, 5),
+(77, 13, 7),
+(78, 14, 3),
+(79, 14, 4),
+(80, 14, 5),
+(81, 14, 6);
 
 -- --------------------------------------------------------
 
@@ -355,25 +400,61 @@ CREATE TABLE `usuario_personalidades` (
 --
 
 INSERT INTO `usuario_personalidades` (`id`, `usuario_id`, `personalidad_id`) VALUES
-(1, 1, 1),
-(2, 2, 4),
-(3, 3, 2),
-(4, 4, 1),
-(5, 6, 4),
-(6, 6, 10),
-(7, 6, 5),
-(8, 6, 2),
-(9, 6, 7),
-(10, 7, 4),
-(11, 7, 9),
-(12, 7, 5),
-(13, 7, 1),
-(14, 7, 8),
-(15, 8, 4),
-(16, 8, 9),
-(17, 8, 5),
-(18, 8, 2),
-(19, 8, 7);
+(30, 1, 4),
+(31, 1, 9),
+(32, 1, 6),
+(33, 1, 1),
+(34, 1, 8),
+(40, 3, 3),
+(41, 3, 10),
+(42, 3, 5),
+(43, 3, 1),
+(44, 3, 7),
+(45, 9, 3),
+(46, 9, 10),
+(47, 9, 6),
+(48, 9, 1),
+(49, 9, 8),
+(50, 9, 3),
+(51, 9, 10),
+(52, 9, 6),
+(53, 9, 1),
+(54, 9, 8),
+(55, 9, 3),
+(56, 9, 10),
+(57, 9, 6),
+(58, 9, 1),
+(59, 9, 8),
+(60, 10, 3),
+(61, 10, 9),
+(62, 10, 5),
+(63, 10, 2),
+(64, 10, 8),
+(65, 11, 4),
+(66, 11, 10),
+(67, 11, 5),
+(68, 11, 2),
+(69, 11, 7),
+(75, 5, 3),
+(76, 5, 10),
+(77, 5, 5),
+(78, 5, 2),
+(79, 5, 8),
+(80, 12, 4),
+(81, 12, 9),
+(82, 12, 5),
+(83, 12, 1),
+(84, 12, 7),
+(85, 13, 4),
+(86, 13, 9),
+(87, 13, 5),
+(88, 13, 1),
+(89, 13, 8),
+(90, 14, 4),
+(91, 14, 9),
+(92, 14, 6),
+(93, 14, 2),
+(94, 14, 7);
 
 --
 -- Índices para tablas volcadas
@@ -465,7 +546,7 @@ ALTER TABLE `chats`
 -- AUTO_INCREMENT de la tabla `coincidencias`
 --
 ALTER TABLE `coincidencias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT de la tabla `facultades`
@@ -483,7 +564,7 @@ ALTER TABLE `intereses`
 -- AUTO_INCREMENT de la tabla `mensajes`
 --
 ALTER TABLE `mensajes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT de la tabla `personalidades`
@@ -495,25 +576,25 @@ ALTER TABLE `personalidades`
 -- AUTO_INCREMENT de la tabla `tarjetas_de_credito`
 --
 ALTER TABLE `tarjetas_de_credito`
-  MODIFY `id_tarjeta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_tarjeta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario_intereses`
 --
 ALTER TABLE `usuario_intereses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario_personalidades`
 --
 ALTER TABLE `usuario_personalidades`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
 
 --
 -- Restricciones para tablas volcadas
