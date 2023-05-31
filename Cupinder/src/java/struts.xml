@@ -7,6 +7,7 @@
     <include file="chats.xml"/>
     <include file="login.xml"/>
     <include file="tarjeta.xml"/>
+    <include file="intereses.xml"/>
     <!-- Configuration for the default package. -->
     <package name="default" extends="struts-default">
         <action name="redirectLogin">
@@ -17,6 +18,9 @@
         </action>
         <action name="haztePremium">
             <result>/premium/premium.jsp</result>
+        </action>
+        <action name="redirectIntereses" class="acciones.adminInteresesAcciones">
+            <result name="success">/administracion/adminIntereses.jsp</result>
         </action>
         <action name="acercaDeNosotros">
             <result>/acerca.jsp</result>

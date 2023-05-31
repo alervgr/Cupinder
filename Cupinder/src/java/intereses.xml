@@ -1,0 +1,17 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- Author: victo -->
+ 
+<struts>
+    <package name="intereses" extends="struts-default" namespace="/">
+        <action name="borrarInteres" class="acciones.adminInteresesAcciones" method="borrarInteres">
+            <result name="success">/administracion/adminIntereses.jsp</result>
+        </action>
+        <action name="nuevoInteres" class="acciones.adminInteresesAcciones" method="crearInteres">
+            <result name="success">/administracion/adminIntereses.jsp</result>     
+            <result name="input">/administracion/adminIntereses.jsp</result>     
+        </action>
+    </package>
+</struts>
