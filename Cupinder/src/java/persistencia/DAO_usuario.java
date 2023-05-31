@@ -32,23 +32,29 @@ public class DAO_usuario {
 
     public Usuarios obtenerUsuario(String correo) {
         s1 = HibernateUtil.getSessionFactory().getCurrentSession();
-        Transaction tx = s1.beginTransaction();        
-        String sql = "From Usuarios WHERE correo= '" + correo +"'";
+        Transaction tx = s1.beginTransaction();
+        String sql = "From Usuarios WHERE correo= '" + correo + "'";
         Query query = s1.createQuery(sql);
         Usuarios usuario = (Usuarios) query.uniqueResult();
         tx.commit();
         return usuario;
     }
-    
+
     public void actualizarUsuario(Usuarios user) {
         s1 = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = s1.beginTransaction();
         s1.update(user);
         tx.commit();
     }
-    
-    
-    
-    
+
+    public List<Usuarios> listaUsuarios() {
+        s1 = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = s1.beginTransaction();
+        String sql = "From Usuarios";
+        Query query = s1.createQuery(sql);
+        List<Usuarios> list = (List<Usuarios>) query.list();
+        tx.commit();
+        return list;
+    }
 
 }

@@ -9,6 +9,7 @@
     <include file="login.xml"/>
     <include file="tarjeta.xml"/>
     <include file="intereses.xml"/>
+    <include file="adminUsuarios.xml"/>
     <!-- Configuration for the default package. -->
     <package name="default" extends="struts-default">
         <action name="redirectLogin">
