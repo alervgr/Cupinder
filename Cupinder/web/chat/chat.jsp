@@ -32,7 +32,7 @@
                                         <div class="media row"><img src="${pageContext.request.contextPath}<s:property value="#usuario.fotoPerfil"></s:property>" alt="user" width="70" class="rounded-circle col-2">
                                             <div class="media-body ml-4 col align-self-center">
                                                 <div class="d-flex align-items-center justify-content-between mb-1">
-                                                    <h6 class="mb-0 fs-3"><s:property value="#usuario.usuario"></s:property></h6>
+                                                    <h6 class="mb-0 fs-3"><s:property value="#usuario.usuario"></s:property><s:if test="%{#usuario.dni != null}">     <span><i class="fa-solid fa-circle-check fa-2xs"></i></span></s:if></h6>
                                                     </div>
                                                 </div>
                                             </div>
