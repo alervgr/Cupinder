@@ -61,4 +61,15 @@ public class DAO_personalidades {
         tx.commit();
     }
 
+    public List<String> personalidadesDelUsuario(int idUsuario) {
+
+        s1 = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = s1.beginTransaction();
+        String hql = "SELECT p.nombre FROM UsuarioPersonalidades u JOIN u.personalidades p WHERE u.usuarios = "+idUsuario;
+        Query q = s1.createQuery(hql);
+        List<String> list = (List<String>) q.list();
+        tx.commit();
+        return list;
+    }
+    
 }

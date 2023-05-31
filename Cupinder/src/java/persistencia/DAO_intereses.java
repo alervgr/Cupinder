@@ -53,6 +53,17 @@ public class DAO_intereses {
         return list;
     }
     
+    public List<String> interesesDelUsuario(int idUsuario) {
+
+        s1 = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = s1.beginTransaction();
+        String hql = "SELECT i.nombre FROM UsuarioIntereses u JOIN u.intereses i WHERE u.usuarios = "+idUsuario;
+        Query q = s1.createQuery(hql);
+        List<String> list = (List<String>) q.list();
+        tx.commit();
+        return list;
+    }
+    
     public void borrarUsuarioInteres(UsuarioIntereses ui) {
 
         s1 = HibernateUtil.getSessionFactory().getCurrentSession();

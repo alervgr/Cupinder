@@ -12,9 +12,15 @@
             <result name="input">/REGISTER/register.jsp</result>
         </action>
         <action name="completarTest" class="acciones.testAcciones">
+            <result name="success" type="redirectAction">calcularNM</result>            
+        </action>
+        <action name="calcularNM" class="acciones.compatibilidadAcciones">
             <result name="success">/index.jsp</result>            
         </action>
         <action name="updateTest" class="acciones.testAcciones" method="updateTest">
+            <result name="success" type="redirectAction">updateCoincidencia</result>            
+        </action>
+        <action name="updateCoincidencia" class="acciones.compatibilidadAcciones" method="updateCoincidencias">
             <result name="success" type="redirectAction">irPerfil</result>            
         </action>
     </package>
