@@ -31,10 +31,12 @@ public class tarjetaAcciones extends ActionSupport {
     private String fechaExpiracion;
     private List<TarjetasDeCredito> tarjetasUsuario;
     private int tarjetaId;
+    private TarjetasDeCredito tarjeta;
 
     public tarjetaAcciones() {
         dao_t = new DAO_tarjeta();
         tarjetasUsuario = new ArrayList<>();
+        tarjeta = new TarjetasDeCredito();
     }
 
     @Override
@@ -106,6 +108,36 @@ public class tarjetaAcciones extends ActionSupport {
 
         return SUCCESS;
     }
+    
+    
+    public String actualizarTarjeta() throws Exception {
+
+        TarjetasDeCredito tarjeta = this.dao_t.obtenerTarjeta(this.getTarjetaId());
+        
+        tarjeta.setCvv(this.getCVV());
+        tarjeta.setNumeroTarjeta(this.getNumeroTarjeta());
+        
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+
+        Date fecha = sdf.parse(this.getFechaExpiracion());
+        
+        tarjeta.setFechaExpiracion(fecha);
+        
+        this.dao_t.actualizarTarjeta(tarjeta);
+
+        obtenerTarjetasDeCredito();
+
+        return SUCCESS;
+    }
+    
+    @SkipValidation
+    public String obtenerTarjeta() {
+
+        this.setTarjeta(this.dao_t.obtenerTarjeta(this.getTarjetaId()));
+        
+        return SUCCESS;
+    }
+    
 
     public String getNumeroTarjeta() {
         return numeroTarjeta;
@@ -145,6 +177,14 @@ public class tarjetaAcciones extends ActionSupport {
 
     public void setTarjetaId(int tarjetaId) {
         this.tarjetaId = tarjetaId;
+    }
+
+    public TarjetasDeCredito getTarjeta() {
+        return tarjeta;
+    }
+
+    public void setTarjeta(TarjetasDeCredito tarjeta) {
+        this.tarjeta = tarjeta;
     }
 
 }

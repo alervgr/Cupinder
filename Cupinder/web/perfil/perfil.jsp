@@ -22,8 +22,8 @@
                     <div class="row">
                         <div class="col-md-3 border-right">
                             <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="250px" src="${pageContext.request.contextPath}${session.user.fotoPerfil}"><span class="font-weight-bold"></span>Cuenta ${session.user.rol}<span class="text-black-50">Registrado el ${session.user.fechaRegistro}</span><s:if test="%{#session.user.dni != null}"><span>Verificada <i class="fa-solid fa-circle-check"></i></span></s:if><span> </span></div>
-                            <div class="p-4 text-center">
-                                <a class="btn btnRegistro"  href="<s:url action="rehacerTest"/>">Rehacer Test</a>
+                                <div class="p-4 text-center">
+                                    <a class="btn btnRegistro"  href="<s:url action="rehacerTest"/>">Rehacer Test</a>
                             </div>
                         </div>
                         <div class="col-md-9 border-right">
@@ -88,6 +88,12 @@
                                             </s:url>
                                             <s:a href="%{url}" cssStyle="text-decoration: none;">
                                                 <p>Borrar</p>
+                                            </s:a>
+                                            <s:url id="url" action="irActualizarTarjeta">
+                                                <s:param name="tarjetaId" value="#tarjeta.idTarjeta"></s:param>
+                                            </s:url>
+                                            <s:a href="%{url}" cssStyle="text-decoration: none;">
+                                                <p>Actualizar</p>
                                             </s:a>
                                         </li>
                                     </s:iterator>

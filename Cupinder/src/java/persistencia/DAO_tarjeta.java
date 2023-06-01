@@ -48,6 +48,14 @@ public class DAO_tarjeta {
         tx.commit();
     }
     
+    public void actualizarTarjeta(TarjetasDeCredito tarjeta) {
+        s1 = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = s1.beginTransaction();
+        s1.update(tarjeta);
+        tx.commit();
+    }
+    
+    
     public TarjetasDeCredito obtenerTarjeta(Integer id) {
         s1 = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = s1.beginTransaction();

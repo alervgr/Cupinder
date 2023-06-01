@@ -18,5 +18,14 @@
             <result name="success" type="redirectAction">irPerfil</result>
         </action>
         
+        <action name="actualizarTarjeta" class="acciones.tarjetaAcciones" method="actualizarTarjeta">
+            <result name="success" type="redirectAction">irPerfil</result>
+            <result name="input">/credito/actualizarTarjeta.jsp</result>
+        </action>
+        
+        <action name="irActualizarTarjeta" class="acciones.tarjetaAcciones" method="obtenerTarjeta">
+            <result name="success">/credito/actualizarTarjeta.jsp</result>
+        </action>
+        
     </package>
 </struts>
