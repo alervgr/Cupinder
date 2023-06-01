@@ -32,6 +32,16 @@ public class DAO_coincidencias {
         return lista;
     }
     
+    public List<Coincidencias> buscarCoincidenciasOrd(int id) {
+        s1 = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = s1.beginTransaction();
+        Query q = s1.createQuery("FROM Coincidencias WHERE usuariosByUsuario1Id = " + id + " OR usuariosByUsuario2Id = " + id + " ORDER BY compatibilidad DESC");
+        List<Coincidencias> lista = (List<Coincidencias>) q.list();
+        tx.commit();
+        return lista;
+    }
+    
+    
     public void updateCoincidencia(Coincidencias c) {
         s1 = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = s1.beginTransaction();

@@ -30,6 +30,9 @@
         <action name="redirectRegister" class="acciones.registroAcciones" method="cargarFacultades">
             <result>/REGISTER/register.jsp</result>
         </action>
+        <action name="buscarPareja" class="acciones.parejasAcciones">
+            <result>/parejas/pareja.jsp</result>
+        </action>
         
     </package>
 </struts>

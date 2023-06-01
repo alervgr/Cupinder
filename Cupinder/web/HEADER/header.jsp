@@ -14,6 +14,7 @@
         <script src="https://kit.fontawesome.com/3e2086bcb1.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
         <link rel="shortcut icon" href="./IMG/icono.png" type="image/gif">
+        <link href="./parejas/pareja.css" rel="stylesheet" type="text/css"/>
         <title>JSP Page</title>
     </head>
     <body>
@@ -50,7 +51,7 @@
                             </a>
                             <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser3">
                                 <li><a class="dropdown-item" href="<s:url action="irPerfil"/>"><i class="fa-regular fa-address-card"></i> Perfil</a></li>
-                                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-heart"></i> Buscar pareja</a></li>
+                                <li><a class="dropdown-item" href="<s:url action="buscarPareja"/>"><i class="fa-solid fa-heart"></i> Buscar pareja</a></li>
                                 
                                 <li><a class="dropdown-item" href="#"><i class="fa-solid fa-fire"></i> Matches</a></li>
                                 <li><a class="dropdown-item" href="<s:url action="irChat"/>"><i class="fa-regular fa-comment-dots"></i> Chats</a></li>

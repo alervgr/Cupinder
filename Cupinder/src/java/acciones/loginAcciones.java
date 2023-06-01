@@ -51,7 +51,7 @@ public class loginAcciones extends ActionSupport {
     public String logout() {
         Map session = (Map) ActionContext.getContext().get("session");
         session.remove("user");
-
+        
         return SUCCESS;
     }
 

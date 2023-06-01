@@ -45,7 +45,7 @@
                                         <div class="col-md-12"><label class="labels">Idioma</label><s:textfield name="idioma" cssClass="form-control" value="%{#session.user.idioma}"></s:textfield></div>
                                     <div class="col-md-12"><label class="labels">Facultad</label><s:select name="facultad" label="Facultad" cssClass="form-control" placeholder="Facultad" list="facultades" value="fac"/></div>
                                     <div class="col-md-12"><label class="labels">Ocupación</label><s:textfield name="ocupacion" cssClass="form-control" value="%{#session.user.ocupacion}"></s:textfield></div>
-                                    <div class="col-md-12"><label class="labels">DNI</label><s:if test="%{#session.user.dni == null}"><s:textfield name="dni" cssClass="form-control"></s:textfield></s:if><s:else><s:textfield name="dni" cssClass="form-control" value="%{#session.user.dni}" disabled="true"></s:textfield></s:else></div>
+                                    <div class="col-md-12"><label class="labels">DNI</label><s:if test="%{#session.user.dni == null}"><s:textfield name="dni" cssClass="form-control"></s:textfield></s:if><s:else><s:textfield name="dni" cssClass="form-control" value="%{#session.user.dni}" disabled="true"></s:textfield><s:hidden name="dni" value="%{#session.user.dni}"></s:hidden></s:else></div>
                                     <div class="col-md-12"><label class="labels">Biografía</label><s:textarea name="bio" cssClass="form-control" value="%{#session.user.biografia}"></s:textarea></div>
 
                                     </div>

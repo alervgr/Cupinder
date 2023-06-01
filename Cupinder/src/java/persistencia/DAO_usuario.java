@@ -39,6 +39,17 @@ public class DAO_usuario {
         tx.commit();
         return usuario;
     }
+    
+    public Usuarios obtenerUsuarioId(int id) {
+        s1 = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = s1.beginTransaction();
+        String sql = "From Usuarios WHERE id=" + id;
+        Query query = s1.createQuery(sql);
+        Usuarios usuario = (Usuarios) query.uniqueResult();
+        tx.commit();
+        return usuario;
+    }
+    
 
     public void actualizarUsuario(Usuarios user) {
         s1 = HibernateUtil.getSessionFactory().getCurrentSession();

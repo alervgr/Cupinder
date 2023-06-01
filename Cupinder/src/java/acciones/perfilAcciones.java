@@ -105,7 +105,15 @@ public class perfilAcciones extends ActionSupport {
         Facultades facultad = this.dao_f.getFacultadNombre(this.getFacultad());
 
         user.setCorreo(this.getEmail());
-        user.setDni(this.getDni());
+        
+        
+        if(this.getDni().equals("")){
+            user.setDni(null);
+        }else{
+            user.setDni(this.getDni());
+        }
+        
+        
         user.setEdad(Integer.parseInt(this.getEdad()));
         user.setFacultades(facultad);
         user.setIdioma(this.getIdioma());
