@@ -33,6 +33,8 @@
         <action name="buscarPareja" class="acciones.parejasAcciones">
             <result>/parejas/pareja.jsp</result>
         </action>
-        
+        <action name="verMatches" class="acciones.parejasAcciones" method="verMatches">
+            <result>/parejas/matches.jsp</result>
+        </action>
     </package>
 </struts>

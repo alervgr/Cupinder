@@ -52,7 +52,7 @@
                                 <li><a class="dropdown-item" href="<s:url action="irPerfil"/>"><i class="fa-regular fa-address-card"></i> Perfil</a></li>
                                 <li><a class="dropdown-item" href="<s:url action="buscarPareja"/>"><i class="fa-solid fa-heart"></i> Buscar pareja</a></li>
 
-                                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-fire"></i> Matches</a></li>
+                                <li><a class="dropdown-item" href="<s:url action="verMatches"/>"><i class="fa-solid fa-fire"></i> Matches</a></li>
                                 <li><a class="dropdown-item" href="<s:url action="irChat"/>"><i class="fa-regular fa-comment-dots"></i> Chats</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="<s:url action="logOutUsuario"/>"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a></li>

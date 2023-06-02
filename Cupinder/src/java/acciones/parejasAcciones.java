@@ -25,15 +25,15 @@ public class parejasAcciones extends ActionSupport {
 
     private final DAO_coincidencias dao_c;
     private final DAO_usuario dao_u;
-    private final DAO_chat dao_chat;
     private List<Usuarios> listaUsuariosC;
+    private List<Usuarios> listaUsuariosM;
     private boolean matchPareja = false;
 
     public parejasAcciones() {
         dao_c = new DAO_coincidencias();
         dao_u = new DAO_usuario();
-        dao_chat = new DAO_chat();
         listaUsuariosC = new ArrayList<>();
+        listaUsuariosM = new ArrayList<>();
     }
 
     @Override
@@ -44,8 +44,6 @@ public class parejasAcciones extends ActionSupport {
         Usuarios aux;
 
         user = this.dao_u.obtenerUsuarioId(user.getId());
-
-        System.out.println(user.getOrientacion());
 
         List<Coincidencias> coincidenciasU = this.dao_c.buscarCoincidenciasOrd(user.getId());
 
@@ -90,7 +88,34 @@ public class parejasAcciones extends ActionSupport {
 
         this.setMatchPareja(true);
         execute();
-        
+
+        return SUCCESS;
+    }
+
+    public String verMatches() {
+
+        Map session = (Map) ActionContext.getContext().get("session");
+        Usuarios user = (Usuarios) session.get("user");
+        Usuarios aux;
+
+        user = this.dao_u.obtenerUsuarioId(user.getId());
+
+        List<Coincidencias> coincidenciasU = this.dao_c.buscarCoincidenciasOrd(user.getId());
+
+        for (Coincidencias coincidencias : coincidenciasU) {
+
+            if (coincidencias.isLikeUsuario1() && coincidencias.isLikeUsuario2()) {
+
+                if (user.getId() == coincidencias.getUsuariosByUsuario1Id().getId()) {
+                    aux = this.dao_u.obtenerUsuarioId(coincidencias.getUsuariosByUsuario2Id().getId());
+                    this.listaUsuariosM.add(aux);
+                } else {
+                    aux = this.dao_u.obtenerUsuarioId(coincidencias.getUsuariosByUsuario1Id().getId());
+                    this.listaUsuariosM.add(aux);
+                }
+            }
+        }
+
         return SUCCESS;
     }
 
@@ -108,6 +133,14 @@ public class parejasAcciones extends ActionSupport {
 
     public void setMatchPareja(boolean matchPareja) {
         this.matchPareja = matchPareja;
+    }
+
+    public List<Usuarios> getListaUsuariosM() {
+        return listaUsuariosM;
+    }
+
+    public void setListaUsuariosM(List<Usuarios> listaUsuariosM) {
+        this.listaUsuariosM = listaUsuariosM;
     }
 
 }
