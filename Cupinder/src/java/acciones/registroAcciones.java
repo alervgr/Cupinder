@@ -13,6 +13,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import modelos.Facultades;
 import modelos.Intereses;
 import modelos.Usuarios;
@@ -65,6 +67,11 @@ public class registroAcciones extends ActionSupport {
 
     public void validate() {
 
+        String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(this.getEmail());
+
         if (0 == this.getNombre().length() || null == this.getNombre()) {
             addFieldError("nombre", getText("nombre.relleno"));
         }
@@ -79,6 +86,14 @@ public class registroAcciones extends ActionSupport {
         }
         if (0 == this.getEmail().length() || null == this.getEmail()) {
             addFieldError("correo", getText("correo.relleno"));
+        } else {
+            if (!matcher.matches()) {
+                addFieldError("correo", getText("correo.formato"));
+            } else {
+                if (comprobarCorreos()) {
+                    addFieldError("correo", getText("correo.existente"));
+                }
+            }
         }
         if (0 == this.getPassword().length() || null == this.getPassword()) {
             addFieldError("password", getText("contrasenia.rellena"));
@@ -111,7 +126,7 @@ public class registroAcciones extends ActionSupport {
                 addFieldError("image", "Formato no válido, debe ser jpeg, jpg o png");
             }
         }
-        
+
         cargarFacultades();
 
     }
@@ -148,6 +163,26 @@ public class registroAcciones extends ActionSupport {
     public String cargarFacultades() {
         this.setFacultades(this.dao_f.listadoFacultades());
         return SUCCESS;
+    }
+    
+    @SkipValidation
+    public boolean comprobarCorreos() {
+
+        boolean encontrado = false;
+        Map session = (Map) ActionContext.getContext().get("session");
+        List<String> correos = this.dao_u.obtenerCorreos();
+        
+        System.out.println(correos.size());
+        
+        for (String correo : correos) {
+            
+            if (correo.equals(this.getEmail())) {
+                encontrado = true;
+            }
+
+        }
+
+        return encontrado;
     }
 
     public DAO_intereses getDao() {

@@ -87,10 +87,10 @@ public class adminInteresesAcciones extends ActionSupport {
     public void validate() {
         if (this.getNombre().equals("")) {
             //Primero va el nombre de la variable que nos ha dado error y luego el mensaje de error que queremos mandar
-            addFieldError("nombre", "Escriba el nuevo interés");
+            addFieldError("nombre", getText("interes.relleno"));
         }
         if(exist(this.getNombre())) {
-            addFieldError("nombre", "Interés ya existente");
+            addFieldError("nombre", getText("interes.existente"));
         }
         
         this.setListaIntereses(this.dao_i.listadoObjetosIntereses());

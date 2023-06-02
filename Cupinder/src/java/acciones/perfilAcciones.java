@@ -10,6 +10,8 @@ import com.opensymphony.xwork2.ActionSupport;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import modelos.Facultades;
 import modelos.TarjetasDeCredito;
 import modelos.Usuarios;
@@ -34,10 +36,10 @@ public class perfilAcciones extends ActionSupport {
     private String idioma;
     private String bio;
     private String edad;
-    
+
     private Usuarios u;
     private int usuarioId;
-    
+
     private List<String> facultades;
     private List<TarjetasDeCredito> tarjetasUsuario;
     private String fac;
@@ -53,8 +55,21 @@ public class perfilAcciones extends ActionSupport {
 
     public void validate() {
 
+        String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(this.getEmail());
+
         if (0 == this.getEmail().length() || null == this.getEmail()) {
             addFieldError("correo", getText("correo.relleno"));
+        } else {
+            if (!matcher.matches()) {
+                addFieldError("correo", getText("correo.formato"));
+            } else {
+                if (comprobarCorreos()) {
+                    addFieldError("correo", getText("correo.existente"));
+                }
+            }
         }
         if (0 == this.getPassword().length() || null == this.getPassword()) {
             addFieldError("password", getText("contrasenia.rellena"));
@@ -109,15 +124,13 @@ public class perfilAcciones extends ActionSupport {
         Facultades facultad = this.dao_f.getFacultadNombre(this.getFacultad());
 
         user.setCorreo(this.getEmail());
-        
-        
-        if(this.getDni().equals("")){
+
+        if (this.getDni().equals("")) {
             user.setDni(null);
-        }else{
+        } else {
             user.setDni(this.getDni());
         }
-        
-        
+
         user.setEdad(Integer.parseInt(this.getEdad()));
         user.setFacultades(facultad);
         user.setIdioma(this.getIdioma());
@@ -132,15 +145,34 @@ public class perfilAcciones extends ActionSupport {
 
         return SUCCESS;
     }
-    
+
     @SkipValidation
-    public String cargarPerfil(){
-        
+    public String cargarPerfil() {
+
         this.setU(this.dao_u.obtenerUsuarioId(this.getUsuarioId()));
-        
+
         this.setFac(dao_f.getFacultadId(this.getUsuarioId()));
-        
+
         return SUCCESS;
+    }
+
+    private boolean comprobarCorreos() {
+        boolean encontrado = false;
+        Map session = (Map) ActionContext.getContext().get("session");
+        Usuarios user = (Usuarios) session.get("user");
+        List<String> correos = this.dao_u.obtenerCorreosU(user.getId());
+        
+        System.out.println(correos.toString());
+        
+        for (String correo : correos) {
+
+            if (correo.equals(this.getEmail())) {
+                encontrado = true;
+            }
+
+        }
+
+        return encontrado;
     }
 
     public List<String> getFacultades() {

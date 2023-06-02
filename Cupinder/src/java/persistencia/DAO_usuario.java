@@ -67,5 +67,26 @@ public class DAO_usuario {
         tx.commit();
         return list;
     }
-
+    
+    public List<String> obtenerCorreos() {
+        s1 = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = s1.beginTransaction();
+        String sql = "SELECT correo From Usuarios";
+        Query query = s1.createQuery(sql);
+        List<String> list = (List<String>) query.list();
+        tx.commit();
+        return list;
+    }
+    
+    
+    public List<String> obtenerCorreosU(int id) {
+        s1 = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = s1.beginTransaction();
+        String sql = "SELECT correo From Usuarios WHERE id <>"+id;
+        Query query = s1.createQuery(sql);
+        List<String> list = (List<String>) query.list();
+        tx.commit();
+        return list;
+    }
+    
 }
