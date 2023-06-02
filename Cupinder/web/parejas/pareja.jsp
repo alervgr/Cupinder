@@ -13,9 +13,20 @@
         <title>JSP Page</title>
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/pareja.css" />
         <script src="./JS/goUpButton.js"></script>
+        <script src="${pageContext.request.contextPath}/JS/gifMatch.js" type="text/javascript"></script>
     </head>
     <body>
         <jsp:include page="../HEADER/header.jsp" />
+
+        <s:if test="%{matchPareja}">
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    mostrarGif();
+                });
+            </script>
+            <s:set var="matchPareja" value="false"></s:set>
+        </s:if>
+
         <div class="container-fluid pt-3 pb-3" style="background-color: #f8edeb; min-height: 79vh">
             <div class="container pb-5">
                 <div class="row pb-5">
@@ -35,25 +46,28 @@
                                             <s:url id="url" action="obsPerfil">
                                                 <s:param name="usuarioId" value="#usuario.id"></s:param>
                                             </s:url>
-
                                             <s:a href="%{url}">
                                                 <span><i class="fa-sharp fa-solid fa-eye" style="color: #f2f2f2;"></i></span>
                                                 </s:a>
                                         </li>
                                         <li>
-                                            <a href="<s:url action="obsPerfil"></s:url>">
-                                                    <span><i class="fa-sharp fa-regular fa-heart" style="color: #b30000;" onclick=""></i></span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                            <s:url id="url" action="darLike">
+                                                <s:param name="usuarioId" value="#usuario.id"></s:param>
+                                            </s:url>
+                                            <s:a href="%{url}">
+                                                <span><i class="fa-sharp fa-regular fa-heart" style="color: #b30000;" onclick=""></i></span>
+                                                </s:a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
+                        </div>
                     </s:iterator>
                 </div>
             </div>
         </div>
     </div>
+    <div id="overlay" style="display:none;position:absolute;top:0;left:0;width:100%;height:100%;background-color:#FFF;opacity:0.5;"></div>
     <jsp:include page="../FOOTER/footer.jsp" />
 
     <!-- BOTÓN SCROLL TO TOP -->

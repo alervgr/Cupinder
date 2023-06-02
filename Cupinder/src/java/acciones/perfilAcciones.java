@@ -155,7 +155,6 @@ public class perfilAcciones extends ActionSupport {
 
         return SUCCESS;
     }
-
     private boolean comprobarCorreos() {
         boolean encontrado = false;
         Map session = (Map) ActionContext.getContext().get("session");

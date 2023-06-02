@@ -5,14 +5,18 @@
  */
 package acciones;
 
+import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import modelos.Chats;
 import modelos.Coincidencias;
 import modelos.Usuarios;
+import org.apache.struts2.interceptor.validation.SkipValidation;
+import persistencia.DAO_chat;
 import persistencia.DAO_coincidencias;
 import persistencia.DAO_intereses;
 import persistencia.DAO_personalidades;
@@ -28,6 +32,10 @@ public class compatibilidadAcciones extends ActionSupport {
     private final DAO_personalidades dao_p;
     private final DAO_usuario dao_u;
     private final DAO_coincidencias dao_c;
+    private final DAO_chat dao_chat;
+
+    private String usuarioId;
+
     private List<String> lista_i1;
     private List<String> lista_i2;
     private List<String> lista_p1;
@@ -39,6 +47,7 @@ public class compatibilidadAcciones extends ActionSupport {
         dao_p = new DAO_personalidades();
         dao_u = new DAO_usuario();
         dao_c = new DAO_coincidencias();
+        dao_chat = new DAO_chat();
 
         lista_i1 = new ArrayList();
         lista_i2 = new ArrayList();
@@ -78,7 +87,7 @@ public class compatibilidadAcciones extends ActionSupport {
 
     public String updateCoincidencias() {
         double numero_magico;
-        
+
         Map session = (Map) ActionContext.getContext().get("session");
         Usuarios user = (Usuarios) session.get("user");
         List<Coincidencias> lista = this.dao_c.buscarCoincidencias(user.getId());
@@ -94,6 +103,47 @@ public class compatibilidadAcciones extends ActionSupport {
         }
 
         return SUCCESS;
+    }
+
+    @SkipValidation
+    public String darLike() {
+        Map session = (Map) ActionContext.getContext().get("session");
+        Usuarios user = (Usuarios) session.get("user");
+
+        Coincidencias c = this.dao_c.buscarCoincidencia(Integer.parseInt(usuarioId), user.getId());
+
+        if (c.getUsuariosByUsuario1Id().getId() == user.getId()) {
+            c.setLikeUsuario1(true);
+        } else {
+            c.setLikeUsuario2(true);
+        }
+        
+        this.dao_c.updateCoincidencia(c);
+
+        boolean match = hayMatch(c);
+        
+        if (match) {
+
+            Chats chat = new Chats(user, this.dao_u.obtenerUsuarioId(Integer.parseInt(usuarioId)));
+            Chats chat2 = new Chats(this.dao_u.obtenerUsuarioId(Integer.parseInt(usuarioId)), user);
+
+            this.dao_chat.crearChat(chat);
+            this.dao_chat.crearChat(chat2);
+            
+            return "Match";
+        }
+        return "noMatch";
+    }
+
+    public boolean hayMatch(Coincidencias c) {
+
+        boolean match = false;
+
+        if (c.isLikeUsuario1() && c.isLikeUsuario2()) {
+            match = true;
+        }
+
+        return match;
     }
 
     public List<String> getLista_i1() {
@@ -134,6 +184,14 @@ public class compatibilidadAcciones extends ActionSupport {
 
     public void setLista_u(List<Usuarios> lista_u) {
         this.lista_u = lista_u;
+    }
+
+    public String getUsuarioId() {
+        return usuarioId;
+    }
+
+    public void setUsuarioId(String usuarioId) {
+        this.usuarioId = usuarioId;
     }
 
     private static double calcularCompatibilidad(java.util.List<java.lang.String> listaInteresesU1, java.util.List<java.lang.String> listaInteresesU2, java.util.List<java.lang.String> listaPersonalidadesU1, java.util.List<java.lang.String> listaPersonalidadesU2) {

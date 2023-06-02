@@ -10,8 +10,10 @@ import com.opensymphony.xwork2.ActionSupport;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import modelos.Chats;
 import modelos.Coincidencias;
 import modelos.Usuarios;
+import persistencia.DAO_chat;
 import persistencia.DAO_coincidencias;
 import persistencia.DAO_usuario;
 
@@ -23,11 +25,14 @@ public class parejasAcciones extends ActionSupport {
 
     private final DAO_coincidencias dao_c;
     private final DAO_usuario dao_u;
+    private final DAO_chat dao_chat;
     private List<Usuarios> listaUsuariosC;
+    private boolean matchPareja = false;
 
     public parejasAcciones() {
         dao_c = new DAO_coincidencias();
         dao_u = new DAO_usuario();
+        dao_chat = new DAO_chat();
         listaUsuariosC = new ArrayList<>();
     }
 
@@ -81,12 +86,28 @@ public class parejasAcciones extends ActionSupport {
         return SUCCESS;
     }
 
+    public String match() throws Exception {
+
+        this.setMatchPareja(true);
+        execute();
+        
+        return SUCCESS;
+    }
+
     public List<Usuarios> getListaUsuariosC() {
         return listaUsuariosC;
     }
 
     public void setListaUsuariosC(List<Usuarios> listaUsuariosC) {
         this.listaUsuariosC = listaUsuariosC;
+    }
+
+    public boolean isMatchPareja() {
+        return matchPareja;
+    }
+
+    public void setMatchPareja(boolean matchPareja) {
+        this.matchPareja = matchPareja;
     }
 
 }
