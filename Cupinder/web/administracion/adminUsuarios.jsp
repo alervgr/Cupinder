@@ -20,7 +20,9 @@
         <body>
             <jsp:include page="../HEADER/header.jsp" />
             <div class="container-fluid pt-3 pb-3" style="background-color: #f8edeb; min-height: 70vh">
+                
                 <div class="container rounded bg-white mt-5 mb-5">
+                    <a class="dropdown-item" href="<s:url action="redirectRegister"/>">Crear Nuevo Usuario</a>
                     <table class="table table-pink table-striped">
                         <thead>
                         <th>Foto perfil</th>
