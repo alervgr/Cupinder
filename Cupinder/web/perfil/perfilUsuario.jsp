@@ -23,7 +23,7 @@
                             <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
                                 <div class="row align-items-center">
                                     <div class="col-lg-6 mb-4 mb-lg-0 ps-4">
-                                        <img src="${pageContext.request.contextPath}${u.fotoPerfil}" alt="..." height="550px">
+                                        <img src="${pageContext.request.contextPath}${u.fotoPerfil}" alt="..." height="550px" style="max-width: 550px">
                                     </div>
                                     <div class="col-lg-6 px-xl-10 pe-4">
                                         <div class="d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-1-9 rounded w-100" style="background-color: #e8a598">

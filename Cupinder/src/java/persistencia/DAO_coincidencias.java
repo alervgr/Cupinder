@@ -31,7 +31,7 @@ public class DAO_coincidencias {
         tx.commit();
         return lista;
     }
-    
+
     public List<Coincidencias> buscarCoincidenciasOrd(int id) {
         s1 = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = s1.beginTransaction();
@@ -40,8 +40,17 @@ public class DAO_coincidencias {
         tx.commit();
         return lista;
     }
-    
-    
+
+    public Coincidencias buscarCoincidencia(int id, int idu) {
+        s1 = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = s1.beginTransaction();
+        
+        Query q = s1.createQuery("FROM Coincidencias WHERE (usuariosByUsuario1Id = " + idu + " AND usuariosByUsuario2Id = " + id + ") OR (usuariosByUsuario1Id = " + id + " AND usuariosByUsuario2Id = " + idu + ")");
+        Coincidencias coincidencia = (Coincidencias) q.uniqueResult();
+        tx.commit();
+        return coincidencia;
+    }
+
     public void updateCoincidencia(Coincidencias c) {
         s1 = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = s1.beginTransaction();

@@ -142,7 +142,7 @@ public class perfilAcciones extends ActionSupport {
         
         return SUCCESS;
     }
-
+    
     public List<String> getFacultades() {
         return facultades;
     }

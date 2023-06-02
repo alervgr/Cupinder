@@ -25,7 +25,7 @@ function mostrarGif() {
 
     setTimeout(function () {
         ocultarGif();
-    }, 2000); // llama la función ocultarGif() después de 2 segundos (2000 milisegundos)
+    }, 2200); // llama la función ocultarGif() después de 2 segundos (2000 milisegundos)
 }
 
 function ocultarGif() {

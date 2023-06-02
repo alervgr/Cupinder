@@ -66,5 +66,12 @@ public class DAO_chat {
         tx.commit();
         return usuario;
     }
+    
+    public void crearChat(Chats chat){
+        s3 = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = s3.beginTransaction();
+        s3.save(chat);
+        tx.commit();
+    }
 
 }
