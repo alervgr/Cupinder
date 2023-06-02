@@ -11,18 +11,22 @@ import modelos.Mensajes;
 import modelos.Usuarios;
 import org.apache.struts2.interceptor.validation.SkipValidation;
 import persistencia.DAO_chat;
+import persistencia.DAO_usuario;
 
 public class chatAcciones extends ActionSupport {
 
     private final DAO_chat dao;
+    private final DAO_usuario dao_u;
     private List<Mensajes> mensajesChat;
     private List<Usuarios> usuariosConChat;
     private String mensajito;
     private int destinatarioId;
+    private Usuarios destin;
     private Usuarios usuarioDestinatario;
 
     public chatAcciones() {
         dao = new DAO_chat();
+        dao_u = new DAO_usuario();
         mensajesChat = new ArrayList<>();
         usuariosConChat = new ArrayList<>();
     }
@@ -48,6 +52,7 @@ public class chatAcciones extends ActionSupport {
         
         this.mensajesChat = dao.listaMensajes(usuario.getId(), destinatarioId);
         this.usuariosConChat = dao.listadoChatsUsuario(usuario.getId());
+        this.setDestin(this.dao_u.obtenerUsuarioId(destinatarioId));
 
         return SUCCESS;
     }
@@ -67,6 +72,8 @@ public class chatAcciones extends ActionSupport {
 
         this.mensajesChat = dao.listaMensajes(usuario.getId(), this.getDestinatarioId());
 
+        this.setDestin(this.dao_u.obtenerUsuarioId(destinatarioId));
+        
         return SUCCESS;
     }
 
@@ -108,6 +115,14 @@ public class chatAcciones extends ActionSupport {
 
     public void setUsuarioDestinatario(Usuarios usuarioDestinatario) {
         this.usuarioDestinatario = usuarioDestinatario;
+    }
+
+    public Usuarios getDestin() {
+        return destin;
+    }
+
+    public void setDestin(Usuarios destin) {
+        this.destin = destin;
     }
 
 }
