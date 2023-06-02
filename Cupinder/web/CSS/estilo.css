@@ -5,7 +5,7 @@ body{margin-top:20px;}
 .border-0 {
     border: 0!important;
 }
-.card {
+.perfilcard {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -34,11 +34,11 @@ section {
     position: relative;
     display: inline-block;
 }
-.text-primary {
-    color: #ceaa4d !important;
+.titulorosa {
+    color: #e8a598 !important;
 }
 .text-secondary {
-    color: #15395A !important;
+    color: #e8a598 !important;
 }
 .font-weight-600 {
     font-weight: 600;

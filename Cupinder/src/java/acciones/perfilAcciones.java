@@ -34,7 +34,10 @@ public class perfilAcciones extends ActionSupport {
     private String idioma;
     private String bio;
     private String edad;
-
+    
+    private Usuarios u;
+    private int usuarioId;
+    
     private List<String> facultades;
     private List<TarjetasDeCredito> tarjetasUsuario;
     private String fac;
@@ -45,6 +48,7 @@ public class perfilAcciones extends ActionSupport {
         dao_u = new DAO_usuario();
         facultades = new ArrayList();
         tarjetasUsuario = new ArrayList();
+        u = new Usuarios();
     }
 
     public void validate() {
@@ -126,6 +130,16 @@ public class perfilAcciones extends ActionSupport {
 
         session.replace("user", user);
 
+        return SUCCESS;
+    }
+    
+    @SkipValidation
+    public String cargarPerfil(){
+        
+        this.setU(this.dao_u.obtenerUsuarioId(this.getUsuarioId()));
+        
+        this.setFac(dao_f.getFacultadId(this.getUsuarioId()));
+        
         return SUCCESS;
     }
 
@@ -231,6 +245,22 @@ public class perfilAcciones extends ActionSupport {
 
     public void setEdad(String edad) {
         this.edad = edad;
+    }
+
+    public Usuarios getU() {
+        return u;
+    }
+
+    public void setU(Usuarios u) {
+        this.u = u;
+    }
+
+    public int getUsuarioId() {
+        return usuarioId;
+    }
+
+    public void setUsuarioId(int usuarioId) {
+        this.usuarioId = usuarioId;
     }
 
 }

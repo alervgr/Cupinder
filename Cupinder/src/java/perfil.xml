@@ -15,6 +15,11 @@
             <result name="success" type="redirectAction">irPerfil</result>
             <result name="input">/perfil/perfil.jsp</result>
         </action>
+        <action name="obsPerfil" class="acciones.perfilAcciones" method="cargarPerfil">
+            <result name="success">/perfil/perfilUsuario.jsp</result>
+        </action>
+        
+        
     </package>
     
 </struts>

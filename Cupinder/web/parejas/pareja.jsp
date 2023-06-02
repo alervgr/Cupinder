@@ -11,7 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/pareja.css" />
         <script src="./JS/goUpButton.js"></script>
     </head>
     <body>
@@ -21,30 +21,34 @@
                 <div class="row pb-5">
                     <s:iterator value="listaUsuariosC" var="usuario">
                         <div class="col-lg-4">
-                            <div class="card p-0 w-100 m-2">
+                            <div class="card cardpareja p-0 w-100 m-2">
                                 <div class="card-image h-100">
                                     <img src="${pageContext.request.contextPath}<s:property value="#usuario.fotoPerfil"></s:property>"
                                          alt="" class="h-100">
-                                </div>
-                                <div class="card-content d-flex flex-column align-items-center">
-                                    <h4 class="pt-2"><s:property value="#usuario.nombre"></s:property></h4>
+                                    </div>
+                                    <div class="card-content d-flex flex-column align-items-center">
+                                        <h4 class="pt-2"><s:property value="#usuario.nombre"></s:property></h4>
                                     <h5><s:property value="#usuario.ocupacion"></s:property>, <s:property value="#usuario.edad"></s:property> años.</h5>
 
-                                    <ul class="social-icons d-flex justify-content-center">
-                                        <li>
-                                                <a href="<s:url action="obsPerfil"></s:url>">
+                                        <ul class="social-icons d-flex justify-content-center">
+                                            <li>
+                                            <s:url id="url" action="obsPerfil">
+                                                <s:param name="usuarioId" value="#usuario.id"></s:param>
+                                            </s:url>
+
+                                            <s:a href="%{url}">
                                                 <span><i class="fa-sharp fa-solid fa-eye" style="color: #f2f2f2;"></i></span>
-                                            </a>
+                                                </s:a>
                                         </li>
                                         <li>
                                             <a href="<s:url action="obsPerfil"></s:url>">
-                                        <span><i class="fa-sharp fa-regular fa-heart" style="color: #b30000;" onclick=""></i></span>
-                                            </a>
-                                        </li>
-                                    </ul>
+                                                    <span><i class="fa-sharp fa-regular fa-heart" style="color: #b30000;" onclick=""></i></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                     </s:iterator>
                 </div>
             </div>

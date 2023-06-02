@@ -5,7 +5,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <link href="./chat/chat.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/chat.css" />
     </head>
     <body>
         <jsp:include page="../HEADER/header.jsp"/>
