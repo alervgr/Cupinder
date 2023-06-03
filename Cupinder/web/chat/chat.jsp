@@ -30,7 +30,7 @@
                                     </s:url>
                                     <s:if test="%{#session.destinatarioId == #usuario.id}">
                                         <s:a href="%{url}" cssClass="list-group-item list-group-item-action list-group-item-light rounded-0 selected">
-                                            <div class="media row"><img src="${pageContext.request.contextPath}<s:property value="#usuario.fotoPerfil"></s:property>" alt="user" width="70" class="rounded-circle col-2">
+                                            <div class="media row" style="width: 40vh"><img src="${pageContext.request.contextPath}<s:property value="#usuario.fotoPerfil"></s:property>" alt="user" height="70" class="rounded-circle col-3">
                                                     <div class="media-body ml-4 col align-self-center">
                                                         <div class="d-flex align-items-center justify-content-between mb-1">
                                                             <h6 class="mb-0 fs-3"><s:property value="#usuario.usuario"></s:property><s:if test="%{#usuario.dni != null}">     <span><i class="fa-solid fa-circle-check fa-2xs"></i></span></s:if></h6>
@@ -41,7 +41,7 @@
                                     </s:if>
                                     <s:else>
                                         <s:a href="%{url}" cssClass="list-group-item list-group-item-action list-group-item-light rounded-0">
-                                            <div class="media row"><img src="${pageContext.request.contextPath}<s:property value="#usuario.fotoPerfil"></s:property>" alt="user" width="70" class="rounded-circle col-2">
+                                            <div class="media row" style="width: 40vh"><img src="${pageContext.request.contextPath}<s:property value="#usuario.fotoPerfil"></s:property>" alt="user" height="70" class="rounded-circle col-3">
                                                     <div class="media-body ml-4 col align-self-center">
                                                         <div class="d-flex align-items-center justify-content-between mb-1">
                                                             <h6 class="mb-0 fs-3"><s:property value="#usuario.usuario"></s:property><s:if test="%{#usuario.dni != null}">     <span><i class="fa-solid fa-circle-check fa-2xs"></i></span></s:if></h6>
@@ -58,7 +58,7 @@
 
                 <!-- Chat Box-->
                 <div class="col-4 px-0"style=" border-left:10px solid #f8edeb;">
-                    <s:if test="%{destin != null}"><div class="w-100 text-center bg-light p-2"><h5>Chat con <b><s:property value="destin.nombre"></s:property> <s:property value="destin.apellidos"></s:property></b></h5></div></s:if>
+                    <s:if test="%{destin != null}"><div class="w-100 text-center bg-light p-2"><h5>Chatea con <b><s:property value="destin.nombre"></s:property> <s:property value="destin.apellidos"></s:property></b></h5></div></s:if>
 
                             <div class="px-4 py-5 chat-box bg-white">
                         <s:iterator value="mensajesChat" var="mensaje">

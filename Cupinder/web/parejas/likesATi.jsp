@@ -33,8 +33,8 @@
             <div class="container pb-5">
                 <div class="row pb-5">
                     <s:iterator value="listaUsuariosLT" var="usuario">
-                        <div class="col-lg-4">
-                            <div class="card cardpareja p-0 w-100 m-2">
+                        <div class="col-lg-4" style="height: 35vh; width: 35vh">
+                            <div class="card cardpareja p-0 w-100 h-100 m-2">
                                 <div class="card-image h-100">
                                     <img src="${pageContext.request.contextPath}<s:property value="#usuario.fotoPerfil"></s:property>"
                                          alt="" class="h-100">
