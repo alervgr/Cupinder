@@ -7,6 +7,7 @@ package persistencia;
 
 import java.util.List;
 import modelos.HibernateUtil;
+import modelos.UsuarioPersonalidades;
 import modelos.Usuarios;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -30,6 +31,23 @@ public class DAO_usuario {
         tx.commit();
     }
 
+    public void eliminarUsuario(Usuarios u) {
+        s1 = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = s1.beginTransaction();
+        s1.delete(u);
+        tx.commit();
+    }
+
+    public Usuarios obtenerUsuarioId(int idUsuario) {
+        s1 = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = s1.beginTransaction();
+        String sql = "From Usuarios WHERE id= '" + idUsuario + "'";
+        Query query = s1.createQuery(sql);
+        Usuarios usuario = (Usuarios) query.uniqueResult();
+        tx.commit();
+        return usuario;
+    }
+
     public Usuarios obtenerUsuario(String correo) {
         s1 = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = s1.beginTransaction();
@@ -45,6 +63,16 @@ public class DAO_usuario {
         Transaction tx = s1.beginTransaction();
         s1.update(user);
         tx.commit();
+    }
+
+    public List<Usuarios> listaUsuariosSinCurrent(int idUsuario) {
+        s1 = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = s1.beginTransaction();
+        String sql = "From Usuarios WHERE id <>'" + idUsuario + "'";
+        Query query = s1.createQuery(sql);
+        List<Usuarios> list = (List<Usuarios>) query.list();
+        tx.commit();
+        return list;
     }
 
     public List<Usuarios> listaUsuarios() {

@@ -9,5 +9,8 @@
     <action name="redirectAdminUsuarios" class="acciones.adminUsuariosAcciones">
         <result name="success">/administracion/adminUsuarios.jsp</result>
     </action>
+    <action name="eliminarUsuario" class="acciones.adminUsuariosAcciones" method="eliminarUsuario">
+        <result name="success">/administracion/adminUsuarios.jsp</result>
+    </action>
     </package>
 </struts>
