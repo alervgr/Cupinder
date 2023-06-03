@@ -16,7 +16,6 @@ import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import modelos.Facultades;
-import modelos.Intereses;
 import modelos.Usuarios;
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;

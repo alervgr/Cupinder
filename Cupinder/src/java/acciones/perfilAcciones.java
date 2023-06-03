@@ -7,14 +7,19 @@ package acciones;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import modelos.Facultades;
 import modelos.TarjetasDeCredito;
 import modelos.Usuarios;
+import org.apache.commons.io.FileUtils;
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.validation.SkipValidation;
 import persistencia.DAO_facultades;
 import persistencia.DAO_tarjeta;
@@ -36,6 +41,9 @@ public class perfilAcciones extends ActionSupport {
     private String idioma;
     private String bio;
     private String edad;
+    private File image;
+    private String imageContentType;
+    private String imageFileName;
 
     private Usuarios u;
     private int usuarioId;
@@ -93,6 +101,14 @@ public class perfilAcciones extends ActionSupport {
         if (0 == this.getEdad().length() || null == this.getEdad()) {
             addFieldError("edad", getText("edad.rellena"));
         }
+        
+        if(this.getImageFileName() != null) {
+            if (!this.getImageFileName().substring(this.getImageFileName().lastIndexOf(".")).equalsIgnoreCase(".jpeg")
+                    && !this.getImageFileName().substring(this.getImageFileName().lastIndexOf(".")).equalsIgnoreCase(".png")
+                    && !this.getImageFileName().substring(this.getImageFileName().lastIndexOf(".")).equalsIgnoreCase(".jpg")) {
+                addFieldError("image", "Formato no válido, debe ser jpeg, jpg o png");
+            }
+        }
 
         Map session = (Map) ActionContext.getContext().get("session");
         Usuarios user = (Usuarios) session.get("user");
@@ -117,8 +133,9 @@ public class perfilAcciones extends ActionSupport {
         return SUCCESS;
     }
 
-    public String actualizar() {
+    public String actualizar() throws IOException {
 
+        System.out.println("entro");
         Map session = (Map) ActionContext.getContext().get("session");
         Usuarios user = (Usuarios) session.get("user");
         Facultades facultad = this.dao_f.getFacultadNombre(this.getFacultad());
@@ -129,6 +146,18 @@ public class perfilAcciones extends ActionSupport {
             user.setDni(null);
         } else {
             user.setDni(this.getDni());
+        }
+        
+        if (this.getImage() != null) {
+            String filePath = ServletActionContext.getServletContext().getRealPath("/Fotos_usuarios");
+            System.out.println(filePath);
+            filePath = filePath.replace("\\build", "");
+            System.out.println(filePath);
+            String fileName = UUID.randomUUID().toString().replace("-", "") + imageFileName.substring(imageFileName.lastIndexOf("."));
+
+            FileUtils.copyFile(this.getImage(), new File(filePath, fileName));
+
+            user.setFotoPerfil("/Fotos_usuarios/" + fileName);
         }
 
         user.setEdad(Integer.parseInt(this.getEdad()));
@@ -155,14 +184,15 @@ public class perfilAcciones extends ActionSupport {
 
         return SUCCESS;
     }
+
     private boolean comprobarCorreos() {
         boolean encontrado = false;
         Map session = (Map) ActionContext.getContext().get("session");
         Usuarios user = (Usuarios) session.get("user");
         List<String> correos = this.dao_u.obtenerCorreosU(user.getId());
-        
+
         System.out.println(correos.toString());
-        
+
         for (String correo : correos) {
 
             if (correo.equals(this.getEmail())) {
@@ -292,6 +322,30 @@ public class perfilAcciones extends ActionSupport {
 
     public void setUsuarioId(int usuarioId) {
         this.usuarioId = usuarioId;
+    }
+
+    public File getImage() {
+        return image;
+    }
+
+    public void setImage(File image) {
+        this.image = image;
+    }
+
+    public String getImageContentType() {
+        return imageContentType;
+    }
+
+    public void setImageContentType(String imageContentType) {
+        this.imageContentType = imageContentType;
+    }
+
+    public String getImageFileName() {
+        return imageFileName;
+    }
+
+    public void setImageFileName(String imageFileName) {
+        this.imageFileName = imageFileName;
     }
 
 }
