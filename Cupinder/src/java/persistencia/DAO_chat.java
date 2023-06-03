@@ -2,8 +2,12 @@ package persistencia;
 
 import java.util.List;
 import modelos.Chats;
+import modelos.Coincidencias;
 import modelos.HibernateUtil;
 import modelos.Mensajes;
+import modelos.TarjetasDeCredito;
+import modelos.UsuarioIntereses;
+import modelos.UsuarioPersonalidades;
 import modelos.Usuarios;
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
@@ -30,6 +34,113 @@ public class DAO_chat {
         List<Usuarios> lista = (List<Usuarios>) query.list();
         tx.commit();
         return lista;
+    }
+
+    public List<Mensajes> listarMensajesUsuario(int idUsuario) {
+
+        s3 = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = s3.beginTransaction();
+        Query q = s3.createQuery("FROM Mensajes WHERE remitente_id = '" + idUsuario + "' OR destinatario_id ='" + idUsuario + "'");
+        List<Mensajes> list = (List<Mensajes>) q.list();
+        System.out.println(list.size());
+        tx.commit();
+        return list;
+    }
+
+    public List<Coincidencias> listarCoincidencias(int idUsuario) {
+
+        s3 = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = s3.beginTransaction();
+        Query q = s3.createQuery("FROM Coincidencias WHERE usuario1_id = '" + idUsuario + "' OR usuario2_id ='" + idUsuario + "'");
+        List<Coincidencias> list = (List<Coincidencias>) q.list();
+        System.out.println(list.size());
+        tx.commit();
+        return list;
+    }
+
+    public void eliminarCoincidencia(Coincidencias c) {
+        s3 = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = s3.beginTransaction();
+        s3.delete(c);
+        tx.commit();
+    }
+
+    public List<Chats> listarChatsUsuario(int idUsuario) {
+
+        s3 = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = s3.beginTransaction();
+        Query q = s3.createQuery("FROM Chats WHERE usuario1_id = '" + idUsuario + "' OR usuario2_id ='" + idUsuario + "'");
+        List<Chats> list = (List<Chats>) q.list();
+        System.out.println(list.size());
+        tx.commit();
+        return list;
+    }
+
+    public void eliminarMensaje(Mensajes m) {
+        s3 = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = s3.beginTransaction();
+        s3.delete(m);
+        tx.commit();
+    }
+
+    public void eliminarChat(Chats c) {
+        s3 = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = s3.beginTransaction();
+        s3.delete(c);
+        tx.commit();
+    }
+
+    public List<TarjetasDeCredito> listarTarjetasUsuario(int idUsuario) {
+
+        s3 = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = s3.beginTransaction();
+        Query q = s3.createQuery("FROM TarjetasDeCredito WHERE usuario_id = '" + idUsuario + "'");
+        List<TarjetasDeCredito> list = (List<TarjetasDeCredito>) q.list();
+        tx.commit();
+        return list;
+    }
+
+    public void eliminarTarjeta(TarjetasDeCredito t) {
+        s3 = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = s3.beginTransaction();
+        s3.delete(t);
+        tx.commit();
+    }
+
+    public List<UsuarioIntereses> listarUsuarioIntereses(int idUsuario) {
+
+        s3 = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = s3.beginTransaction();
+        Query q = s3.createQuery("FROM UsuarioIntereses WHERE usuario_id = '" + idUsuario + "'");
+        List<UsuarioIntereses> list = (List<UsuarioIntereses>) q.list();
+        System.out.println(list.size());
+        tx.commit();
+        return list;
+    }
+
+    public void eliminarUsuarioInteres(UsuarioIntereses u) {
+        s3 = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = s3.beginTransaction();
+        s3.delete(u);
+        tx.commit();
+    }
+
+    public List<UsuarioPersonalidades> listarUsuarioPersonalidades(int idUsuario) {
+
+        s3 = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = s3.beginTransaction();
+        Query q = s3.createQuery("FROM UsuarioPersonalidades WHERE usuario_id = '" + idUsuario + "'");
+        List<UsuarioPersonalidades> list = (List<UsuarioPersonalidades>) q.list();
+        System.out.println(list.size());
+        tx.commit();
+        return list;
+    }
+
+    public void eliminarUsuarioPersonalidad(UsuarioPersonalidades u) {
+        s3 = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = s3.beginTransaction();
+        s3.delete(u);
+        tx.commit();
     }
 
     public List<Mensajes> listaMensajes(int id_remitente, int id_destinatario) {
@@ -60,7 +171,7 @@ public class DAO_chat {
         s3 = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = s3.beginTransaction();
         System.out.println(id_usuario);
-        String sql = "From Usuarios WHERE id='"+ id_usuario +"'";
+        String sql = "From Usuarios WHERE id='" + id_usuario + "'";
         Query query = s3.createQuery(sql);
         Usuarios usuario = (Usuarios) query.uniqueResult();
         tx.commit();
