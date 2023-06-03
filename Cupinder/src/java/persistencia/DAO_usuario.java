@@ -38,16 +38,6 @@ public class DAO_usuario {
         tx.commit();
     }
 
-    public Usuarios obtenerUsuarioId(int idUsuario) {
-        s1 = HibernateUtil.getSessionFactory().getCurrentSession();
-        Transaction tx = s1.beginTransaction();
-        String sql = "From Usuarios WHERE id= '" + idUsuario + "'";
-        Query query = s1.createQuery(sql);
-        Usuarios usuario = (Usuarios) query.uniqueResult();
-        tx.commit();
-        return usuario;
-    }
-
     public Usuarios obtenerUsuario(String correo) {
         s1 = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = s1.beginTransaction();

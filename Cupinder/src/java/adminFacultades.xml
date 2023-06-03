@@ -1,0 +1,20 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- Author: victo -->
+ 
+<struts>
+    <package name="adminFacultades" extends="struts-default" namespace="/">
+        <action name="redirectAdminFacultades" class="acciones.adminFacultadesAcciones">
+            <result name="success">/administracion/adminFacultades.jsp</result>
+        </action>
+                <action name="crearFacultad" class="acciones.adminFacultadesAcciones" method="crearFacultad">
+            <result name="success">/administracion/adminFacultades.jsp</result>
+        </action>
+                </action>
+                <action name="borrarFacultad" class="acciones.adminFacultadesAcciones" method="borrarFacultad">
+            <result name="success">/administracion/adminFacultades.jsp</result>
+        </action>
+    </package>
+</struts>

@@ -39,6 +39,7 @@
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="<s:url action="redirectAdminUsuarios"/>">Gestión de usuarios</a></li>
                                     <li><a class="dropdown-item" href="<s:url action="redirectIntereses"/>">Gestión de intereses</a></li>
+                                    <li><a class="dropdown-item" href="<s:url action="redirectAdminFacultades"/>">Gestión de facultades</a></li>
                                 </ul>
                             </li>
                         </s:if>
