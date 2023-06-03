@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-05-2023 a las 23:38:33
--- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 8.1.6
+-- Tiempo de generación: 03-06-2023 a las 06:23:03
+-- Versión del servidor: 10.4.25-MariaDB
+-- Versión de PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -41,7 +41,11 @@ INSERT INTO `chats` (`id`, `usuario1_id`, `usuario2_id`) VALUES
 (2, 1, 3),
 (3, 3, 1),
 (5, 5, 3),
-(6, 3, 5);
+(6, 3, 5),
+(7, 11, 13),
+(8, 13, 11),
+(21, 15, 14),
+(22, 14, 15);
 
 -- --------------------------------------------------------
 
@@ -72,16 +76,11 @@ INSERT INTO `coincidencias` (`id`, `usuario1_id`, `usuario2_id`, `compatibilidad
 (12, 10, 3, 0.6, '2023-05-31 20:16:48', 0, 0),
 (13, 10, 5, 0.6285714285714286, '2023-05-31 20:16:48', 0, 0),
 (17, 10, 9, 0.44, '2023-05-31 20:16:48', 0, 0),
-(19, 11, 1, 0.62, '2023-05-31 20:47:34', 0, 0),
-(20, 11, 3, 0.53, '2023-05-31 20:47:34', 0, 0),
-(21, 11, 5, 0.5942857142857143, '2023-05-31 20:47:34', 0, 0),
-(25, 11, 9, 0.38666666666666666, '2023-05-31 20:47:34', 0, 0),
-(26, 11, 10, 0.56, '2023-05-31 20:47:34', 0, 0),
-(27, 1, 5, 0.8, '2023-05-31 21:23:29', 0, 0),
-(28, 5, 3, 0.99, '2023-05-31 21:23:29', 0, 0),
+(27, 1, 5, 0.4057142857142857, '2023-05-31 21:23:29', 0, 0),
+(28, 5, 3, 0.5485714285714286, '2023-05-31 21:23:29', 0, 0),
 (29, 11, 1, 0.62, '2023-05-31 21:24:43', 0, 0),
 (30, 11, 3, 0.53, '2023-05-31 21:24:43', 0, 0),
-(31, 11, 5, 0.5942857142857143, '2023-05-31 21:24:43', 0, 0),
+(31, 11, 5, 0.5942857142857143, '2023-05-31 21:24:43', 1, 0),
 (32, 11, 9, 0.38666666666666666, '2023-05-31 21:24:43', 0, 0),
 (33, 11, 10, 0.56, '2023-05-31 21:24:43', 0, 0),
 (34, 12, 1, 0.43000000000000005, '2023-05-31 21:28:29', 0, 0),
@@ -95,16 +94,25 @@ INSERT INTO `coincidencias` (`id`, `usuario1_id`, `usuario2_id`, `compatibilidad
 (42, 13, 5, 0.5142857142857143, '2023-05-31 21:35:16', 0, 0),
 (43, 13, 9, 0.30666666666666664, '2023-05-31 21:35:16', 0, 0),
 (44, 13, 10, 0.24, '2023-05-31 21:35:16', 0, 0),
-(45, 13, 11, 0.8, '2023-05-31 21:35:16', 0, 0),
+(45, 13, 11, 0.8, '2023-05-31 21:35:16', 1, 1),
 (46, 13, 12, 0.51, '2023-05-31 21:35:16', 0, 0),
-(47, 14, 1, 0.58, '2023-05-31 21:36:49', 0, 0),
+(47, 14, 1, 0.58, '2023-05-31 21:36:49', 1, 0),
 (48, 14, 3, 0.48, '2023-05-31 21:36:49', 0, 0),
-(49, 14, 5, 0.5942857142857143, '2023-05-31 21:36:49', 0, 0),
+(49, 14, 5, 0.5942857142857143, '2023-05-31 21:36:49', 1, 0),
 (50, 14, 9, 0.5422222222222223, '2023-05-31 21:36:49', 0, 0),
 (51, 14, 10, 0.37, '2023-05-31 21:36:49', 0, 0),
 (52, 14, 11, 0.7300000000000001, '2023-05-31 21:36:49', 0, 0),
 (53, 14, 12, 0.54, '2023-05-31 21:36:49', 0, 0),
-(54, 14, 13, 0.41, '2023-05-31 21:36:49', 0, 0);
+(54, 14, 13, 0.41, '2023-05-31 21:36:49', 0, 0),
+(55, 15, 1, 0.56, '2023-06-01 18:56:01', 0, 0),
+(56, 15, 3, 0.44000000000000006, '2023-06-01 18:56:01', 0, 0),
+(57, 15, 5, 0.5428571428571429, '2023-06-01 18:56:01', 0, 0),
+(58, 15, 9, 0.30666666666666664, '2023-06-01 18:56:01', 0, 0),
+(59, 15, 10, 0.52, '2023-06-01 18:56:01', 0, 0),
+(60, 15, 11, 0.76, '2023-06-01 18:56:01', 0, 0),
+(61, 15, 12, 0.76, '2023-06-01 18:56:01', 0, 0),
+(62, 15, 13, 0.68, '2023-06-01 18:56:01', 0, 0),
+(63, 15, 14, 0.6799999999999999, '2023-06-01 18:56:01', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -273,8 +281,10 @@ INSERT INTO `personalidades` (`id`, `nombre`) VALUES
 
 CREATE TABLE `tarjetas_de_credito` (
   `id_tarjeta` int(11) NOT NULL,
+  `titular` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `numero_tarjeta` text NOT NULL,
-  `fecha_expiracion` date NOT NULL,
+  `mes` varchar(2) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `anio` varchar(4) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `cvv` text NOT NULL,
   `usuario_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -283,9 +293,8 @@ CREATE TABLE `tarjetas_de_credito` (
 -- Volcado de datos para la tabla `tarjetas_de_credito`
 --
 
-INSERT INTO `tarjetas_de_credito` (`id_tarjeta`, `numero_tarjeta`, `fecha_expiracion`, `cvv`, `usuario_id`) VALUES
-(1, '1234567812345678', '2025-06-30', '123', 1),
-(3, '1111222233334444', '2023-12-31', '789', 1);
+INSERT INTO `tarjetas_de_credito` (`id_tarjeta`, `titular`, `numero_tarjeta`, `mes`, `anio`, `cvv`, `usuario_id`) VALUES
+(7, 'Alejandro Rivas Garcia', '1234 1234 4321 4321', '04', '2027', '324', 13);
 
 -- --------------------------------------------------------
 
@@ -319,14 +328,15 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `usuario`, `nombre`, `apellidos`, `DNI`, `edad`, `correo`, `password`, `genero`, `biografia`, `orientacion`, `foto_perfil`, `fecha_registro`, `facultad_id`, `idioma`, `rol`, `ocupacion`) VALUES
 (1, 'Matero', 'Fran', 'Nuñez', '12345678A', 25, 'sexmatero@gmail.com', 'matero', 'Hombre', 'Soy paraete', 'Heterosexual', '/Fotos_usuarios/materin.png', '2023-04-28 12:43:03', 1, 'Español', 'Admin', 'Estudiante'),
-(3, 'Lagarin', 'Jose Antonio', 'Lagares', NULL, 28, 'lagarin@gmail.com', 'lagarin', 'Hombre', 'Me gusta PA, solo PA', 'Heterosexual', '/Fotos_usuarios/lagares.png', '2023-04-28 12:43:03', 3, 'Español', 'Free', 'Profesor'),
-(5, 'Aeme', 'Antonio Manuel', 'Mérida Borrero', '12836728A', 22, 'anmamebo2001@gmail.com', 'aemetito', 'Hombre', 'No he sabido hacer una biografía nunca no va a ser este el caso ;), busco amistad y lo que surja jeje. Salir a tomar una cervecita lo mejor y si es contigo ya ni te cuento.', 'Heterosexual', '/Fotos_usuarios/aeme.png', '2023-05-05 01:48:44', 41, 'Español', 'Premium', 'Estudiante'),
-(9, 'Pepe69', 'Pepe', 'Torres', NULL, 30, 'pepetorres@gmail.com', 'pepe', 'Hombre', 'Me gustan los drones', 'Bisexual', '/Fotos_usuarios/7cdafd0d4d9f47a081713ec4460add0f.png', '2023-05-31 19:44:31', 41, 'Español', 'Free', 'Profesor'),
+(3, 'Lagarin', 'Jose Antonio', 'Lagares', NULL, 28, 'lagarin@gmail.com', 'lagarin', 'Hombre', 'Me gusta PA, solo PA', 'Bisexual', '/Fotos_usuarios/lagares.png', '2023-04-28 12:43:03', 3, 'Espa?ol', 'Free', 'Profesor'),
+(5, 'Aeme', 'Antonio Manuel', 'Mérida Borrero', '12836728A', 22, 'anmamebo2001@gmail.com', 'aemetito', 'Hombre', 'No he sabido hacer una biografía nunca no va a ser este el caso ;), busco amistad y lo que surja jeje. Salir a tomar una cervecita lo mejor y si es contigo ya ni te cuento.', 'Heterosexual', '/Fotos_usuarios/aeme.png', '2023-05-05 01:48:44', 41, 'Espa?ol', 'Premium', 'Estudiante'),
+(9, 'Pepe69', 'Pepe', 'Torres', NULL, 30, 'pepetorres@gmail.com', 'pepe', 'Hombre', 'Me gustan los drones', 'Heterosexual', '/Fotos_usuarios/7cdafd0d4d9f47a081713ec4460add0f.png', '2023-05-31 19:44:31', 41, 'Español', 'Free', 'Profesor'),
 (10, 'juano', 'Juan', 'Moreno', NULL, 18, 'juan@upo.com', 'juan', 'Hombre', 'Soy el guapo de mis amigos, asique si eres fea, tu match debe ser Carlos.', 'Heterosexual', '/Fotos_usuarios/79d61c789b214bf4ad83ff39a49825ff.PNG', '2023-05-31 20:16:27', 41, 'Español', 'Free', 'Estudiante'),
 (11, 'lauramelgar', 'Laura', 'Melgar', NULL, 28, 'lauramelgar@gmail.com', 'laura', 'Mujer', 'Buscando compañía para crear recuerdos inolvidables :)', 'Heterosexual', '/Fotos_usuarios/862742aa2f344232ae2814abeb636e9e.jpg', '2023-05-31 20:46:09', 41, 'Español', 'Free', 'Profesor'),
 (12, 'victoryisus', 'Victor', 'Reina Lopez', NULL, 22, 'victor@gmail.com', 'victor', 'Hombre', 'Soy un entusiasta de los coches desde que aprendí a decir \"V8\". Me encanta el olor a gasolina, el sonido de un motor rugiendo y la emoción de una buena carrera. A veces mi coche y yo tenemos discusiones, pero al final siempre llegamos a un acuerdo: yo lo limpio y él me lleva a donde quiero ir.', 'Heterosexual', '/Fotos_usuarios/d4687dc13adc47fdb09599ead9f8c86a.JPG', '2023-05-31 21:28:01', 41, 'Español', 'Free', 'Estudiante'),
-(13, 'alervgr', 'Alejandro', 'Rivas García', NULL, 22, 'alervgr@gmail.com', 'alesito', 'Hombre', 'Busco moza con tierras y un mercedes', 'Heterosexual', '/Fotos_usuarios/fff11bfa9a1e4c5098479e05e14548b0.jpg', '2023-05-31 21:34:31', 41, 'Español', 'Free', 'Estudiante'),
-(14, 'laura', 'Laura', 'Gómez Viñas', NULL, 25, 'laugv4@gmail.com', 'laura', 'Mujer', 'Hola :)', 'Heterosexual', '/Fotos_usuarios/f12c98462b4648a49b5e95e5784cab85.jpg', '2023-05-31 21:36:31', 41, 'Español', 'Free', 'Estudiante');
+(13, 'alervgr', 'Alejandro', 'Rivas García', '87656787N', 22, 'alervgr@gmail.com', 'alesito', 'Hombre', 'Busco moza con tierras y un mercedes', 'Heterosexual', '/Fotos_usuarios/fff11bfa9a1e4c5098479e05e14548b0.jpg', '2023-05-31 21:34:31', 41, 'Espa?ol', 'Free', 'Estudiante'),
+(14, 'laura', 'Laura', 'Gómez Vi?as', '87656783K', 25, 'laugv4@gmail.com', 'laura', 'Mujer', 'Hola :)', 'Heterosexual', '/Fotos_usuarios/f12c98462b4648a49b5e95e5784cab85.jpg', '2023-05-31 21:36:31', 41, 'Espa?ol', 'Free', 'Estudiante'),
+(15, 'pablosg', 'Pablo', 'Sánchez Gómez', NULL, 22, 'pablosg@gmail.com', 'pablosg', 'Hombre', 'Hola', 'Heterosexual', '/Fotos_usuarios/5db3f4db427642a39753635cd9d87b25.png', '2023-06-01 18:54:53', 41, 'Espa?ol', 'Free', 'Estudiante');
 
 -- --------------------------------------------------------
 
@@ -363,13 +373,6 @@ INSERT INTO `usuario_intereses` (`id`, `usuario_id`, `interes_id`) VALUES
 (56, 11, 2),
 (57, 11, 5),
 (58, 11, 7),
-(63, 5, 1),
-(64, 5, 2),
-(65, 5, 3),
-(66, 5, 4),
-(67, 5, 5),
-(68, 5, 6),
-(69, 5, 7),
 (70, 12, 2),
 (71, 12, 3),
 (72, 12, 5),
@@ -381,7 +384,19 @@ INSERT INTO `usuario_intereses` (`id`, `usuario_id`, `interes_id`) VALUES
 (78, 14, 3),
 (79, 14, 4),
 (80, 14, 5),
-(81, 14, 6);
+(81, 14, 6),
+(82, 5, 1),
+(83, 5, 2),
+(84, 5, 3),
+(85, 5, 4),
+(86, 5, 5),
+(87, 5, 6),
+(88, 5, 7),
+(89, 15, 1),
+(90, 15, 2),
+(91, 15, 3),
+(92, 15, 5),
+(93, 15, 7);
 
 -- --------------------------------------------------------
 
@@ -435,11 +450,6 @@ INSERT INTO `usuario_personalidades` (`id`, `usuario_id`, `personalidad_id`) VAL
 (67, 11, 5),
 (68, 11, 2),
 (69, 11, 7),
-(75, 5, 3),
-(76, 5, 10),
-(77, 5, 5),
-(78, 5, 2),
-(79, 5, 8),
 (80, 12, 4),
 (81, 12, 9),
 (82, 12, 5),
@@ -454,7 +464,17 @@ INSERT INTO `usuario_personalidades` (`id`, `usuario_id`, `personalidad_id`) VAL
 (91, 14, 9),
 (92, 14, 6),
 (93, 14, 2),
-(94, 14, 7);
+(94, 14, 7),
+(95, 5, 3),
+(96, 5, 10),
+(97, 5, 5),
+(98, 5, 2),
+(99, 5, 8),
+(100, 15, 4),
+(101, 15, 10),
+(102, 15, 5),
+(103, 15, 2),
+(104, 15, 8);
 
 --
 -- Índices para tablas volcadas
@@ -540,13 +560,13 @@ ALTER TABLE `usuario_personalidades`
 -- AUTO_INCREMENT de la tabla `chats`
 --
 ALTER TABLE `chats`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `coincidencias`
 --
 ALTER TABLE `coincidencias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT de la tabla `facultades`
@@ -576,25 +596,25 @@ ALTER TABLE `personalidades`
 -- AUTO_INCREMENT de la tabla `tarjetas_de_credito`
 --
 ALTER TABLE `tarjetas_de_credito`
-  MODIFY `id_tarjeta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_tarjeta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario_intereses`
 --
 ALTER TABLE `usuario_intereses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario_personalidades`
 --
 ALTER TABLE `usuario_personalidades`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 
 --
 -- Restricciones para tablas volcadas

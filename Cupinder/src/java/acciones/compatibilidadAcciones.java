@@ -117,11 +117,11 @@ public class compatibilidadAcciones extends ActionSupport {
         } else {
             c.setLikeUsuario2(true);
         }
-        
+
         this.dao_c.updateCoincidencia(c);
 
         boolean match = hayMatch(c);
-        
+
         if (match) {
 
             Chats chat = new Chats(user, this.dao_u.obtenerUsuarioId(Integer.parseInt(usuarioId)));
@@ -129,11 +129,53 @@ public class compatibilidadAcciones extends ActionSupport {
 
             this.dao_chat.crearChat(chat);
             this.dao_chat.crearChat(chat2);
-            
+
             return "Match";
         }
         return "noMatch";
     }
+
+    @SkipValidation
+    public String quitarLike() {
+
+        Map session = (Map) ActionContext.getContext().get("session");
+        Usuarios user = (Usuarios) session.get("user");
+
+        Coincidencias c = this.dao_c.buscarCoincidencia(Integer.parseInt(usuarioId), user.getId());
+
+        if (c.isLikeUsuario1() && c.isLikeUsuario2()) {
+
+            if (user.getId() == c.getUsuariosByUsuario1Id().getId()) {
+                c.setLikeUsuario1(false);
+
+            } else {
+                c.setLikeUsuario2(false);
+
+            }
+
+            Chats chat = this.dao_chat.obtenerChat(this.dao_u.obtenerUsuarioId(Integer.parseInt(usuarioId)).getId(), user.getId());
+            Chats chat2 = this.dao_chat.obtenerChat(user.getId(),this.dao_u.obtenerUsuarioId(Integer.parseInt(usuarioId)).getId());
+
+            this.dao_chat.borrarChat(chat);
+            this.dao_chat.borrarChat(chat2);
+
+        } else {
+            if (user.getId() == c.getUsuariosByUsuario1Id().getId()) {
+                c.setLikeUsuario1(false);
+
+            } else {
+                c.setLikeUsuario2(false);
+
+            }
+        }
+        
+        this.dao_c.updateCoincidencia(c);
+        
+        return SUCCESS;
+    }
+    
+    
+    
 
     public boolean hayMatch(Coincidencias c) {
 

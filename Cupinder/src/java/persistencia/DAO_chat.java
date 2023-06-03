@@ -74,4 +74,23 @@ public class DAO_chat {
         tx.commit();
     }
 
+    public void borrarChat(Chats chat) {
+        s3 = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = s3.beginTransaction();
+        s3.delete(chat);
+        tx.commit();
+    }
+
+    public Chats obtenerChat(int id1, int id2) {
+        
+         s3 = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = s3.beginTransaction();
+        String sql = "From Chats WHERE usuario1_id='"+ id1 +"' AND usuario2_id='"+ id2 +"'";
+        Query query = s3.createQuery(sql);
+        Chats chat = (Chats) query.uniqueResult();
+        tx.commit();
+        return chat;
+        
+    }
+
 }

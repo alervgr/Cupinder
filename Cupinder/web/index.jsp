@@ -100,10 +100,7 @@
             </div>
         </div>
 
-        <div id="overlay" style="display:none;position:absolute;top:0;left:0;width:100%;height:100%;background-color:#FFF;opacity:0.5;"></div>
-        <div class="text-center">
-            <button class="btn btn-primary" onclick="mostrarGif()" id="gifMatch">Hacer Match</button>
-        </div>
+        
 
         <jsp:include page="./FOOTER/footer.jsp" />
 

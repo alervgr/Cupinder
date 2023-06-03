@@ -1,16 +1,15 @@
 <%-- 
-    Document   : pareja
-    Created on : 01-jun-2023, 2:46:29
+    Document   : likes
+    Created on : 03-jun-2023, 3:13:14
     Author     : alervgr
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@taglib prefix="s" uri="/struts-tags"%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Matches</title>
+        <title>Likes</title>
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/pareja.css" />
         <script src="./JS/goUpButton.js"></script>
     </head>
@@ -19,7 +18,7 @@
         <div class="container-fluid pt-3 pb-3" style="background-color: #f8edeb; min-height: 79vh">
             <div class="container pb-5">
                 <div class="row pb-5">
-                    <s:iterator value="listaUsuariosM" var="usuario">
+                    <s:iterator value="listaUsuariosL" var="usuario">
                         <div class="col-lg-4">
                             <div class="card cardpareja p-0 w-100 m-2">
                                 <div class="card-image h-100">
@@ -41,7 +40,7 @@
                                         </li>
                                         <li>
                                             <s:if test="%{#session.user.rol == 'Premium'}">
-                                                <s:url id="url" action="quitarLike">
+                                                <s:url id="url" action="quitarLikeL">
                                                     <s:param name="usuarioId" value="#usuario.id"></s:param>
                                                 </s:url>
                                             </s:if>

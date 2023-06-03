@@ -87,7 +87,7 @@
                             <div class="col-6">
                                 <ul class="list-group text-center">
                                     <s:iterator value="tarjetasUsuario" var="tarjeta">
-                                        <li class="list-group-item"><i class="fa-brands fa-cc-visa fa-xl m-1"></i><s:property value="#tarjeta.numeroTarjeta"></s:property> -- <s:property value="#tarjeta.fechaExpiracion"></s:property>
+                                        <li class="list-group-item"><i class="fa-brands fa-cc-visa fa-xl m-1"></i><s:property value="#tarjeta.numeroTarjeta"></s:property> -- <s:property value="#tarjeta.mes"></s:property>/<s:property value="#tarjeta.anio"></s:property>
                                             <s:url id="url" action="borrarTarjeta">
                                                 <s:param name="tarjetaId" value="#tarjeta.idTarjeta"></s:param>
                                             </s:url>

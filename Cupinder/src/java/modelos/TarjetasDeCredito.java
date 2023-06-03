@@ -13,21 +13,33 @@ public class TarjetasDeCredito  implements java.io.Serializable {
      private Integer idTarjeta;
      private Usuarios usuarios;
      private String numeroTarjeta;
-     private Date fechaExpiracion;
+     private String mes;
+     private String anio;
      private String cvv;
+     private String titular;
 
     public TarjetasDeCredito() {
     }
 
-    public TarjetasDeCredito(Usuarios usuarios, String numeroTarjeta, Date fechaExpiracion, String cvv) {
+    public TarjetasDeCredito(Usuarios usuarios,String titular, String numeroTarjeta, String cvv,String mes, String anio) {
        this.usuarios = usuarios;
        this.numeroTarjeta = numeroTarjeta;
-       this.fechaExpiracion = fechaExpiracion;
        this.cvv = cvv;
+       this.anio = anio;
+       this.mes = mes;
+       this.titular = titular;
     }
    
     public Integer getIdTarjeta() {
         return this.idTarjeta;
+    }
+
+    public String getTitular() {
+        return titular;
+    }
+
+    public void setTitular(String titular) {
+        this.titular = titular;
     }
     
     public void setIdTarjeta(Integer idTarjeta) {
@@ -47,19 +59,29 @@ public class TarjetasDeCredito  implements java.io.Serializable {
     public void setNumeroTarjeta(String numeroTarjeta) {
         this.numeroTarjeta = numeroTarjeta;
     }
-    public Date getFechaExpiracion() {
-        return this.fechaExpiracion;
-    }
-    
-    public void setFechaExpiracion(Date fechaExpiracion) {
-        this.fechaExpiracion = fechaExpiracion;
-    }
+ 
     public String getCvv() {
         return this.cvv;
     }
     
     public void setCvv(String cvv) {
         this.cvv = cvv;
+    }
+
+    public String getMes() {
+        return mes;
+    }
+
+    public void setMes(String mes) {
+        this.mes = mes;
+    }
+
+    public String getAnio() {
+        return anio;
+    }
+
+    public void setAnio(String anio) {
+        this.anio = anio;
     }
 
 

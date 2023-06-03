@@ -1,25 +1,38 @@
 <%-- 
-    Document   : pareja
-    Created on : 01-jun-2023, 2:46:29
+    Document   : likesATi
+    Created on : 03-jun-2023, 3:43:20
     Author     : alervgr
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@taglib prefix="s" uri="/struts-tags"%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Matches</title>
+        <title>Likes</title>
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/pareja.css" />
         <script src="./JS/goUpButton.js"></script>
+        <script src="${pageContext.request.contextPath}/JS/gifMatch.js" type="text/javascript"></script>
     </head>
+    <s:if test="%{#session.user.rol == 'Free'}">
+        <s:action name="haztePremium" executeResult="true"></s:action>
+    </s:if>
+    <s:else>
     <body>
+        
+        <s:if test="%{matchPareja}">
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    mostrarGif();
+                });
+            </script>
+            <s:set var="matchPareja" value="false"></s:set>
+        </s:if>
         <jsp:include page="../HEADER/header.jsp" />
         <div class="container-fluid pt-3 pb-3" style="background-color: #f8edeb; min-height: 79vh">
             <div class="container pb-5">
                 <div class="row pb-5">
-                    <s:iterator value="listaUsuariosM" var="usuario">
+                    <s:iterator value="listaUsuariosLT" var="usuario">
                         <div class="col-lg-4">
                             <div class="card cardpareja p-0 w-100 m-2">
                                 <div class="card-image h-100">
@@ -41,7 +54,7 @@
                                         </li>
                                         <li>
                                             <s:if test="%{#session.user.rol == 'Premium'}">
-                                                <s:url id="url" action="quitarLike">
+                                                <s:url id="url" action="darLikeL">
                                                     <s:param name="usuarioId" value="#usuario.id"></s:param>
                                                 </s:url>
                                             </s:if>
@@ -51,7 +64,7 @@
                                             </s:else>
 
                                             <s:a href="%{url}">
-                                                <span><i class="fa-sharp fa-solid fa-heart" style="color: #b30000;" onclick=""></i></span>
+                                                <span><i class="fa-sharp fa-regular fa-heart" style="color: #b30000;"></i></span>
                                                 </s:a>
                                         </li>
                                     </ul>
@@ -63,6 +76,7 @@
             </div>
         </div>
     </div>
+    <div id="overlay" style="display:none;position:absolute;top:0;left:0;width:100%;height:100%;background-color:#FFF;opacity:0.5;"></div>
     <jsp:include page="../FOOTER/footer.jsp" />
 
     <!-- BOTÓN SCROLL TO TOP -->
@@ -75,4 +89,5 @@
     </button>
 
 </body>
+</s:else>
 </html>

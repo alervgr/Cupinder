@@ -7,9 +7,7 @@
     <package name="tarjeta" extends="struts-default" namespace="/">
         <action name="aniadirTarjeta" class="acciones.tarjetaAcciones">
             <result name="success" type="redirectAction">irPerfil</result>
-            <result name="input">/credito/aniadirTarjeta.jsp</result>
         </action>
-        
         <action name="irAniadirTarjeta">
             <result name="success">/credito/aniadirTarjeta.jsp</result>
         </action>
@@ -20,7 +18,6 @@
         
         <action name="actualizarTarjeta" class="acciones.tarjetaAcciones" method="actualizarTarjeta">
             <result name="success" type="redirectAction">irPerfil</result>
-            <result name="input">/credito/actualizarTarjeta.jsp</result>
         </action>
         
         <action name="irActualizarTarjeta" class="acciones.tarjetaAcciones" method="obtenerTarjeta">

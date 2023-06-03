@@ -32,6 +32,9 @@ public class tarjetaAcciones extends ActionSupport {
     private List<TarjetasDeCredito> tarjetasUsuario;
     private int tarjetaId;
     private TarjetasDeCredito tarjeta;
+    private String titular;
+    private String anio;
+    private String mes;
 
     public tarjetaAcciones() {
         dao_t = new DAO_tarjeta();
@@ -39,35 +42,7 @@ public class tarjetaAcciones extends ActionSupport {
         tarjeta = new TarjetasDeCredito();
     }
 
-    @Override
-    public void validate() {
-
-        if (0 == this.getNumeroTarjeta().length() || null == this.getNumeroTarjeta()) {
-            addFieldError("numeroTarjeta", getText("numeroT.relleno"));
-        } else {
-            if (16 != this.getNumeroTarjeta().length()) {
-                addFieldError("numeroTarjeta", getText("numeroT.formato"));
-            }
-        }
-
-        if (0 == this.getCVV().length() || null == this.getCVV()) {
-            addFieldError("CVV", getText("cvvT.relleno"));
-        } else {
-            if (3 != this.getCVV().length()) {
-                addFieldError("CVV", getText("cvvT.longitud"));
-            }
-        }
-        if (0 == this.getFechaExpiracion().length() || null == this.getFechaExpiracion()) {
-            addFieldError("fechaExpiracion", getText("fechaT.relleno"));
-        } else {
-            boolean isValidFormat = Pattern.matches("\\d{4}-\\d{2}-\\d{2}", this.getFechaExpiracion());
-            if (!isValidFormat) {
-                addFieldError("fechaExpiracion", getText("fechaT.formato"));
-            }
-
-        }
-
-    }
+    
 
     @Override
     public String execute() throws Exception {
@@ -75,11 +50,8 @@ public class tarjetaAcciones extends ActionSupport {
         Map session = (Map) ActionContext.getContext().get("session");
         Usuarios user = (Usuarios) session.get("user");
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
 
-        Date fecha = sdf.parse(this.getFechaExpiracion());
-
-        TarjetasDeCredito tarjeta = new TarjetasDeCredito(user, this.getNumeroTarjeta(), fecha, this.getCVV());
+        TarjetasDeCredito tarjeta = new TarjetasDeCredito(user,this.getTitular(), this.getNumeroTarjeta(), this.getCVV(),this.getMes(),this.getAnio());
 
         this.dao_t.aniadirTarjeta(tarjeta);
 
@@ -109,19 +81,17 @@ public class tarjetaAcciones extends ActionSupport {
         return SUCCESS;
     }
     
-    
-    public String actualizarTarjeta() throws Exception {
+    @SkipValidation
+    public String actualizarTarjeta() {
 
-        TarjetasDeCredito tarjeta = this.dao_t.obtenerTarjeta(this.getTarjetaId());
+        this.tarjeta = this.dao_t.obtenerTarjeta(this.getTarjetaId());
         
-        tarjeta.setCvv(this.getCVV());
+        System.out.println(tarjeta);
+        tarjeta.setTitular(this.getTitular());
         tarjeta.setNumeroTarjeta(this.getNumeroTarjeta());
-        
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
-
-        Date fecha = sdf.parse(this.getFechaExpiracion());
-        
-        tarjeta.setFechaExpiracion(fecha);
+        tarjeta.setAnio(this.getAnio());
+        tarjeta.setMes(this.getMes());
+        tarjeta.setCvv(this.getCVV());
         
         this.dao_t.actualizarTarjeta(tarjeta);
 
@@ -134,6 +104,8 @@ public class tarjetaAcciones extends ActionSupport {
     public String obtenerTarjeta() {
 
         this.setTarjeta(this.dao_t.obtenerTarjeta(this.getTarjetaId()));
+        
+        this.setTarjetaId(this.getTarjetaId());
         
         return SUCCESS;
     }
@@ -185,6 +157,30 @@ public class tarjetaAcciones extends ActionSupport {
 
     public void setTarjeta(TarjetasDeCredito tarjeta) {
         this.tarjeta = tarjeta;
+    }
+
+    public String getTitular() {
+        return titular;
+    }
+
+    public void setTitular(String titular) {
+        this.titular = titular;
+    }
+
+    public String getAnio() {
+        return anio;
+    }
+
+    public void setAnio(String anio) {
+        this.anio = anio;
+    }
+
+    public String getMes() {
+        return mes;
+    }
+
+    public void setMes(String mes) {
+        this.mes = mes;
     }
 
 }

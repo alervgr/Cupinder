@@ -11,11 +11,17 @@
         <many-to-one name="usuarios" class="modelos.Usuarios" fetch="select">
             <column name="usuario_id" not-null="true" />
         </many-to-one>
+        <property name="titular" type="string">
+            <column name="titular" length="50" not-null="true" />
+        </property>
         <property name="numeroTarjeta" type="string">
             <column name="numero_tarjeta" length="65535" not-null="true" />
         </property>
-        <property name="fechaExpiracion" type="date">
-            <column name="fecha_expiracion" length="10" not-null="true" />
+        <property name="mes" type="string">
+            <column name="mes" length="2" not-null="true" />
+        </property>
+        <property name="anio" type="string">
+            <column name="anio" length="4" not-null="true" />
         </property>
         <property name="cvv" type="string">
             <column name="cvv" length="65535" not-null="true" />

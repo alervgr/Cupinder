@@ -25,6 +25,21 @@
         <action name="match" class="acciones.parejasAcciones" method="match">
             <result name="success">/parejas/pareja.jsp</result>
         </action>
+        <action name="quitarLike" class="acciones.compatibilidadAcciones" method="quitarLike">
+            <result name="success">/parejas/matches.jsp</result>
+        </action>
+        
+        <action name="quitarLikeL" class="acciones.compatibilidadAcciones" method="quitarLike">
+            <result name="success" type="redirectAction">verLikes</result>
+        </action>
+        <action name="darLikeL" class="acciones.compatibilidadAcciones" method="darLike">
+            <result name="noMatch" type="redirectAction">verTeLikes</result>
+            <result name="Match" type="redirectAction">matchL</result>
+        </action>
+        <action name="matchL" class="acciones.parejasAcciones" method="match">
+            <result name="success">/parejas/likesATi.jsp</result>
+        </action>
+        
     </package>
     
 </struts>

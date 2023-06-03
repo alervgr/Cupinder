@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Buscar pareja</title>
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/pareja.css" />
         <script src="./JS/goUpButton.js"></script>
         <script src="${pageContext.request.contextPath}/JS/gifMatch.js" type="text/javascript"></script>
@@ -55,7 +55,7 @@
                                                 <s:param name="usuarioId" value="#usuario.id"></s:param>
                                             </s:url>
                                             <s:a href="%{url}">
-                                                <span><i class="fa-sharp fa-regular fa-heart" style="color: #b30000;" onclick=""></i></span>
+                                                <span><i class="fa-sharp fa-regular fa-heart" style="color: #b30000;"></i></span>
                                                 </s:a>
                                         </li>
                                     </ul>

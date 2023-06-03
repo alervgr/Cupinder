@@ -27,6 +27,8 @@ public class parejasAcciones extends ActionSupport {
     private final DAO_usuario dao_u;
     private List<Usuarios> listaUsuariosC;
     private List<Usuarios> listaUsuariosM;
+    private List<Usuarios> listaUsuariosL;
+    private List<Usuarios> listaUsuariosLT;
     private boolean matchPareja = false;
 
     public parejasAcciones() {
@@ -34,6 +36,8 @@ public class parejasAcciones extends ActionSupport {
         dao_u = new DAO_usuario();
         listaUsuariosC = new ArrayList<>();
         listaUsuariosM = new ArrayList<>();
+        listaUsuariosL = new ArrayList<>();
+        listaUsuariosLT = new ArrayList<>();
     }
 
     @Override
@@ -54,11 +58,11 @@ public class parejasAcciones extends ActionSupport {
                 if (!coincidencias.isLikeUsuario1()) {
                     aux = this.dao_u.obtenerUsuarioId(coincidencias.getUsuariosByUsuario2Id().getId());
 
-                    if (user.getOrientacion().equals("Bisexual")) {
+                    if (user.getOrientacion().equals("Bisexual") && (aux.getOrientacion().equals("Bisexual") || (aux.getGenero().equals(user.getGenero()) && aux.getOrientacion().equals("Homosexual")) || (!aux.getGenero().equals(user.getGenero()) && aux.getOrientacion().equals("Heterosexual")))) {
                         this.listaUsuariosC.add(aux);
-                    } else if (user.getOrientacion().equals("Heterosexual") && !aux.getGenero().equals(user.getGenero())) {
+                    } else if (user.getOrientacion().equals("Heterosexual") && !aux.getGenero().equals(user.getGenero()) && !aux.getOrientacion().equals("Homosexual")) {
                         this.listaUsuariosC.add(aux);
-                    } else if (user.getOrientacion().equals("Homosexual") && aux.getGenero().equals(user.getGenero())) {
+                    } else if (user.getOrientacion().equals("Homosexual") && aux.getGenero().equals(user.getGenero()) && !aux.getOrientacion().equals("Heterosexual")) {
                         this.listaUsuariosC.add(aux);
                     }
 
@@ -68,11 +72,11 @@ public class parejasAcciones extends ActionSupport {
 
                 if (!coincidencias.isLikeUsuario2()) {
                     aux = this.dao_u.obtenerUsuarioId(coincidencias.getUsuariosByUsuario1Id().getId());
-                    if (user.getOrientacion().equals("Bisexual")) {
+                    if (user.getOrientacion().equals("Bisexual") && (aux.getOrientacion().equals("Bisexual") || (aux.getGenero().equals(user.getGenero()) && aux.getOrientacion().equals("Homosexual")) || (!aux.getGenero().equals(user.getGenero()) && aux.getOrientacion().equals("Heterosexual")))) {
                         this.listaUsuariosC.add(aux);
-                    } else if (user.getOrientacion().equals("Heterosexual") && !aux.getGenero().equals(user.getGenero())) {
+                    } else if (user.getOrientacion().equals("Heterosexual") && !aux.getGenero().equals(user.getGenero()) && !aux.getOrientacion().equals("Homosexual")) {
                         this.listaUsuariosC.add(aux);
-                    } else if (user.getOrientacion().equals("Homosexual") && aux.getGenero().equals(user.getGenero())) {
+                    } else if (user.getOrientacion().equals("Homosexual") &&  aux.getGenero().equals(user.getGenero()) && !aux.getOrientacion().equals("Heterosexual")) {
                         this.listaUsuariosC.add(aux);
                     }
                 }
@@ -84,6 +88,14 @@ public class parejasAcciones extends ActionSupport {
         return SUCCESS;
     }
 
+    public String matchL() throws Exception {
+
+        this.setMatchPareja(true);
+        verTeLikes();
+
+        return SUCCESS;
+    }
+    
     public String match() throws Exception {
 
         this.setMatchPareja(true);
@@ -119,6 +131,59 @@ public class parejasAcciones extends ActionSupport {
         return SUCCESS;
     }
 
+    public String verLikes() {
+
+        Map session = (Map) ActionContext.getContext().get("session");
+        Usuarios user = (Usuarios) session.get("user");
+        Usuarios aux;
+
+        user = this.dao_u.obtenerUsuarioId(user.getId());
+
+        List<Coincidencias> coincidenciasU = this.dao_c.buscarCoincidenciasOrd(user.getId());
+
+        for (Coincidencias coincidencias : coincidenciasU) {
+
+            if (coincidencias.isLikeUsuario1() && user.getId() == coincidencias.getUsuariosByUsuario1Id().getId()) {
+                aux = this.dao_u.obtenerUsuarioId(coincidencias.getUsuariosByUsuario2Id().getId());
+                this.listaUsuariosL.add(aux);
+
+            } else if (coincidencias.isLikeUsuario2() && user.getId() == coincidencias.getUsuariosByUsuario2Id().getId()) {
+                aux = this.dao_u.obtenerUsuarioId(coincidencias.getUsuariosByUsuario1Id().getId());
+                this.listaUsuariosL.add(aux);
+            }
+        }
+
+        return SUCCESS;
+    }
+
+    public String verTeLikes() {
+
+        Map session = (Map) ActionContext.getContext().get("session");
+        Usuarios user = (Usuarios) session.get("user");
+        Usuarios aux;
+
+        user = this.dao_u.obtenerUsuarioId(user.getId());
+
+        List<Coincidencias> coincidenciasU = this.dao_c.buscarCoincidenciasOrd(user.getId());
+
+        for (Coincidencias coincidencias : coincidenciasU) {
+
+            if (!coincidencias.isLikeUsuario1() || !coincidencias.isLikeUsuario2()) {
+                if (coincidencias.isLikeUsuario1() && user.getId() == coincidencias.getUsuariosByUsuario2Id().getId()) {
+                    aux = this.dao_u.obtenerUsuarioId(coincidencias.getUsuariosByUsuario1Id().getId());
+                    this.listaUsuariosLT.add(aux);
+
+                } else if (coincidencias.isLikeUsuario2() && user.getId() == coincidencias.getUsuariosByUsuario1Id().getId()) {
+                    aux = this.dao_u.obtenerUsuarioId(coincidencias.getUsuariosByUsuario2Id().getId());
+                    this.listaUsuariosLT.add(aux);
+                }
+            }
+
+        }
+
+        return SUCCESS;
+    }
+
     public List<Usuarios> getListaUsuariosC() {
         return listaUsuariosC;
     }
@@ -141,6 +206,22 @@ public class parejasAcciones extends ActionSupport {
 
     public void setListaUsuariosM(List<Usuarios> listaUsuariosM) {
         this.listaUsuariosM = listaUsuariosM;
+    }
+
+    public List<Usuarios> getListaUsuariosL() {
+        return listaUsuariosL;
+    }
+
+    public void setListaUsuariosL(List<Usuarios> listaUsuariosL) {
+        this.listaUsuariosL = listaUsuariosL;
+    }
+
+    public List<Usuarios> getListaUsuariosLT() {
+        return listaUsuariosLT;
+    }
+
+    public void setListaUsuariosLT(List<Usuarios> listaUsuariosLT) {
+        this.listaUsuariosLT = listaUsuariosLT;
     }
 
 }

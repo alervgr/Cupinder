@@ -36,5 +36,11 @@
         <action name="verMatches" class="acciones.parejasAcciones" method="verMatches">
             <result>/parejas/matches.jsp</result>
         </action>
+        <action name="verLikes" class="acciones.parejasAcciones" method="verLikes">
+            <result>/parejas/likes.jsp</result>
+        </action>
+        <action name="verTeLikes" class="acciones.parejasAcciones" method="verTeLikes">
+            <result>/parejas/likesATi.jsp</result>
+        </action>
     </package>
 </struts>
