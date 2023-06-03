@@ -39,7 +39,7 @@
                                                 </s:a>
                                         </li>
                                         <li>
-                                            <s:if test="%{#session.user.rol == 'Premium'}">
+                                            <s:if test="%{#session.user.rol != 'Free'}">
                                                 <s:url id="url" action="quitarLikeL">
                                                     <s:param name="usuarioId" value="#usuario.id"></s:param>
                                                 </s:url>

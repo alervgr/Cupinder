@@ -52,7 +52,7 @@
                                 <li><a class="dropdown-item" href="<s:url action="irPerfil"/>"><i class="fa-regular fa-address-card"></i> Perfil</a></li>
                                 <li><a class="dropdown-item" href="<s:url action="buscarPareja"/>"><i class="fa-solid fa-heart"></i> Buscar pareja</a></li>
                                 <li><a class="dropdown-item" href="<s:url action="verLikes"/>"><i class="fa-regular fa-thumbs-up"></i> Ver likes</a></li>
-                                <s:if test="%{#session.user.rol == 'Premium'}">
+                                <s:if test="%{#session.user.rol != 'Free'}">
                                 <li><a class="dropdown-item" href="<s:url action="verTeLikes"/>"><i class="fa-solid fa-clover"></i> Vas a tener suerte</a></li>
                                 </s:if>
                                 <li><a class="dropdown-item" href="<s:url action="verMatches"/>"><i class="fa-solid fa-fire"></i> Matches</a></li>

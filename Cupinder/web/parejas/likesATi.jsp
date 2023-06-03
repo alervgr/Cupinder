@@ -19,7 +19,6 @@
     </s:if>
     <s:else>
     <body>
-        
         <s:if test="%{matchPareja}">
             <script>
                 document.addEventListener("DOMContentLoaded", function () {
