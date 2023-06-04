@@ -10,7 +10,7 @@
             <result name="error" type="redirectAction">irAniadirTarjeta</result>
         </action>
         <action name="comprado" class="acciones.comprarPremiumAcciones" method="comprado">
-            <result name="success">/premium/comprarPremium.jsp</result>
+            <result name="success">/premium/premium.jsp</result>
         </action>
     </package>
 </struts>

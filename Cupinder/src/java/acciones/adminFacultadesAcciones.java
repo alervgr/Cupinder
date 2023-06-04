@@ -1,4 +1,3 @@
-
 package acciones;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -9,7 +8,6 @@ import modelos.Usuarios;
 import org.apache.struts2.interceptor.validation.SkipValidation;
 import persistencia.DAO_facultades;
 import persistencia.DAO_usuario;
-
 
 public class adminFacultadesAcciones extends ActionSupport {
 
@@ -25,22 +23,28 @@ public class adminFacultadesAcciones extends ActionSupport {
         this.listaFacultades = new ArrayList();
     }
 
-    
+    /*Crea una Facultad
+    Crea una nueva Facultad en la BD
+    Carga la lista de Facultades existentes
+     */    
     public String crearFacultad() {
         Facultades f = new Facultades(this.getNombre());
         this.dao_f.crearFacultad(f);
         this.setListaFacultades(this.dao_f.listadoObjFacultades());
         return SUCCESS;
     }
-    
-    
 
+    /*Borra una Facultad
+    Obtiene la Facultad que quiere borrar por su ID y los Usuarios de esa Facultad
+    Pone a null la Facultad de dichos Usuarios y los actualiza en BD
+    Borra la Facultad de la BD
+    Carga la lista de Facultades existentes
+     */
     @SkipValidation
     public String borrarFacultad() {
 
         Facultades f = this.dao_f.getFacultadPorId(this.getIdFacultades());
 
-        System.out.println("Seleccionamos listado de usuarios con esa facutlad");
         List<Usuarios> usuariosFacultad = this.dao_f.listadoUsuariosFacultad(this.getIdFacultades());
 
         for (int i = 0; i < usuariosFacultad.size(); i++) {
@@ -54,10 +58,10 @@ public class adminFacultadesAcciones extends ActionSupport {
         return SUCCESS;
     }
 
+    //Carga la lista de todas las Facultades de la base de datos
     @SkipValidation
     public String execute() throws Exception {
 
-        System.out.println("Cargando listado de facultades");
         this.setListaFacultades(this.dao_f.listadoObjFacultades());
 
         return SUCCESS;
@@ -87,7 +91,7 @@ public class adminFacultadesAcciones extends ActionSupport {
     public int getIdFacultades() {
         return idFacultades;
     }
-    
+
     @SkipValidation
     public void setIdFacultades(int idFacultades) {
         this.idFacultades = idFacultades;
@@ -95,7 +99,6 @@ public class adminFacultadesAcciones extends ActionSupport {
 
     public void validate() {
         if (this.getNombre().equals("")) {
-            //Primero va el nombre de la variable que nos ha dado error y luego el mensaje de error que queremos mandar
             addFieldError("nombre", getText("facultades.relleno"));
         }
         if (exist(this.getNombre())) {

@@ -42,7 +42,7 @@
                             </s:iterator>
                             <div class="mb-4">
                                 <div class="p-4 text-center">
-                                    <s:submit cssClass="btn btnRegistro" value="Comprar" label="Comprar"></s:submit>                                
+                                    <a href="<s:url action="comprado"/>" class="btn btnRegistro">Comprar</a>                                
                                     </div>
                                 </div>                     
                             <s:fielderror cssClass="pt-3"></s:fielderror>

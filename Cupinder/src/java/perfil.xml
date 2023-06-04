@@ -26,7 +26,7 @@
             <result name="success">/parejas/pareja.jsp</result>
         </action>
         <action name="quitarLike" class="acciones.compatibilidadAcciones" method="quitarLike">
-            <result name="success">/parejas/matches.jsp</result>
+            <result name="success" type="redirectAction">verMatches</result>
         </action>
         
         <action name="quitarLikeL" class="acciones.compatibilidadAcciones" method="quitarLike">
