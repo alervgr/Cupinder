@@ -55,16 +55,9 @@
                                                         </s:a>
                                                 </li>
                                                 <li>
-                                                    <s:if test="%{#session.user.rol == 'Premium'}">
-                                                        <s:url id="url" action="darLikeL">
-                                                            <s:param name="usuarioId" value="#usuario.id"></s:param>
-                                                        </s:url>
-                                                    </s:if>
-                                                    <s:else>
-                                                        <s:url id="url" action="haztePremium">
-                                                        </s:url>
-                                                    </s:else>
-
+                                                    <s:url id="url" action="darLikeL">
+                                                        <s:param name="usuarioId" value="#usuario.id"></s:param>
+                                                    </s:url>
                                                     <s:a href="%{url}">
                                                         <span><i class="fa-sharp fa-regular fa-heart" style="color: #b30000;"></i></span>
                                                         </s:a>
