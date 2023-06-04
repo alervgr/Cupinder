@@ -13,7 +13,7 @@
         <jsp:include page="../HEADER/header.jsp" />
         <div class="container-fluid pt-3 pb-3" style="background-color: #f8edeb; min-height: 79vh">
             <div class="container pb-5">
-                <div class="row pb-5">
+                <div class="row pb-5 justify-content-center">
                     <s:if test="%{listaUsuariosM.isEmpty()}">
                         <div class="text-center">                            
                             <h2>¡No has hecho match con nadie todavía!</h2><br><h4>No pierdas la esperanza...</h4>

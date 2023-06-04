@@ -24,7 +24,7 @@
 
         <div class="container-fluid pt-3 pb-3" style="background-color: #f8edeb; min-height: 79vh">
             <div class="container pb-5">
-                <div class="row pb-5">
+                <div class="row pb-5 justify-content-center">
                     <s:iterator value="listaUsuariosC" var="usuario">
                         <div class="col-lg-4 my-2" style="height: 35vh; width: 35vh">
                             <div class="card cardpareja p-0 w-100 h-100 m-2">
