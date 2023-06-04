@@ -1,8 +1,4 @@
-<%-- 
-    Document   : header
-    Created on : 22-abr-2023, 4:29:14
-    Author     : alervgr
---%>
+
 <%@taglib prefix="s" uri="/struts-tags"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -14,7 +10,7 @@
         <script src="https://kit.fontawesome.com/3e2086bcb1.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
         <link rel="shortcut icon" href="./IMG/icono.png" type="image/gif">
-        <title>JSP Page</title>
+        <title>Header</title>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: #e8a598;">

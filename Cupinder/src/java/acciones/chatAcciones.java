@@ -6,10 +6,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import modelos.Chats;
 import modelos.Mensajes;
 import modelos.Usuarios;
-import org.apache.struts2.interceptor.validation.SkipValidation;
 import persistencia.DAO_chat;
 import persistencia.DAO_usuario;
 

@@ -1,8 +1,3 @@
-<%-- 
-    Document   : acerca
-    Created on : 28-abr-2023, 21:59:30
-    Author     : alervgr
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

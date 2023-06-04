@@ -1,8 +1,3 @@
-<%-- 
-    Document   : adminFacultades
-    Created on : 03-jun-2023, 23:08:31
-    Author     : victo
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>

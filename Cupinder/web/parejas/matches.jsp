@@ -1,8 +1,3 @@
-<%-- 
-    Document   : pareja
-    Created on : 01-jun-2023, 2:46:29
-    Author     : alervgr
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

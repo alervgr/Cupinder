@@ -1,8 +1,3 @@
-<%-- 
-    Document   : perfilUsuario
-    Created on : 02-jun-2023, 17:55:49
-    Author     : 34647
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
@@ -10,7 +5,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Perfil</title>
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/estilo.css" />
     </head>
     <body>

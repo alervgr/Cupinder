@@ -1,5 +1,5 @@
 /*
-See on github: https://github.com/muhammederdem/credit-card-form
+ codigo js para añadir tarjetas de crédito
 */
 
 new Vue({

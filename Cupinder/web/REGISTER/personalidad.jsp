@@ -11,10 +11,10 @@
     </head>
     <body>
         <jsp:include page="../HEADER/header.jsp" />
-        <div div class="container-fluid row text-center justify-content-center" style="background-color: #f8edeb; height: 78vh">
+        <div div class="container-fluid row text-center justify-content-center" style="background-color: #f8edeb; min-height: 78vh">
 
             <div class="p-3 col-7 ">
-                <h1>Formulario</h1>
+                <h1>Cuéntanos un poco más sobre ti...</h1>
                 <s:form action="completarTest" method="post" theme="simple">
                     <div class=" mb-2 pt-3">
                         <label for="color">¿Qué color prefieres?</label>
@@ -41,7 +41,7 @@
                         <s:checkboxlist list="intereses" name="interesesSeleccionados" cssClass="form-check-input m-2"/>
                     </div>
 
-                    <button type="submit" class="btn btnRegistroP">Enviar respuesta</button>
+                    <button type="submit" class="btn btnRegistro">Enviar respuesta</button>
                 </s:form>
 
             </div>

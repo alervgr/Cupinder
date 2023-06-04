@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Perfil</title>
+        <title>Mi Perfil</title>
         <script src="./JS/goUpButton.js"></script>
         <link rel="shortcut icon" href="./IMG/icono.png" type="image/gif">
     </head>

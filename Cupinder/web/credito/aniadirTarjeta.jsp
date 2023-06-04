@@ -1,8 +1,4 @@
-<%-- 
-    Document   : aaaa
-    Created on : 03-jun-2023, 5:02:16
-    Author     : alervgr
---%>
+
 <%@taglib prefix="s" uri="/struts-tags"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title> Credit Card Checkout Form UI Example</title>
+        <title> Añadir Tarjeta</title>
         <!-- Credit Card Form CSS -->
         <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/credit-card-form.css">
     </head>

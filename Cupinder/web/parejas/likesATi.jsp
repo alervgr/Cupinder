@@ -1,8 +1,4 @@
-<%-- 
-    Document   : likesATi
-    Created on : 03-jun-2023, 3:43:20
-    Author     : alervgr
---%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@taglib prefix="s" uri="/struts-tags"%>

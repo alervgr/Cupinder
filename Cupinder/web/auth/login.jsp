@@ -1,8 +1,4 @@
-<%-- 
-    Document   : login
-    Created on : 22-abr-2023, 3:25:29
-    Author     : alervgr
---%>
+
 <%@taglib prefix="s" uri="/struts-tags" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

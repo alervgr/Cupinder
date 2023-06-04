@@ -37,7 +37,11 @@ public class comprarPremiumAcciones extends ActionSupport {
         Map session = (Map) ActionContext.getContext().get("session");
         Usuarios user = (Usuarios) session.get("user");
         this.setListaTarjetas(this.dao_t.obtenerTarjetasDeCredito(user.getId()));
-
+        
+        if(this.listaTarjetas.isEmpty()){
+            return ERROR;
+        }
+        
         return SUCCESS;
     }
 

@@ -5,7 +5,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Registro</title>
         <link rel="shortcut icon" href="./IMG/icono.png" type="image/gif">
     </head>
     <s:if test="%{#session.user != null} || %{#session.user.rol != 'Admin'}">

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package acciones;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -14,10 +10,7 @@ import org.apache.struts2.interceptor.validation.SkipValidation;
 import persistencia.DAO_facultades;
 import persistencia.DAO_usuario;
 
-/**
- *
- * @author victo
- */
+
 public class adminFacultadesAcciones extends ActionSupport {
 
     private final DAO_facultades dao_f;

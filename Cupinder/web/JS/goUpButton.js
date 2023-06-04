@@ -1,3 +1,7 @@
+/* 
+ codigo js para el boton de subir
+ */
+
 function scrollToTop() {
     window.scrollTo({
         top: 0,

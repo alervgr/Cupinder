@@ -1,8 +1,3 @@
-<%-- 
-    Document   : adminIntereses
-    Created on : 30-may-2023, 22:42:06
-    Author     : victo
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
