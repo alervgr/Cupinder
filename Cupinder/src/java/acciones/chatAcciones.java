@@ -28,7 +28,10 @@ public class chatAcciones extends ActionSupport {
         mensajesChat = new ArrayList<>();
         usuariosConChat = new ArrayList<>();
     }
-
+    
+    /*
+    Cargamos los chats del usuario logueado actualmente
+    */
     @Override
     public String execute() throws Exception {
 
@@ -39,7 +42,11 @@ public class chatAcciones extends ActionSupport {
         return SUCCESS;
 
     }
-
+    
+    /*Mostrar mensajes de un chat
+    Obtenemos los mensaje del chat seleccionado.
+    Diferenciamos quién manda y recibe el mensaje para la vista.
+    */
     public String mostrarMensajesChat() {
         Map session = (Map) ActionContext.getContext().get("session");
         Usuarios usuario = (Usuarios) session.get("user");
@@ -54,7 +61,12 @@ public class chatAcciones extends ActionSupport {
 
         return SUCCESS;
     }
-
+    
+    /*Enviar un mensaje
+    Obtenemos el mensaje escrito.
+    Creamos el mensaje con sus respentivos actores, destinatario y remitente.
+    Actualizamos la lista de mensaje para que aparezca por pantalla
+    */
     public String enviarMensaje() {
         Map session = (Map) ActionContext.getContext().get("session");
         Usuarios usuario = (Usuarios) session.get("user");

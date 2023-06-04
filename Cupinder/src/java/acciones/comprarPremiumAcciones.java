@@ -20,6 +20,7 @@ import persistencia.DAO_usuario;
  *
  * @author victo
  */
+
 public class comprarPremiumAcciones extends ActionSupport {
 
     private final DAO_tarjeta dao_t;
@@ -27,12 +28,17 @@ public class comprarPremiumAcciones extends ActionSupport {
     private String card;
     private List<TarjetasDeCredito> listaTarjetas;
 
+    
     public comprarPremiumAcciones() {
         this.dao_t = new DAO_tarjeta();
         this.dao_u = new DAO_usuario();
         this.listaTarjetas = new ArrayList();
     }
-
+    
+    /*
+    Cargamos el listado de tarjetas de nuestro usuario activo
+    y enviamos error si no tiene tarjetas para redireccionar.
+    */
     public String execute() throws Exception {
         Map session = (Map) ActionContext.getContext().get("session");
         Usuarios user = (Usuarios) session.get("user");
@@ -44,7 +50,8 @@ public class comprarPremiumAcciones extends ActionSupport {
         
         return SUCCESS;
     }
-
+    
+    //Una vez comprado actualizamos el usuario con el rol Premium
     public String comprado() throws Exception {
         Map session = (Map) ActionContext.getContext().get("session");
         Usuarios user = (Usuarios) session.get("user");

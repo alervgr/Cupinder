@@ -118,7 +118,12 @@ public class perfilAcciones extends ActionSupport {
         this.setTarjetasUsuario(this.dao_t.obtenerTarjetasDeCredito(user.getId()));
 
     }
-
+    
+    /*
+    Obtenemos la facultad del usuario mediante la id.
+    Obtenemos todas las facultades guardadas en la base de datos.
+    Obtenemos las tarjetas asociadas al usuario activo.
+    */
     @SkipValidation
     public String execute() throws Exception {
 
@@ -132,7 +137,14 @@ public class perfilAcciones extends ActionSupport {
 
         return SUCCESS;
     }
-
+    
+    /*Editar perfil
+    Seteamos de nuevo todos los atributos del usuario por si estos
+    han sufrido cambios.
+    Obtenemos la facultad mediante el nombre.
+    Actualizamos el usuario y reemplazamos en la sesión al nuevo usuario
+    sus datos actualizados.
+    */
     public String actualizar() throws IOException {
 
         System.out.println("entro");
@@ -175,6 +187,10 @@ public class perfilAcciones extends ActionSupport {
         return SUCCESS;
     }
 
+    /*
+    Obtenemos el usuario a partil del id al igual que la facultad
+    y los setemos a los atributos de la clase U y Fac.
+    */
     @SkipValidation
     public String cargarPerfil() {
 
@@ -184,7 +200,11 @@ public class perfilAcciones extends ActionSupport {
 
         return SUCCESS;
     }
-
+    
+    /*
+    Obtenemos todos los correos de los usuario menos el del usuario activo.
+    Para comprobar que el correo introducido no existe ya en la base de datos.
+    */
     private boolean comprobarCorreos() {
         boolean encontrado = false;
         Map session = (Map) ActionContext.getContext().get("session");

@@ -38,14 +38,24 @@ public class adminInteresesAcciones extends ActionSupport {
         this.setListaIntereses(this.dao_i.listadoObjetosIntereses());
         return SUCCESS;
     }
-
+    
+    /* Creamos un nuevo interés
+    Creamos un nuevo interés a partir del nombre que nos llega escrito por el
+    usuario.
+    */    
     public String crearInteres() throws Exception {
         Intereses i = new Intereses(this.getNombre());
         this.dao_i.nuevoInteres(i);
         this.setListaIntereses(this.dao_i.listadoObjetosIntereses());
         return SUCCESS;
     }
-
+    
+    /* Borrar un Interés
+    Obtenemos el interes que desemos eliminar gracias a su id.
+    Luego necesitamos una lista con todos aquellos usuario que estén asociados
+    a ese interés y eliminamos uno a uno para que no haya dependencias.
+    */
+    
     @SkipValidation
     public String borrarInteres() throws Exception {
 
@@ -96,6 +106,7 @@ public class adminInteresesAcciones extends ActionSupport {
         this.setListaIntereses(this.dao_i.listadoObjetosIntereses());
     }
     
+    //Método para comprobar si ya existe un objeto en nuestra base de datos
     @SkipValidation
     public boolean exist(String n){
         List<String> listaIntereses = this.dao_i.listadoIntereses();

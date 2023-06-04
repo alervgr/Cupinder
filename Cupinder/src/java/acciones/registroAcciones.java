@@ -129,7 +129,15 @@ public class registroAcciones extends ActionSupport {
         cargarFacultades();
 
     }
-
+    
+    /* 
+    Obtenemos todas las facutlades.
+    Y creamos el usuario según todos los atributos introducidos por pantalla.
+    Configuramos la ruta del atributo image para poder guardar la foto de perfil
+    de manera segura y correcta.
+    Resgitramos el usuario en la base de datos y gaurdamos en la session el correo
+    para la siguiente parte del registro.
+    */
     public String execute() throws Exception {
 
         this.intereses = this.dao.listadoIntereses();
@@ -164,6 +172,10 @@ public class registroAcciones extends ActionSupport {
         return SUCCESS;
     }
     
+    /*
+    Comprobamos que el correo introducido no existe ya en la base
+    de datos.
+    */
     @SkipValidation
     public boolean comprobarCorreos() {
 

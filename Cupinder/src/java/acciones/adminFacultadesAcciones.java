@@ -107,7 +107,8 @@ public class adminFacultadesAcciones extends ActionSupport {
 
         this.setListaFacultades(this.dao_f.listadoObjFacultades());
     }
-
+    
+    //Método para comprobar si ya existe un objeto en nuestra base de datos
     @SkipValidation
     public boolean exist(String n) {
         List<String> listaIntereses = this.dao_f.listadoFacultades();

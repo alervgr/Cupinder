@@ -31,7 +31,11 @@ public class loginAcciones extends ActionSupport {
         }
 
     }
-
+    
+    /*
+    Comprobamos si las credenciales están corractamente escritas y
+    obtenemos el usuario en casi afirmativo, si no devolvemos ERROR.
+    */
     public String execute() throws Exception {
         this.usuario = new Usuarios();
         this.usuario = this.dao.comprobarLogin(this.getCorreo(), this.getPassword());
@@ -46,7 +50,10 @@ public class loginAcciones extends ActionSupport {
         return SUCCESS;
 
     }
-
+    
+    /*
+    Cerramos la sesión del usuario
+    */
     @SkipValidation
     public String logout() {
         Map session = (Map) ActionContext.getContext().get("session");

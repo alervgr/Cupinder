@@ -40,6 +40,11 @@ public class parejasAcciones extends ActionSupport {
         listaUsuariosLT = new ArrayList<>();
     }
 
+    /*
+    Obtenemos todas las coinicdencias del usuario activo.
+    Compararmos las orientaciones y los géneros para recomendar a otros
+    usuarios compatibles.
+     */
     @Override
     public String execute() throws Exception {
 
@@ -65,7 +70,6 @@ public class parejasAcciones extends ActionSupport {
                     } else if (user.getOrientacion().equals("Homosexual") && aux.getGenero().equals(user.getGenero()) && !aux.getOrientacion().equals("Heterosexual")) {
                         this.listaUsuariosC.add(aux);
                     }
-
                 }
 
             } else {
@@ -76,7 +80,7 @@ public class parejasAcciones extends ActionSupport {
                         this.listaUsuariosC.add(aux);
                     } else if (user.getOrientacion().equals("Heterosexual") && !aux.getGenero().equals(user.getGenero()) && !aux.getOrientacion().equals("Homosexual")) {
                         this.listaUsuariosC.add(aux);
-                    } else if (user.getOrientacion().equals("Homosexual") &&  aux.getGenero().equals(user.getGenero()) && !aux.getOrientacion().equals("Heterosexual")) {
+                    } else if (user.getOrientacion().equals("Homosexual") && aux.getGenero().equals(user.getGenero()) && !aux.getOrientacion().equals("Heterosexual")) {
                         this.listaUsuariosC.add(aux);
                     }
                 }
@@ -95,7 +99,7 @@ public class parejasAcciones extends ActionSupport {
 
         return SUCCESS;
     }
-    
+
     public String match() throws Exception {
 
         this.setMatchPareja(true);
@@ -104,6 +108,11 @@ public class parejasAcciones extends ActionSupport {
         return SUCCESS;
     }
 
+    /*
+    Obtenemos de nuevo las coincidencias del usuario activo.
+    Y añadimos a la lista aquellos usuarios que tengan like mutamente.
+    Obtenemos los usuarios mediante su id
+     */
     public String verMatches() {
 
         Map session = (Map) ActionContext.getContext().get("session");
@@ -131,6 +140,11 @@ public class parejasAcciones extends ActionSupport {
         return SUCCESS;
     }
 
+    /*
+    Obtenemos de nuevo las coincidencias del usuario activo.
+    Y añadimos a la lista a los usuarios que el cliente activo haya dado like.
+    Obtenemos los usuarios mediante su id.
+     */
     public String verLikes() {
 
         Map session = (Map) ActionContext.getContext().get("session");
@@ -156,6 +170,11 @@ public class parejasAcciones extends ActionSupport {
         return SUCCESS;
     }
 
+    /*
+    Obtenemos de nuevo las coincidencias del usuario activo.
+    Y añadimos a la lista a los usuarios que le hayan dado like al usuario activo.
+    Obtenemos los usuarios mediante su id.
+     */
     public String verTeLikes() {
 
         Map session = (Map) ActionContext.getContext().get("session");

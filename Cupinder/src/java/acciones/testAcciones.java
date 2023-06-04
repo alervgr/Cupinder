@@ -40,7 +40,13 @@ public class testAcciones extends ActionSupport {
         dao_p = new DAO_personalidades();
         interesesSeleccionados = new ArrayList();
     }
-
+    
+    /* Creamos las asociaciones entre el usuario y el interés
+    Obtenemos el usuario a partir de su correo.
+    Asociamos un interés a usuario a partir de los que haya seleccionado
+    en el formulario.
+    Por último actualizamos el usuario.
+    */
     public String execute() throws Exception {
 
         UsuarioIntereses userInt;
@@ -69,6 +75,13 @@ public class testAcciones extends ActionSupport {
         return SUCCESS;
     }
     
+    /*
+    Obtenemos los intereses del usuario activo mediante la id,al igual
+    que las persoanlidades.
+    Eliminamos uno a uno los intereses y las personalidades para luego 
+    tener en cuenta los cambios en el formulario.
+    Actualizamos el usuario con las nuevas respuestas ya guardadas.
+    */
     public String updateTest(){
         
         UsuarioIntereses userInt;
@@ -99,6 +112,10 @@ public class testAcciones extends ActionSupport {
         return SUCCESS;
     }
     
+    /*Interpretar las respuestas del usuario
+    Damos significados a las respuestas del usuario y las vamos registrando en la 
+    base de datos. Creando las asociaciones entre las personalidades y los usuarios.
+    */
     public void cargarPersonalidad(Usuarios user) {
 
         UsuarioPersonalidades userPer;

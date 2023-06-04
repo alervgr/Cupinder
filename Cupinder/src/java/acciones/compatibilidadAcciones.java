@@ -55,7 +55,15 @@ public class compatibilidadAcciones extends ActionSupport {
         lista_p2 = new ArrayList();
         lista_u = new ArrayList();
     }
-
+    
+    
+    /*
+    Obtenemos el usuario por el correo.
+    Inicializamos las lista de intereses, personalidades y usuarios para comparar.
+    Hacemos uso del servicio que nos ofrece nuestra API para calcular las
+    compatibilidades.
+    Generemos las coinicdencias y las gaurdamos en la base de datos
+    */
     public String execute() throws Exception {
 
         Map session = (Map) ActionContext.getContext().get("session");
@@ -84,7 +92,13 @@ public class compatibilidadAcciones extends ActionSupport {
 
         return SUCCESS;
     }
-
+    
+    
+    /*Actualizamos las coincidencias
+    Obtenemos las coinicdencias de un usuario mediante la Id.
+    Volvemos a calcular las compatibilidades con nuestor servicio que nos ofrece
+    la API y actualizamos las coincidencias.
+    */
     public String updateCoincidencias() {
         double numero_magico;
 
@@ -104,7 +118,11 @@ public class compatibilidadAcciones extends ActionSupport {
 
         return SUCCESS;
     }
-
+    
+    /*Acción dar Like
+    Obtenemos la coinicdencia entre dos usuarios por sus Id`s y la actualziamos.
+    Seteamos a true los likes de las coinicdencias correspondientes.
+    */
     @SkipValidation
     public String darLike() {
         Map session = (Map) ActionContext.getContext().get("session");
@@ -134,7 +152,12 @@ public class compatibilidadAcciones extends ActionSupport {
         }
         return "noMatch";
     }
-
+    
+    /* Borrar like
+    Hacemos los mismo que en el método dar Like pero seteando a false
+    los likes de los usuarios, y volvemos a actualizar la coincidencia entre
+    los dos usuarios.
+    */
     @SkipValidation
     public String quitarLike() {
 
@@ -176,7 +199,9 @@ public class compatibilidadAcciones extends ActionSupport {
     
     
     
-
+    /*
+    Hay match si dos usuarios se han dado like mutuamente
+    */
     public boolean hayMatch(Coincidencias c) {
 
         boolean match = false;
@@ -236,6 +261,11 @@ public class compatibilidadAcciones extends ActionSupport {
         this.usuarioId = usuarioId;
     }
 
+    /*
+    Uso del web service cliente
+    Llamamos a la calculadora de compatibilidades para tener operativa 
+    la funcionalidad.
+    */
     private static double calcularCompatibilidad(java.util.List<java.lang.String> listaInteresesU1, java.util.List<java.lang.String> listaInteresesU2, java.util.List<java.lang.String> listaPersonalidadesU1, java.util.List<java.lang.String> listaPersonalidadesU2) {
         Cliente.CalculadorCompatibilidad_Service service = new Cliente.CalculadorCompatibilidad_Service();
         Cliente.CalculadorCompatibilidad port = service.getCalculadorCompatibilidadPort();

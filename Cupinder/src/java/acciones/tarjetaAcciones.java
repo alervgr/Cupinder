@@ -43,7 +43,10 @@ public class tarjetaAcciones extends ActionSupport {
     }
 
     
-
+    /*Crear Tarjeta de credito
+    Creamos una tarjeta de credito con los datos introducidos y 
+    registramos en nuestra base de datos.
+    */
     @Override
     public String execute() throws Exception {
 
@@ -57,7 +60,10 @@ public class tarjetaAcciones extends ActionSupport {
 
         return SUCCESS;
     }
-
+    
+    /*
+    Obtenemos las tarjetas de credito de nuestro usuario a partir de su id
+    */
     @SkipValidation
     public String obtenerTarjetasDeCredito() {
 
@@ -68,7 +74,11 @@ public class tarjetaAcciones extends ActionSupport {
 
         return SUCCESS;
     }
-
+    
+    /*Eliminar tarjeta de credito
+    Obtenemos la tarjeta de credito a partir de su Id y la eliminamos de 
+    nuestra base de datos.
+    */
     @SkipValidation
     public String borrarTarjeta() {
 
@@ -79,27 +89,11 @@ public class tarjetaAcciones extends ActionSupport {
         obtenerTarjetasDeCredito();
 
         return SUCCESS;
-    }
+    }    
     
-    @SkipValidation
-    public String actualizarTarjeta() {
-
-        this.tarjeta = this.dao_t.obtenerTarjeta(this.getTarjetaId());
-        
-        System.out.println(tarjeta);
-        tarjeta.setTitular(this.getTitular());
-        tarjeta.setNumeroTarjeta(this.getNumeroTarjeta());
-        tarjeta.setAnio(this.getAnio());
-        tarjeta.setMes(this.getMes());
-        tarjeta.setCvv(this.getCVV());
-        
-        this.dao_t.actualizarTarjeta(tarjeta);
-
-        obtenerTarjetasDeCredito();
-
-        return SUCCESS;
-    }
-    
+    /*
+    Obtenemos la tarjeta a guardamos también su Id.
+    */
     @SkipValidation
     public String obtenerTarjeta() {
 
