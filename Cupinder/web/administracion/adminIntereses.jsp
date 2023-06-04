@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Administración de Intereses</title>
         <script src="./JS/goUpButton.js"></script>
     </head>
     <s:if test="%{#session.user.rol != 'Admin'}">
@@ -38,7 +38,7 @@
                                         <s:param name="idInteres" value="#i.id"></s:param>
                                     </s:url>
                                     <s:a href="%{url}" cssStyle="text-decoration: none;">
-                                        <p>Borrar</p>
+                                        <i class="fa-solid fa-trash fa-xl" style="color: #e8a598;"></i>
                                     </s:a>
                                 </td>
                             </tr>

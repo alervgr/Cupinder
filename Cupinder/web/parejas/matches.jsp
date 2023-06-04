@@ -19,6 +19,12 @@
         <div class="container-fluid pt-3 pb-3" style="background-color: #f8edeb; min-height: 79vh">
             <div class="container pb-5">
                 <div class="row pb-5">
+                    <s:if test="%{listaUsuariosM.isEmpty()}">
+                        <div class="text-center">                            
+                            <h2>¡No has hecho match con nadie todavía!</h2><br><h4>No pierdas la esperanza...</h4>
+                        </div>
+                    </s:if>
+                    <s:else>
                     <s:iterator value="listaUsuariosM" var="usuario">
                         <div class="col-lg-4" style="height: 35vh; width: 35vh">
                             <div class="card cardpareja p-0 w-100 h-100 m-2">
@@ -59,6 +65,7 @@
                             </div>
                         </div>
                     </s:iterator>
+                    </s:else>
                 </div>
             </div>
         </div>

@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Administración de Usuarios</title>
         <script src="./JS/goUpButton.js"></script>
     </head>
     <s:if test="%{#session.user.rol != 'Admin'}">
@@ -26,7 +26,7 @@
                     <div class="p-4 text-center">
                         <a class="btn btnRegistro"  href="<s:url action="redirectRegister"/>">Crear Nuevo Usuario</a>
                     </div>
-                    <table class="table table-pink table-striped">
+                    <table class="table table-pink table-striped" align="center">
                         <thead>
                         <th>Foto perfil</th>
                         <th>Nombre</th>
@@ -34,6 +34,7 @@
                         <th>Usuario</th>
                         <th>Correo</th>
                         <th>Eliminar Usuario</th>
+                        <th>Ver perfil</th>
                         </thead>
 
                         <s:iterator value="listaUsuarios" var="u">
@@ -43,7 +44,9 @@
                                         <img src="${pageContext.request.contextPath}${u.fotoPerfil}" alt="mdo" width="53" height="53" class="rounded-circle">
                                     </a>
                                 </td>
-                                <td><s:property value="#u.nombre"></s:property></td>
+                                <td>
+
+                                    <s:property value="#u.nombre"></s:property></td>
                                 <td><s:property value="#u.apellidos"></s:property></td>
                                 <td><s:property value="#u.usuario"></s:property></td>
                                 <td><s:property value="#u.correo"></s:property></td>
@@ -51,8 +54,16 @@
                                         <s:param name="idUsuario" value="#u.id"></s:param>
                                     </s:url>
                                     <s:a href="%{url}" cssStyle="text-decoration: none;">
-                                        <p>Eliminar</p>
+                                        <i class="fa-solid fa-trash fa-xl" style="color: #e8a598;"></i>
                                     </s:a>
+                                </td>
+                                <td>
+                                    <s:url id="url" action="obsPerfil">
+                                        <s:param name="usuarioId" value="#u.id"></s:param>
+                                    </s:url>
+                                    <s:a href="%{url}">
+                                        <span><i class="fa-solid fa-eye fa-2xl" style="color: #e8a598;"></i></span>
+                                        </s:a>
                                 </td>
                             </tr>
                         </s:iterator>

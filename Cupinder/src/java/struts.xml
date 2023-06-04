@@ -11,6 +11,7 @@
     <include file="intereses.xml"/>
     <include file="adminUsuarios.xml"/>
     <include file="adminFacultades.xml"/>
+    <include file="premium.xml"/>
     <!-- Configuration for the default package. -->
     <package name="default" extends="struts-default">
         <action name="redirectLogin">

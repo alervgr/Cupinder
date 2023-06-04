@@ -5,11 +5,13 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Administracion de Facultades</title>
+        <script src="./JS/goUpButton.js"></script>
     </head>
     <s:if test="%{#session.user.rol != 'Admin'}">
         <s:action name="volverInicio" executeResult="true"></s:action>
@@ -28,7 +30,7 @@
                         <th>Pulse para borrar</th>
                         </thead>
 
-                        <s:iterator value="listafacultades" var="i">
+                        <s:iterator value="listaFacultades" var="i">
                             <tr>
                                 <td><s:property value="#i.id"></s:property></td>
                             <td><s:property value="#i.nombre"></s:property></td>
@@ -36,7 +38,7 @@
                                 <s:param name="idFacultades" value="#i.id"></s:param>
                             </s:url>
                             <s:a href="%{url}" cssStyle="text-decoration: none;">
-                                <p>Borrar</p>
+                                <i class="fa-solid fa-trash fa-xl" style="color: #e8a598;"></i>
                             </s:a>
                             </td>
                             </tr>
@@ -50,7 +52,7 @@
 
                                 <label for="floatingInput">Nombre nueva facultad</label>
                             </div>
-                            <button type="submit" name="btnNuevoInteres" class=" col-2 btn">
+                            <button type="submit" name="btnNuevaFacultad" class=" col-2 btn">
                                 <i class="fa-solid fa-circle-arrow-right fa-2xl" style="color: #e8a598;"></i>
                             </button>
                         </div>

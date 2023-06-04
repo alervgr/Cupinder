@@ -47,7 +47,7 @@
                             <h1 class="card-title pricing-card-title">7,5€<small class="text-muted fw-light">/mes</small></h1>
                             <s:if test="%{#session.user != null}">
                                 <s:if test="%{#session.user.rol == 'Free'}">
-                                    <a href="#" type="button" class="w-100 btn btnRegistroP">Comprar</a>
+                                    <a href="<s:url action="redirectComprarPremium"/>" type="button" class="w-100 btn btnRegistroP">Comprar</a>
                                 </s:if>
                                 <s:else>
                                     <a  type="button" class="w-100 btn btnRegistroP disabled">Adquirido</a>

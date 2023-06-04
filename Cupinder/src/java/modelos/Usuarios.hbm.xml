@@ -9,7 +9,7 @@
             <generator class="identity" />
         </id>
         <many-to-one name="facultades" class="modelos.Facultades" fetch="select">
-            <column name="facultad_id" not-null="true" />
+            <column name="facultad_id" not-null="false" />
         </many-to-one>
         <property name="usuario" type="string">
             <column name="usuario" length="50" not-null="true" />

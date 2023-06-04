@@ -3,6 +3,7 @@ package persistencia;
 import java.util.List;
 import modelos.Facultades;
 import modelos.HibernateUtil;
+import modelos.Usuarios;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -21,6 +22,25 @@ public class DAO_facultades {
         List lista = (List<String>) q.list();
         tx.commit();
         System.out.println(lista);
+        return lista;
+    }
+
+    public Facultades getFacultadPorId(int id) {
+        s1 = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = s1.beginTransaction();
+        Query q = s1.createQuery("FROM Facultades WHERE id = '" + id + "'");
+        Facultades facultad = (Facultades) q.uniqueResult();
+        tx.commit();
+        return facultad;
+    }
+
+    public List<Usuarios> listadoUsuariosFacultad(int idFacultad) {
+        s1 = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = s1.beginTransaction();
+        Query q = s1.createQuery("FROM Usuarios WHERE facultad_id = '" + idFacultad + "'");
+        List<Usuarios> lista = (List<Usuarios>) q.list();
+        tx.commit();
+        System.out.println("Tamaño lista usuarios faucltad: " + lista.size());
         return lista;
     }
 
@@ -50,8 +70,9 @@ public class DAO_facultades {
         Transaction tx = s1.beginTransaction();
         Query q = s1.createQuery("FROM Facultades");
         List<Facultades> lista = (List<Facultades>) q.list();
+        System.out.println("Tamaño de la lista de facultades: " + lista.size());
         tx.commit();
-        System.out.println(lista);
+
         return lista;
     }
 

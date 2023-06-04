@@ -1,0 +1,16 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- Author: victo -->
+ 
+<struts>
+    <package name="premium" extends="struts-default" namespace="/">
+        <action name="redirectComprarPremium" class="acciones.comprarPremiumAcciones">
+            <result name="success">/premium/comprarPremium.jsp</result>
+        </action>
+        <action name="comprado" class="acciones.comprarPremiumAcciones" method="comprado">
+            <result name="success">/premium/comprarPremium.jsp</result>
+        </action>
+    </package>
+</struts>

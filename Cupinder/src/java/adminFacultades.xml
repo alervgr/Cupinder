@@ -9,11 +9,12 @@
         <action name="redirectAdminFacultades" class="acciones.adminFacultadesAcciones">
             <result name="success">/administracion/adminFacultades.jsp</result>
         </action>
-                <action name="crearFacultad" class="acciones.adminFacultadesAcciones" method="crearFacultad">
+        <action name="crearFacultad" class="acciones.adminFacultadesAcciones" method="crearFacultad">
             <result name="success">/administracion/adminFacultades.jsp</result>
+            <result name="input">/administracion/adminFacultades.jsp</result>
         </action>
-                </action>
-                <action name="borrarFacultad" class="acciones.adminFacultadesAcciones" method="borrarFacultad">
+              
+        <action name="borrarFacultad" class="acciones.adminFacultadesAcciones" method="borrarFacultad">
             <result name="success">/administracion/adminFacultades.jsp</result>
         </action>
     </package>

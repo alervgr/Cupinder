@@ -18,46 +18,53 @@
         <div class="container-fluid pt-3 pb-3" style="background-color: #f8edeb; min-height: 79vh">
             <div class="container pb-5">
                 <div class="row pb-5">
-                    <s:iterator value="listaUsuariosL" var="usuario">
-                        <div class="col-lg-4" style="height: 35vh; width: 35vh">
-                            <div class="card cardpareja p-0 w-100 h-100 m-2">
-                                <div class="card-image h-100">
-                                    <img src="${pageContext.request.contextPath}<s:property value="#usuario.fotoPerfil"></s:property>"
-                                         alt="" class="h-100">
-                                    </div>
-                                    <div class="card-content d-flex flex-column align-items-center">
-                                        <h4 class="pt-2"><s:property value="#usuario.nombre"></s:property></h4>
-                                    <h5><s:property value="#usuario.ocupacion"></s:property>, <s:property value="#usuario.edad"></s:property> años.</h5>
+                    <s:if test="%{listaUsuariosL.isEmpty()}">
+                        <div class="text-center">                            
+                            <h2>¡No has dado likes todavía!</h2><br><h2>¿A qué esperas?</h2>                        
+                        </div>
+                    </s:if>
+                    <s:else>    
+                        <s:iterator value="listaUsuariosL" var="usuario">
+                            <div class="col-lg-4" style="height: 35vh; width: 35vh">
+                                <div class="card cardpareja p-0 w-100 h-100 m-2">
+                                    <div class="card-image h-100">
+                                        <img src="${pageContext.request.contextPath}<s:property value="#usuario.fotoPerfil"></s:property>"
+                                             alt="" class="h-100">
+                                        </div>
+                                        <div class="card-content d-flex flex-column align-items-center">
+                                            <h4 class="pt-2"><s:property value="#usuario.nombre"></s:property></h4>
+                                        <h5><s:property value="#usuario.ocupacion"></s:property>, <s:property value="#usuario.edad"></s:property> años.</h5>
 
-                                        <ul class="social-icons d-flex justify-content-center">
-                                            <li>
-                                            <s:url id="url" action="obsPerfil">
-                                                <s:param name="usuarioId" value="#usuario.id"></s:param>
-                                            </s:url>
-                                            <s:a href="%{url}">
-                                                <span><i class="fa-sharp fa-solid fa-eye" style="color: #f2f2f2;"></i></span>
-                                                </s:a>
-                                        </li>
-                                        <li>
-                                            <s:if test="%{#session.user.rol != 'Free'}">
-                                                <s:url id="url" action="quitarLikeL">
+                                            <ul class="social-icons d-flex justify-content-center">
+                                                <li>
+                                                <s:url id="url" action="obsPerfil">
                                                     <s:param name="usuarioId" value="#usuario.id"></s:param>
                                                 </s:url>
-                                            </s:if>
-                                            <s:else>
-                                                <s:url id="url" action="haztePremium">
-                                                </s:url>
-                                            </s:else>
+                                                <s:a href="%{url}">
+                                                    <span><i class="fa-sharp fa-solid fa-eye" style="color: #f2f2f2;"></i></span>
+                                                    </s:a>
+                                            </li>
+                                            <li>
+                                                <s:if test="%{#session.user.rol != 'Free'}">
+                                                    <s:url id="url" action="quitarLikeL">
+                                                        <s:param name="usuarioId" value="#usuario.id"></s:param>
+                                                    </s:url>
+                                                </s:if>
+                                                <s:else>
+                                                    <s:url id="url" action="haztePremium">
+                                                    </s:url>
+                                                </s:else>
 
-                                            <s:a href="%{url}">
-                                                <span><i class="fa-sharp fa-solid fa-heart" style="color: #b30000;" onclick=""></i></span>
-                                                </s:a>
-                                        </li>
-                                    </ul>
+                                                <s:a href="%{url}">
+                                                    <span><i class="fa-sharp fa-solid fa-heart" style="color: #b30000;" onclick=""></i></span>
+                                                    </s:a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </s:iterator>
+                        </s:iterator>
+                    </s:else>
                 </div>
             </div>
         </div>

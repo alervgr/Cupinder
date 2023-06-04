@@ -93,13 +93,7 @@
                                             </s:url>
                                             <s:a href="%{url}" cssStyle="text-decoration: none;">
                                                 <p>Borrar</p>
-                                            </s:a>
-                                            <s:url id="url" action="irActualizarTarjeta">
-                                                <s:param name="tarjetaId" value="#tarjeta.idTarjeta"></s:param>
-                                            </s:url>
-                                            <s:a href="%{url}" cssStyle="text-decoration: none;">
-                                                <p>Actualizar</p>
-                                            </s:a>
+                                            </s:a>                                          
                                         </li>
                                     </s:iterator>
                                 </ul>
